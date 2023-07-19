@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+#main {
+    display: flex;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+#left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: #F5F5F5;
+    width: 18%;
+    border-right: 2px solid #DEDEDE;
+
+}
+
+#main>#left #dashboard {
+    font-size: 16px;
+    font-weight: 500;
+    color: #722ED1;
+
+    margin-right: -1px;
+    border-right: 4px solid #722ED1;
+}
+
+#left span {
+    width: 6%;
+    margin: 10px;
+    margin-right: 05px;
+    padding-left: 40px;
+}
+
+div #logo {
+
+    margin-top: 30px;
+    padding: 0;
+    text-align: center;
+    width: 60%;
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+div>p {
+    margin: 10px;
+    padding: 5px;
+    display: inline;
+}
+
+#left div:last-child {
+    margin-bottom: 30px;
+}
+
+#left>div>div:hover p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #722ED1;
+}
+
+#left>div>div:hover span {
+    color: #722ED1;
+}
+
+#left>div>div {
+    display: flex;
+    align-items: center;
+}
+
+#left>div>div:hover {
+    margin-right: -1px;
+    border-right: 4px solid #722ED1;
+}
+
+#left>div>div:first-child {
+    margin-right: 0;
+    border: none;
+}
+
+#right {
+    background-color: #FFFFFF;
+    width: 82%;
+}
+
+#form {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: auto;
+    width: 30%;
+    margin-top: 5%;
+}
+
+#form input {
+    padding: 3%;
+    margin-bottom: 2%;
+    border-radius: 15px;
+    border-color: #722ED1;
+    font-family: inter;
+    background-color: #ece9ef;
+}
+
+#submitbtn {
+    width: 30%;
+    margin: auto;
+}
+
