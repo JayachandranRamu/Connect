@@ -51,6 +51,14 @@ div > p{
 #left div:last-child{
     margin-bottom: 30px;
 }
+#main > #left #search{
+      font-size: 16px;
+    font-weight: 500;
+   color: #722ED1;
+   
+   margin-right: -1px;
+   border-right: 4px solid #722ED1;
+}
 
 #left >div>div:hover p{
     font-size: 16px;
@@ -74,46 +82,40 @@ div > p{
 }
 #right{
     background-color: #FFFFFF;
-    width: 86%;
+    width: 82%;
+}
+#r1 div:first-child img{
+    width: 4.5%;
+margin: 15px 20px;
+margin-top: 15px;
 }
 
-#r1 div:first-child img{
-    width: 25px;
-}
-#r1 div:first-child{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 15px; 
-}
 #r1{
 
     width: 100%;
     display: flex;
-justify-content: space-between;
+
 }
 #r1 div:last-child{
     text-align: end;
     margin: 5px 20px;
 }
 
-#r1 div:last-child{
-    display: flex;
-justify-content: center;
-align-items: center;
-}
+
 #r1 div:last-child img:first-child{
-    width: 33px;
-    margin: 0px 25px;
-margin-left:35px;
+    width: 6%;
+    margin: 5px;
+    margin-top: 10px;
+margin-left:30px;
+
 }
 #right #r1 #profile{
-    border-radius: 50%;
+    position:absolute;
+    border-radius: 15px;
     border: 1px solid lightgray;
-    width: 50px;
+    width: 7.3%;
     margin-top: 5px;
 margin-left: 15px;
-margin: 5px;
     }
 #right>div:nth-child(2){
    
@@ -190,45 +192,15 @@ td:nth-child(2){
     font-size: 30px;
     font-weight: 1000;
 }
-#last  h2{
-    font-weight: 500;
-    font-size: 22px;
-    margin: 20px 32px;
-    margin-bottom: 10px;
-}
-#todo{
-    margin-left: -150px;
-    width: 50%;
-    border-right:  2px solid #D9D9D9;
-}
-#todo table {
-    width: 100%;
+div input{
+    width: 500px;
     margin: 20px;
-    margin-right: 0;
-    margin-left: 10px;
-    font-size: 18px;
+    padding: 15px;
+    border-radius: 10px;
 }
-#todo input{
-width: 100%;
-height: 18px;
-}
-#last{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 323px;
-}
-#g{
-    margin-left: -100px;
-}
-#g h2{
-    margin-left: 0;
-}
-#g div{
-    border:  2px solid #D9D9D9;
-    padding: 20px;
-    width: 100%;
-margin: 20px 100px;
-margin-left: 0px;
-border-radius: 20px;
+div select{
+    width: 200px;
+    margin: 20px 10px;
+    padding: 15px;
+    border-radius: 10px;
 }
