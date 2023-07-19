@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/Home Page/style1.css">
+    <link rel="stylesheet" href="/Search/search.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +12,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="search.css">
     <title>Masai Connect</title>
-    <link rel="stylesheet" href="style1.css">
 </head>
 
 <body>
@@ -23,13 +23,13 @@
                 <div>
                     <img src="/Images/Logo.png" id="logo" alt="Masai Connect">
                 </div>
-                <div id="dashboard">
+                <div>
                     <span class="material-symbols-outlined">
                         grid_view
                     </span>
                     <p>Dashboard</p>
                 </div>
-                <div>
+                <div id="search"> 
                     <span class="material-symbols-outlined">
                         person_search
                     </span>
@@ -51,16 +51,18 @@
                     <span class="material-symbols-outlined">
                         account_circle
                     </span>
-                    <p>Acccount</p>
+                    <p>Account</p>
                 </div>
             </div>
             <div>
-                <div><span class="material-symbols-outlined">
+                <div>
+                    <span class="material-symbols-outlined">
                         rate_review
                     </span>
                     <p>Feedback</p>
                 </div>
-                <div><span class="material-symbols-outlined">
+                <div>
+                    <span class="material-symbols-outlined">
                         logout
                     </span>
                     <p>Logout</p>
@@ -71,7 +73,7 @@
         <div id="right">
             <div id="r1">
                 <div>
-                    <img src="/Images/fast-forward.png" alt="" id="slide">
+                    <img src="/Images/fast-forward.png" alt="">
                 </div>
                 <div>
                     <img src="/Images/alarm.png" alt="">
@@ -79,71 +81,30 @@
                 </div>
             </div>
             <div>
-                <p>Dashboard</p>
-                <a href="/Home Page/add.html">
-                    <button>Add an Employee</button>
-                </a>
+                <p>Search</p>
             </div>
-            <div id="r-mid">
-                <h2>Key indicators</h2>
-                <div>
-                    <div>
-                        <p>Active Students</p>
-                        <p class="num">280</p>
-                    </div>
-                    <div>
-                        <p>Latest Active Student</p>
-                        <table class="num">
-                            <tr>
-                                <td><span class="material-symbols-outlined">
-                                        target
-                                    </span></td>
-                                <td>JayaChandran Ramu</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div>
-                        <p>Total Students</p>
-                        <p id="totalStudent"></p>
-                    </div>
-                </div>
+            <div>
+                <input type="text" placeholder="Search Student" id="search">
+                <span class="material-symbols-outlined" id="searchbtn">search</span>
             </div>
         </div>
     </div>
 </body>
+
+</html>
 <script>
     const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
-    // url.searchParams.append('page', 1);
-    // url.searchParams.append('limit', 10);
-    let visible = true;
-    let left = document.getElementById("left");
-    let right = document.getElementById("right");
-    document.getElementById("slide").addEventListener("click", function () {
-        if (visible == true) {
-            left.style.display = "none";
-            right.style.width = "100%";
-            visible = false;
-        }
-        else {
-            left.style.display = "block";
-            right.style.width = "80";
-            visible = true;
-        }
-    })
-    let total = document.getElementById("totalStudent")
+    url.searchParams.append('name', `${searchInp}`);
+    document.getElementById("searchbtn").addEventListener("click",fetchData(url))
+    let searchInp = document.getElementById("search")
     function fetchData(url) {
         fetch(url)
             .then((res) => {
-                // totaldata = res.headers.get("X-Total-Count");
                 return res.json();
             })
             .then(function (data) {
-                studentArr = data;
                 console.log(data);
-                total.innerText = (data.length)
             })
     }
-    fetchData(url);
-</script>
 
-</html>
+</script>

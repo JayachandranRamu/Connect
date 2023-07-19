@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <title>Masai Connect</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="add.css">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                 <div>
                     <img src="/Images/Logo.png" id="logo" alt="Masai Connect">
                 </div>
-                <div id="dashboard">
+                <div>
                     <span class="material-symbols-outlined">
                         grid_view
                     </span>
@@ -78,72 +78,94 @@
                     <img src="/Images/man.png" alt="" id="profile">
                 </div>
             </div>
+            <hr>
+            <form id="form">
+                <input type="text" placeholder="Enter employee name" id="name" required>
+                <input type="email" placeholder="Enter employee E-mail id" id="email" required>
+                <input type="password" placeholder="Enter employee password" id="pass" required>
+                <input type="submit" id="submitbtn">
+            </form>
             <div>
-                <p>Dashboard</p>
-                <a href="/Home Page/add.html">
-                    <button>Add an Employee</button>
-                </a>
-            </div>
-            <div id="r-mid">
-                <h2>Key indicators</h2>
-                <div>
-                    <div>
-                        <p>Active Students</p>
-                        <p class="num">280</p>
-                    </div>
-                    <div>
-                        <p>Latest Active Student</p>
-                        <table class="num">
-                            <tr>
-                                <td><span class="material-symbols-outlined">
-                                        target
-                                    </span></td>
-                                <td>JayaChandran Ramu</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div>
-                        <p>Total Students</p>
-                        <p id="totalStudent"></p>
-                    </div>
-                </div>
+                <span id="status"></span>
             </div>
         </div>
     </div>
 </body>
 <script>
-    const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
-    // url.searchParams.append('page', 1);
-    // url.searchParams.append('limit', 10);
     let visible = true;
     let left = document.getElementById("left");
     let right = document.getElementById("right");
+    let status = document.getElementById("status");
     document.getElementById("slide").addEventListener("click", function () {
         if (visible == true) {
             left.style.display = "none";
             right.style.width = "100%";
+            status.style.width = "99%"
             visible = false;
         }
         else {
             left.style.display = "block";
-            right.style.width = "80";
+            right.style.width = "80%";
+            status.style.width = "82%"
             visible = true;
         }
     })
-    let total = document.getElementById("totalStudent")
-    function fetchData(url) {
-        fetch(url)
-            .then((res) => {
-                // totaldata = res.headers.get("X-Total-Count");
-                return res.json();
-            })
-            .then(function (data) {
-                studentArr = data;
-                console.log(data);
-                total.innerText = (data.length)
-            })
-    }
-    fetchData(url);
+
+    let name = document.getElementById("name");
+    let email = document.getElementById("email");
+    let pass = document.getElementById("pass");
+    let submitbtn = document.getElementById("submitbtn");
+    const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/users');
+
+    submitbtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        let newemployee = {
+            "name": name.value,
+            "email": email.value,
+            "password": pass.value
+        };
+
+        url.searchParams.append('email', email.value);
+
+        fetch(url, {
+            method: 'GET',
+            headers: { 'content-type': 'application/json' },
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            let length = data.length;
+            console.log(length);
+
+            if (length === 1) {
+                status.innerText = "This Email Id is already present in our System";
+                status.style.color = "red";
+            } else if (length > 1){
+                fetch(url, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(newemployee)
+                }).then(res => {
+                    return res.json();
+                }).then(data => {
+                    console.log(data);
+                    status.innerText = "Manager is added successfully";
+                    status.style.color = "green";
+                }).catch(error => {
+                    console.log(error);
+                });
+            }
+
+            name.value = "";
+            email.value = "";
+            pass.value = "";
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        }).catch(error => {
+            console.log(error);
+        });
+    });
 </script>
 
 </html>
