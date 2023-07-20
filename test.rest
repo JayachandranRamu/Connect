@@ -1,0 +1,5 @@
+###
+GET  https://connect-8zjb.onrender.com/Managers
+
+### 
+DELETE https://connect-8zjb.onrender.com/Managers/1
