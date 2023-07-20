@@ -95,7 +95,7 @@ div>p {
 }
 
 #table {
-    margin-top: 2%;
+    margin-top: 1%;
 }
 
 tbody{
@@ -121,4 +121,22 @@ td{
 
 th{
     border: 1px solid black;
+}
+
+tr th{
+    padding: 1%;
+}
+
+#pagination_wrapper{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+#pagination_wrapper button{
+    padding: 1%;
+    display: inline;
+    margin-left: 1%;
 }
