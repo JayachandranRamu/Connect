@@ -1,5 +1,4 @@
 ###
-GET  https://connect-8zjb.onrender.com/Managers
+GET  https://connect-api-0z76.onrender.com/students
 
 ### 
-DELETE https://connect-8zjb.onrender.com/Managers/1
