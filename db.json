@@ -1,0 +1,455 @@
+
+
+
+
+
+
+
+{"students":[
+{
+"name": "Paras Kamaliya",
+"student_code": "fw27_245",
+"email": "paraskamaliya5@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "1",
+"active": "false"
+},
+{
+"name": "Jayachandran Ramu",
+"student_code": "fw27_299",
+"email": "jayachandran9629040900@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "2",
+"active": "false"
+},
+{
+"name": "Shubham Jayswal",
+"student_code": "fw27_142",
+"email": "shubhammasai03@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "3",
+"active": "false"
+},
+{
+"name": "Venkatesh Gangoji",
+"student_code": "fw27_172",
+"email": "venkateshgangoji@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "4",
+"active": "false"
+},
+{
+"name": "Alka Sinha",
+"student_code": "fp10_033",
+"email": "sinhaalka802211@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "5",
+"active": "false"
+},
+{
+"name": "Nirmal Patel",
+"student_code": "fw25_191",
+"email": "patelnirmal9977@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "6",
+"active": "false"
+},
+{
+"name": "Shubham deshmukh",
+"student_code": "fw27_003",
+"email": "shubhdeshmukh484@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "7",
+"active": "false"
+},
+{
+"name": "Srinivasan H",
+"student_code": "fw27_005",
+"email": "hsrinivas802@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "8",
+"active": "false"
+},
+{
+"name": "Naveen patel",
+"student_code": "fw27_015",
+"email": "navee1110@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "9",
+"active": "false"
+},
+{
+"name": "Ayushman Rajput",
+"student_code": "fw27_017",
+"email": "ayushmaanrajput25feb@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "10",
+"active": "false"
+},
+{
+"name": "Md Mukhtar Mohsin",
+"student_code": "fw27_028",
+"email": "mdmukhtarmohsin@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "11",
+"active": "false"
+},
+{
+"name": "Makarand Gijam",
+"student_code": "fw27_036",
+"email": "makarand.gijam22@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "12",
+"active": "false"
+},
+{
+"name": "Ankit Kumar",
+"student_code": "fw27_038",
+"email": "erankkrs@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "13",
+"active": "false"
+},
+{
+"name": "Ajeet Pawar",
+"student_code": "fw27_039",
+"email": "ajeetpawar07@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "14",
+"active": "false"
+},
+{
+"name": "Depaashikha",
+"student_code": "fw27_069",
+"email": "shikhadeep.hzp@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "15",
+"active": "false"
+},
+{
+"name": "Deepak Underiya",
+"student_code": "fw27_088",
+"email": "underiyadeepak@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "16",
+"active": "false"
+},
+{
+"name": "Ritesh Kashyap",
+"student_code": "fw27_110",
+"email": "riteshkashyap9999@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "17",
+"active": "false"
+},
+{
+"name": "Shubhadeep Sarkar",
+"student_code": "fw27_112",
+"email": "subhadeepsarkar1995@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "18",
+"active": "false"
+},
+{
+"name": "Amol Patil",
+"student_code": "fw27_112",
+"email": "amolkpatil22@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "19",
+"active": "false"
+},
+{
+"name": "Ashwini Titarmare",
+"student_code": "fw27_137",
+"email": "ashwini.titarmare96@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "20",
+"active": "false"
+},
+{
+"name": "Raghuwansh Singh",
+"student_code": "fw27_158",
+"email": "wansh786@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "21",
+"active": "false"
+},
+{
+"name": "Nishant Singh",
+"student_code": "fw27_163",
+"email": "nishantkr488@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "22",
+"active": "false"
+},
+{
+"name": "Aavishkar Kamble",
+"student_code": "fw27_166",
+"email": "aavishkark@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "23",
+"active": "false"
+},
+{
+"name": "Hemanth Kumar",
+"student_code": "fw27_221",
+"email": "hemanthcr217@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "24",
+"active": "false"
+},
+{
+"name": "Ashish Sen",
+"student_code": "fw27_248",
+"email": "ashishsen997@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "25",
+"active": "false"
+},
+{
+"name": "Anshul Dhakate",
+"student_code": "fw27_262",
+"email": "anshuldhakate11@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "26",
+"active": "false"
+},
+{
+"name": "Vishvendra Tomar",
+"student_code": "fw27_269",
+"email": "vishvendratomar29@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "27",
+"active": "false"
+},
+{
+"name": "Kaushal Pathak",
+"student_code": "fw27_280",
+"email": "kaushaldu017@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "28",
+"active": "false"
+},
+{
+"name": "Leeladhar Jagarapu",
+"student_code": "fw27_290",
+"email": "leeladharjagarapu@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "29",
+"active": "false"
+},
+{
+"name": "Shubham Saini",
+"student_code": "fw26_075",
+"email": "shubhamsaini2772@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "30",
+"active": "false"
+},
+{
+"name": "Akshay Ramoliya",
+"student_code": "fw27_287",
+"email": "akshay.ramoliya9@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "31",
+"active": "false"
+},
+{
+"name": "Sagar Kadam",
+"student_code": "fw27_011",
+"email": "sagarkadamsearch@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "32",
+"active": "false"
+},
+{
+"name": "Jahir Pendhuri",
+"student_code": "fw27_018",
+"email": "jahirpp1999@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "33",
+"active": "false"
+},
+{
+"name": "Sourav Biswas",
+"student_code": "fw27_032",
+"email": "sourav.sb56@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "34",
+"active": "false"
+},
+{
+"name": "Prateek Singh",
+"student_code": "fw27_033",
+"email": "7007939130ps@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "35",
+"active": "false"
+},
+{
+"name": "Arup Paul",
+"student_code": "fw27_052",
+"email": "aruppaul1650@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "36",
+"active": "false"
+},
+{
+"name": "Ravi Teja",
+"student_code": "fw27_063",
+"email": "kopparapuraviteja@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "37",
+"active": "false"
+},
+{
+"name": "Vibha Maurya",
+"student_code": "fw27_074",
+"email": "vibhamaurya011@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "38",
+"active": "false"
+},
+{
+"name": "Harshdeep Gill",
+"student_code": "fw27_081",
+"email": "er.harshdeepgill@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "39",
+"active": "false"
+},
+{
+"name": "Suriya Singarave",
+"student_code": "fw27_086",
+"email": "suriyasingaravel710@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "40",
+"active": "false"
+},
+{
+"name": "Pawan Bhaskar",
+"student_code": "fw27_131",
+"email": "pavanbhaskarthota05@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "41",
+"active": "false"
+},
+{
+"name": "Shubham Kumar",
+"student_code": "fw27_246",
+"email": "onlyringtonepro@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "42",
+"active": "false"
+},
+{
+"name": "Shivam Dubey",
+"student_code": "fw27_259",
+"email": "shivamdubeyagra@gmail.com",
+"password": "12345",
+"todo": [],
+"id": "43",
+"active": "false"
+},
+{
+"name": "shubham",
+"student_code": "fw27_300",
+"email": "jayswalshubham53@gmail.com",
+"password": "1234",
+"todo": [],
+"id": "44",
+"active": "false"
+},
+{
+"name": "kamaliay paras ",
+"student_code": "fw27_245",
+"email": "paraskamaliya@gmail.com",
+"password": "123",
+"todo": [],
+"id": "45",
+"active": "false"
+}
+],
+"Managers":[
+    {
+    "email": "paraskamaliya5@gmail.com",
+    "password": "paras@123",
+    "name": "Paras",
+    "id": "1"
+    },
+    {
+    "email": "jayachandran9629040900@gmail.com",
+    "password": "Jayachandran@123",
+    "name": "JayaChandran",
+    "id": "2"
+    },
+    {
+    "email": "shubhammasai03@gmail.com",
+    "password": "shubham@123",
+    "name": "Shubham",
+    "id": "3"
+    },
+    {
+    "email": "venkateshgangoji@gmail.com",
+    "password": "venkatesh@123",
+    "name": "Venkatesh",
+    "id": "4"
+    },
+    {
+    "email": "sinhaalka802211@gmail.com",
+    "password": "alka@123",
+    "name": "Alka",
+    "id": "5"
+    }
+    ],
+"admin":[{
+    "name":"admin",
+    "mail":"admin@gmail.com",
+    "password":"admin",
+    "id":1
+}],
+"active":[],
+"groups":[],
+"announcement":[]}

@@ -1,0 +1,264 @@
+*{
+    margin: 0;
+    padding: 0;
+     font-family: 'Inter', sans-serif;
+     
+}
+#main{
+display: flex;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+#left{
+display: flex;
+flex-direction: column;
+justify-content:space-between;
+height: 100vh;
+    background-color: #F5F5F5;
+    width: 18%;
+    border-right: 2px solid #DEDEDE;
+
+}
+
+
+#left span{
+    width: 6%;
+    margin: 10px;
+    margin-right: 05px;
+    padding-left: 40px;
+}
+div  #logo{
+
+    margin-top: 30px;
+    padding: 0; 
+    text-align: center;
+    width: 60%;
+    margin-left: 40px;
+margin-bottom: 20px;
+}
+div > p{
+    margin: 10px;
+    padding: 5px;
+    display: inline;
+}
+#left div:last-child{
+    margin-bottom: 30px;
+}
+#left a{
+    text-decoration: none;
+    color: black;
+}
+#left >div>div:hover a{
+    font-size: 16px;
+    font-weight: 500;
+   color: #722ED1;
+}
+#left >div>div:hover span{
+    color: #722ED1;
+}
+#left > div >div{
+    display: flex;
+    align-items: center;
+}
+#left >div>div:hover{
+    margin-right: -1px;
+    border-right: 4px solid #722ED1;
+}
+#left >div:first-child>div:first-child{
+    margin-right: 0;
+    border: none;
+}
+#right{
+    background-color: #FFFFFF;
+    width: 86%;
+}
+
+#r1 div:first-child img{
+    width: 25px;
+}
+#r1 div:first-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px; 
+}
+#r1{
+
+    width: 100%;
+    display: flex;
+justify-content: space-between;
+}
+#r1 div:last-child{
+    text-align: end;
+    margin: 5px 20px;
+}
+
+#r1 div:last-child{
+    display: flex;
+justify-content: center;
+align-items: center;
+}
+#r1 div:last-child img:first-child{
+    width: 33px;
+    margin: 0px 25px;
+margin-left:35px;
+}
+#right #r1 #profile{
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    width: 50px;
+    margin-top: 5px;
+margin-left: 15px;
+margin: 5px;
+    }
+#right>div:nth-child(2){
+   
+    padding: 20px;
+    border-top:  2px solid #D9D9D9;
+    border-bottom:  2px solid #D9D9D9;
+}
+#right>div:nth-child(2) p{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+#t h2{
+    text-align: left;
+    font-weight: 500;
+    font-size: 22px;
+    margin: 20px 32px;
+    margin-bottom: 10px;
+}
+
+#task123 {
+    background-color: white;
+    border:  2px solid #D9D9D9; 
+    border-right: none;
+}
+#t{
+    width: 100%;
+    display: flex;
+}
+#t1,#t2{
+    text-align: center;
+    width: 50%;
+}
+#t1{
+    border-right: 2px solid #D9D9D9;;
+}
+
+/* Venkatesh */
+.account-setting{
+    margin: 30px;
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+}
+.account-setting .profile{
+    width: 40%;
+    /* height: 300px; */
+    /* border: 1px solid black; */
+    /* text-align: center; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.account-setting .image{
+    margin: auto;
+    padding: 30px;
+    /* border: solid black; */
+    width: 40%;
+    display: flex;
+    border-radius: 50%;
+}
+
+.account-setting img{
+    width: 100%;
+    /* border: solid ; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    border-radius: 50%;
+}
+
+.account-setting .details{
+    margin: 20px;
+    /* margin-bottom: -px; */
+}
+
+.account-setting .details .details-info{
+    display: flex;
+    align-items: center;
+}
+
+.account-setting .details-info label{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.account-setting .details-info p{
+    font-size: 18px;
+    font-weight: 400;
+}
+button{
+    cursor:pointer;
+}
+.account-setting .details-info button{
+    margin: 10px;
+    width: 120px;
+    padding: 15px;
+    /* height: 30px; */
+    background-color: rgb(40, 5, 167);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 15px;
+    margin-left: 300px;
+}
+
+.account-setting .update{
+    /* display: flex; */
+    flex-direction: column;
+    /* gap: 30px; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* border: solid; */
+    width: 40%;
+    display: none;
+}
+
+.account-setting .update input{
+    width: 70%;
+    margin: auto;
+    padding: 15px;
+    border: none;
+    background-color: rgb(238, 236, 236);
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.account-setting .update-buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-setting .update-buttons button{
+    margin: 20px;
+    padding: 15px;
+    width: 120px;
+    border-radius: 30px;
+    border: none;
+    font-size: 15px;
+    color: white;
+}
+
+.account-setting .update-buttons button:nth-child(1){
+    background-color: green;
+}
+.account-setting .update-buttons button:nth-child(2){
+    background-color: red;
+}

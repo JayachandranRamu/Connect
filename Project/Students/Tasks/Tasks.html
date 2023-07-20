@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Project/Students/Tasks/Tasks.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Masai Connect</title>
+</head>
+<body>
+    <div id="main">
+        <div id="left">
+            <div>
+                <div>
+                    <img src="/Project/Images/Logo.png" id="logo" alt="Masai Connect">
+                </div>
+                <div><span class="material-symbols-outlined">
+                    grid_view
+                    </span><p><a href="/Project/Students/Dashboard/index.html">Dashboard</a></p></div>
+                    <div > <span class="material-symbols-outlined">
+                        person_search
+                        </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
+                     <div><span class="material-symbols-outlined">
+                    groups
+                    </span><p><a href="">Groups</a></p></div>
+                <div id="task123"><span class="material-symbols-outlined">
+                    task_alt
+                    </span><p><a href="#">Tasks</a></p></div>
+                <div><span class="material-symbols-outlined">
+                    account_circle
+                    </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
+            </div>
+            <div>
+                <div><span class="material-symbols-outlined">
+                    rate_review
+                    </span><p><a href="">Feedback</a></p></div>
+                <div><span class="material-symbols-outlined">
+                    logout
+                    </span><p><a href="">Logout</a></p></div>
+            
+            </div>
+                    </div>
+        <div id="right">
+    <div id="r1">
+        <div>
+<img src="/Project/Images/fast-forward.png" alt="" id="slide">
+        </div>
+        <div>
+    
+            <img src="/Project/Images/alarm.png" alt="">
+<img src="/Project/Images/man.png" alt="" id="profile">
+        </div>
+    </div>
+    <div>
+        <p>Tasks</p>
+    </div>
+    <div id="t">
+        <div id="t1">
+            <h2>Ongoing Task</h2>
+                <div class="container">
+                    <div id="wrapper">
+                        <input type="text" placeholder="Enter Task">
+                        <button id="add-btn">ADD</button>
+                    </div>
+                    <div id="tasks">
+                        <p id="pending-tasks">
+                            You have <span class="count-value"> 0  </span> task (s) to Complete.
+                        </p>
+                    </div>
+                </div>
+        </div>
+        <div id="t2">
+            <h2>Completed Task</h2>
+        </div>
+    </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+        let visible = true;
+    let slidebtn = document.getElementById("slide");
+    let slide = document.getElementById("left");
+    slidebtn.addEventListener("click", function () {
+        if (visible == true) {
+            slide.style.display = 'none'
+            visible = false;
+            right.style.width = '100%';
+
+        }
+        else if (visible == false) {
+            slide.style.display = 'flex'
+            visible = true;
+            right.style.width = '86%';
+        }
+    })
+
+    const addBtn = document.querySelector("#add-btn");
+    const newTaskInput = document.querySelector("#wrapper input");
+    const tasksContainer = document.querySelector("#tasks");
+    const error = document.getElementById("error");
+    const countValue = document.querySelector(".count-value");
+  
+    let taskCount = 0;
+  
+    const displayCount = (taskCount) => {
+      countValue.innerText = taskCount;
+    };
+  
+    const addTask = () => {
+      const taskName = newTaskInput.value.trim();
+      error.style.display = "none";
+      if (!taskName) {
+        setTimeout(() => {
+          error.style.display = "block";
+        }, 200);
+        return;
+      }
+  
+      const task = `
+      <div class="task">
+        <input type="checkbox" class="task-check">
+        <span class="taskname">${taskName}</span>
+        <button class="edit">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button class="delete">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    `;
+  
+      tasksContainer.insertAdjacentHTML("beforeend", task);
+      const deleteButtons = document.querySelectorAll(".delete");
+  
+      deleteButtons.forEach((button) => {
+        button.onclick = () => {
+          button.parentNode.remove();
+          taskCount -= 1;
+          displayCount(taskCount);
+        };
+      });
+  
+      const editButtons = document.querySelectorAll(".edit");
+      editButtons.forEach((editBtn) => {
+        editBtn.onclick = (e) => {
+          let targetElement = e.target;
+          if (!(e.target.className == "edit")) {
+            targetElement = e.target.parentElement;
+          }
+          newTaskInput.value =
+            targetElement.previousElementSibling?.innerText;
+          targetElement.parentNode.remove();
+          taskCount -= 1;
+          displayCount(taskCount);
+        };
+      });
+      
+  
+      const taskCheck = document.querySelectorAll(".task-check");
+      taskCheck.forEach((checkBox) => {
+        checkBox.onchange = () => {
+          checkBox.nextElementSibling.classList.toggle("completed");
+          if (checkBox.checked) {
+            taskCount -=1;
+          } else {
+            taskCount +=1;
+          }
+          displayCount(taskCount);
+        };
+      });
+  
+      taskCount += 1;
+      displayCount(taskCount);
+      newTaskInput.value = "";
+    };
+  
+    addBtn.addEventListener("click", addTask);
+  
+    window.onload = () => {
+      taskCount = 0;
+      displayCount(taskCount);
+      newTaskInput.value = "";
+    };
+
+</script>
