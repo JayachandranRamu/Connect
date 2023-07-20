@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Project/Students/Dashboard/style1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Masai Connect</title>
+</head>
+<body>
+    <div id="D-MainSection">
+<div id="D-LeftSection">
+            <div>
+                <div>
+                    <img src="/Project/Images/Logo.png" id="D-Logo" alt="Masai Connect">
+                </div>
+                <div id="D-DashboardOption"><span class="material-symbols-outlined">
+                    grid_view
+                    </span><p><a href="#">Dashboard</a></p></div>
+                    <div> <span class="material-symbols-outlined">
+                        person_search
+                        </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
+                     <div><span class="material-symbols-outlined">
+                    groups
+                    </span><p><a href="">Groups</a></p></div>
+                <div><span class="material-symbols-outlined">
+                    task_alt
+                    </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
+                <div><span class="material-symbols-outlined">
+                    account_circle
+                    </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
+            </div>
+            <div>
+                <div><span class="material-symbols-outlined">
+                    rate_review
+                    </span><p><a href="">Feedback</a></p></div>
+                <div><span class="material-symbols-outlined">
+                    logout
+                    </span><p><a href="">Logout</a></p></div>
+            
+            </div>
+                    </div>
+        <div id="D-RightSection">
+    <div id="r1">
+        <div>
+<img src="/Project/Images/fast-forward.png" alt="" id="D-Slide">
+        </div>
+        <div>
+    
+            <img src="/Project/Images/alarm.png" alt="">
+<img src="/Project/Images/man.png" alt="" id="profile">
+        </div>
+    </div>
+    <div>
+        <p>Dashboard</p>
+    </div>
+    <div id="r-mid">
+<h2>Key indicators</h2>
+<div>
+    <div>
+        <p>Active Students</p>
+        <p class="num">280</p>
+    </div>
+    <div>
+        <p>Latest Active Student</p>
+        <table  class="num">
+            
+            <tr>
+                <td><span class="material-symbols-outlined">
+                    target
+                    </span></td>
+                <td>JayaChandran Ramu</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <p>Total Students</p>
+        <p  class="num">385</p>
+    </div>
+</div>
+    </div>
+    <div id="last">
+    <div id="todo">
+        <h2>Tasks</h2>
+        <table>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td> Do HTML Part sdsd sdsd sdsd . </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td> Do CSS Part.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td> Do CSS Part.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td> Do CSS Part.</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td> Do CSS Part.</td>
+            </tr>
+        </table>
+    </div>
+    <div id="g">
+        <h2>Groups</h2>
+        <div>
+            Masai Speaking Club
+        </div>
+        <div>
+            Masai Speaking Club
+        </div>
+    </div>
+    </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let visible = true;
+    let right=document.getElementById("D-RightSection")
+    let slidebtn = document.getElementById("D-Slide");
+    let slide = document.getElementById("D-LeftSection");
+    slidebtn.addEventListener("click", function () {
+        if (visible == true) {
+            slide.style.display = 'none'
+            visible = false;
+            right.style.width = '100%';
+
+        }
+        else if (visible == false) {
+            slide.style.display = 'flex'
+            visible = true;
+            right.style.width = '86%';
+        }
+    })
+
+</script>
