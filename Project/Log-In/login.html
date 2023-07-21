@@ -229,6 +229,8 @@
 </head>
 
 <body>
+
+
     <div class="wrapper">
         <div class="title-text">
             <div class="title login">Login Form</div>
@@ -242,6 +244,7 @@
                 <label for="signup" class="slide signup">Signup</label>
                 <div class="slider-tab"></div>
             </div>
+            <a href=""></a>
             <div class="form-inner">
                 <form action="#" class="login">
                     <div class="field">
@@ -411,19 +414,40 @@
         }
     }
 
-
     let loginbtn = document.getElementById("loginbtn");
     loginbtn.addEventListener("click", async function (event) {
         event.preventDefault();
-
         const emailInputLogin = document.querySelector("form.login input[type='text'][placeholder='Email Address']");
         const passwordInputLogin = document.querySelector("form.login input[type='password'][placeholder='Password']");
+
+        let admin = {
+            email: "admin@gmail.com",
+            password: "admin",
+        }
+        if (emailInputLogin.value.trim() === admin.email && passwordInputLogin.value.trim() === admin.password) {
+          return  window.location.href = "/Project/Admin/admin.html"
+        }
+
         try {
             const response = await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/users?email=${emailInputLogin.value.trim()}`);
             const data = await response.json();
+
             if (data[0].password === passwordInputLogin.value.trim()) {
-                data[0].active = true;
+                localStorage.setItem("userid", data[0].id);
+                localStorage.setItem("current", "users")
+
+                await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/users/${data[0].id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        active: true
+                    })
+                });
+
                 alert(`Login successfully ${data[0].name}`);
+                window.location.href = "#";
             } else {
                 alert("please check your password");
             }
@@ -440,7 +464,21 @@
             const data = await response.json();
             if (data[0].password === passwordInputLogin.value.trim()) {
                 data[0].active = true;
+                localStorage.setItem("userid", data[0].id);
+                localStorage.setItem("current", "Students")
+
+                await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students/${data[0].id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        active: true
+                    })
+                });
+
                 alert(`Login successfully ${data[0].name}`)
+                window.location.href = "/Project/Students/Dashboard/index.html"
             } else {
                 alert("please check your password");
             }
@@ -449,6 +487,15 @@
         }
     }
 
-
-  
+    async function element() {
+        try {
+            let res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/users");
+            let data = await res.json();
+            console.log(data);
+        }
+        catch (error) {
+            console.log("error");
+        }
+    }
+    element();
 </script>
