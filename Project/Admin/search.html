@@ -101,15 +101,13 @@
                     <option value="Employee">Employee</option>
                 </select>
 
-                <label>Search by:</label>
-                <select name="searchby" id="searchby">
-                    <option value="">Search by</option>
+                <select name="" id="search_by">
                     <option value="name">Name</option>
                     <option value="email">Email</option>
                 </select>
 
                 <label>Search Query:</label>
-                <input type="text" placeholder="Search for Student or Employee" id="search">
+                <input type="text" placeholder="Enter the ID of Student or Employee" id="searchInp">
 
                 <button id="searchbtn">Search</button>
             </div>
@@ -124,40 +122,31 @@
 <script>
 
     let search_cate = document.getElementById("search_cate");
-    let search_by = document.getElementById("searchby");
-    let search_query = document.getElementById("search");
+    let search_query = document.getElementById("searchInp");
+    let search_by = document.getElementById("search_by");
     let body = document.getElementById("cont");
     let search_btn = document.getElementById("searchbtn");
     search_btn.addEventListener("click", function () {
         if (search_cate.value == "Student") {
-            console.log(search_by.value,search_query.value)
-            let url = new URL(`https://64b63253df0839c97e151a61.mockapi.io/Students?search=${search_query.value}`);
-            // url.searchParams.append(search_by.value, search_query.value);
+            console.log(search_query.value, search_by.value);
+            let url = new URL(`https://64b63253df0839c97e151a61.mockapi.io/Students/`);
+            url.searchParams.append(search_by.value, search_query.value);
             fetch(url)
                 .then((res) => {
                     return res.json();
                 })
                 .then(function (data) {
                     console.log(data);
+                    if (data.length == 1) {
+                        display(data);
+                    }
+                    else {
+                        message();
+                    }
                 })
         }
     })
-    // if (search_cate.value == "Student"){
 
-    // }
-    // const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
-    // url.searchParams.append('name', `${searchInp}`);
-    // document.getElementById("searchbtn").addEventListener("click", fetchData(url))
-    // let searchInp = document.getElementById("search")
-    // function fetchData(url) {
-    //     fetch(url)
-    //         .then((res) => {
-    //             return res.json();
-    //         })
-    //         .then(function (data) {
-    //             console.log(data);
-    //         })
-    // }
     let visible = true;
     let left = document.getElementById("left");
     let right = document.getElementById("right");
@@ -196,4 +185,76 @@
     document.getElementById("account").addEventListener("click", function () {
         window.location.href = "/Project/Admin/account.html";
     })
+
+    let cont = document.getElementById("cont");
+    function message() {
+        let h3 = document.createElement("h3");
+        h3.innerText = "We are not having this kind of data in our system.";
+        h3.style.color = "red";
+        cont.append(h3)
+    }
+    function display(data) {
+        cont.innerHTML = "";
+        data.forEach(function (item) {
+            let card = document.createElement("div");
+            card.className = "card";
+
+            let img = document.createElement("img");
+            img.src = "/Project/Images/man.png";
+            img.className = "p_image"
+
+            let name = document.createElement("p");
+            name.className = "name";
+            name.innerText = "Name:- "+item.name;
+
+            let email = document.createElement("p");
+            email.className = "email";
+            email.innerText = "Email ID:- "+item.email;
+
+            let student_code = document.createElement("p");
+            student_code.className = "student_code";
+            student_code.innerText = "Student code:- "+item.student_code;
+
+            let batch = document.createElement("p");
+            batch.className = "batch";
+            batch.innerText = "Batch:- "+ item.batch;
+
+            let btn = document.createElement("button");
+            btn.className = "editbtn";
+            btn.innerText = "Edit";
+            btn.addEventListener("click",function(){
+                let edit = document.createElement("div");
+                edit.className ="editdiv";
+
+                let Ename = document.createElement("input")
+                Ename.value = item.name;
+
+                let eemail = document.createElement("input");
+                eemail.value = item.email;
+
+                let ecode = document.createElement("input");
+                ecode.value = item.student_code;
+
+                let ebatch = document.createElement("input");
+                ebatch.value = item.batch;
+
+                let save = document.createElement("button");
+                save.innerText = "Save Changes";
+                save.addEventListener("click",function(){
+                    let updated = {
+                        "name": Ename.value,
+                        "student_code": ecode.value,
+                        "email": eemail.value,
+                        "batch": batch.value
+                    }
+                    
+                })
+                edit.append(Ename,eemail,ecode,ebatch,save);
+                cont.append(edit);
+            })
+
+            card.append(img, name, email, student_code, batch, btn);
+            cont.append(card)
+        })
+    }
 </script>

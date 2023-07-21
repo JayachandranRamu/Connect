@@ -102,6 +102,7 @@
                             <th class="same">Name</th>
                             <th class="same">Email</th>
                             <th class="same">Student Code</th>
+                            <th class="same">Status</th>
                             <th class="same">Password</th>
                             <th class="delete">Delete</th>
                         </tr>
@@ -160,11 +161,21 @@
             let email = document.createElement("td");
             email.innerText = item.email;
 
-            let Password = document.createElement("td");
-            Password.innerText = item.password;
-
             let studentcode = document.createElement("td");
             studentcode.innerText = item.student_code;
+
+            let status = document.createElement("td");
+            if (item.status){
+                status.style.color = "green";
+                status.innerText = "Active";
+            }
+            else {
+                status.style.color = "red";
+                status.innerText ="Inactive";
+            }
+
+            let Password = document.createElement("td");
+            Password.innerText = item.password;
 
             let Delete = document.createElement("td");
             Delete.innerText = "Delete"
@@ -185,7 +196,7 @@
                     })
                     .catch(err => { console.log(err) });
             })
-            row.append(id, name, email, studentcode, Password, Delete);
+            row.append(id, name, email, studentcode,status, Password, Delete);
             cont.append(row);
         })
     }
