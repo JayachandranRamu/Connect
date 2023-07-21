@@ -89,6 +89,53 @@ div>p {
     border: none;
 }
 
+#right {
+    background-color: #FFFFFF;
+    width: 82%;
+}
+
+#r1 div:first-child img {
+    width: 4.5%;
+    margin: 15px 20px;
+    margin-top: 15px;
+}
+
+#r1 {
+    width: 100%;
+    display: flex;
+}
+
+#r1 div:last-child {
+    text-align: end;
+    margin: 5px 20px;
+}
+
+
+#r1 div:last-child img:first-child {
+    width: 6%;
+    margin: 5px;
+    margin-top: 10px;
+    margin-left: 30px;
+
+}
+
+#right #r1 #profile {
+    position: relative;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    width: 7.3%;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+#right>div:nth-child(2) {
+    padding: 15px;
+    border-top: 2px solid #D9D9D9;
+    border-bottom: 2px solid #D9D9D9;
+    display: flex;
+    justify-content: space-between;
+}
+
 #table table {
     width: 90%;
     margin: auto;
@@ -98,11 +145,15 @@ div>p {
     margin-top: 1%;
 }
 
-tbody{
+tbody {
     text-align: center;
 }
 
-.delete{
+tr th {
+    width: 3%;
+}
+
+.delete {
     background-color: red;
 }
 
@@ -114,29 +165,36 @@ tbody{
     border: 1px solid black;
 }
 
-td{
+td {
     padding: 1%;
     border: 1px solid black;
 }
 
-th{
+th {
     border: 1px solid black;
 }
 
-tr th{
+tr th {
     padding: 1%;
 }
 
-#pagination_wrapper{
+#pagination_wrapper {
     width: 50%;
     margin: auto;
     display: flex;
     justify-content: center;
     margin-top: 1%;
+    margin-bottom: 1%;
 }
 
-#pagination_wrapper button{
-    padding: 1%;
-    display: inline;
-    margin-left: 1%;
+#pagination_wrapper button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.delete:hover {
+    cursor: pointer;
 }
