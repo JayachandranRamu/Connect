@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Students</title>
+    <title>Employee</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -12,7 +12,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/Project/Admin/student.css">
+    <link rel="stylesheet" href="/Project/Admin/employee.css">
 </head>
 
 <body>
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div>
-                <h3>Student List</h3>
+                <h3>Employee List</h3>
             </div>
             <div id="table">
                 <table>
@@ -101,8 +101,6 @@
                             <th class="same">ID</th>
                             <th class="same">Name</th>
                             <th class="same">Email</th>
-                            <th class="same">Student Code</th>
-                            <th class="same">Status</th>
                             <th class="same">Password</th>
                             <th class="delete">Delete</th>
                         </tr>
@@ -119,7 +117,7 @@
     </div>
 </body>
 <script>
-    const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
+    const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/users');
     url.searchParams.append('page', 1);
     url.searchParams.append('limit', 10);
     function fetchData(url) {
@@ -133,9 +131,9 @@
     }
     fetchData(url)
 
-    const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
+    const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/users');
     function fetchData1() {
-        fetch("https://64b63253df0839c97e151a61.mockapi.io/Students")
+        fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/users")
             .then((res) => {
                 return res.json();
             })
@@ -161,19 +159,6 @@
             let email = document.createElement("td");
             email.innerText = item.email;
 
-            let studentcode = document.createElement("td");
-            studentcode.innerText = item.student_code;
-
-            let status = document.createElement("td");
-            if (item.status){
-                status.style.color = "green";
-                status.innerText = "Active";
-            }
-            else {
-                status.style.color = "red";
-                status.innerText ="Inactive";
-            }
-
             let Password = document.createElement("td");
             Password.innerText = item.password;
 
@@ -184,7 +169,7 @@
             Delete.addEventListener("click", function (e) {
                 e.preventDefault()
                 let itemID = Delete.getAttribute("data-id");
-                fetch(`https://64b63253df0839c97e151a61.mockapi.io/Students/${itemID}`, {
+                fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/users/${itemID}`, {
                     method: "DELETE",
                     headers: {
                         "Content-type": "application/json"
@@ -196,7 +181,7 @@
                     })
                     .catch(err => { console.log(err) });
             })
-            row.append(id, name, email, studentcode,status, Password, Delete);
+            row.append(id, name, email, Password, Delete);
             cont.append(row);
         })
     }
@@ -230,7 +215,7 @@
         button.addEventListener("click", function (e) {
             if (e.target.classList.contains("pagination-button")) {
                 let pageno = e.target.getAttribute("page_no");
-                let url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
+                let url = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/users');
                 url.searchParams.append('page', pageno);
                 url.searchParams.append('limit', 10);
                 fetchData(url);
@@ -259,5 +244,3 @@
         window.location.href = "/Project/Admin/account.html";
     })
 </script>
-
-</html>

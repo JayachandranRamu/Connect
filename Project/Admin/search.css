@@ -102,10 +102,8 @@ div>p {
 }
 
 #r1 {
-
     width: 100%;
     display: flex;
-
 }
 
 #r1 div:last-child {
@@ -123,7 +121,7 @@ div>p {
 }
 
 #right #r1 #profile {
-    position: absolute;
+    position: relative;
     border-radius: 15px;
     border: 1px solid lightgray;
     width: 7.3%;
@@ -132,106 +130,108 @@ div>p {
 }
 
 #right>div:nth-child(2) {
-
-    padding: 20px;
+    padding: 15px;
     border-top: 2px solid #D9D9D9;
     border-bottom: 2px solid #D9D9D9;
+    display: flex;
+    justify-content: space-between;
 }
 
-#right>div:nth-child(2) p {
-    font-size: 30px;
+#right div:nth-child(2)>p{
+    font-size: 23px;
     font-weight: 600;
 }
 
-#r-mid {
-    border-bottom: 2px solid #D9D9D9;
+#searchdiv{
+    width: 80%;
+    margin: auto;
+    margin-top: 2%;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
-#r-mid>div {
+#searchdiv input{
+    padding: 1%;
+    border-color: #722ED1;
+    border-radius: 10px;
+    border: 1px solid #722ED1;
+}
+
+#search_by{
+    padding: 1%;
+    border-color: #722ED1;
+    border-radius: 10px;
+}
+
+#searchbtn{
+    padding: 1%;
+    background-color: #722ED1;
+    color: white;
+    border-radius: 10px;
+}
+
+#search_cate{
+    border-color: #722ED1;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+#cont{
+    margin-top: 2%;
+    width: 90%;
+    margin: auto;
+    justify-content: space-evenly;
     display: flex;
-    justify-content: space-between;
-    margin: 30px 50px;
 }
 
-#r-mid>h2 {
-    font-weight: 500;
-    font-size: 22px;
-    margin: 20px 32px;
-    margin-bottom: 10px;
+.card{
+    border: 1px solid black;
+    padding: 2%;
+    display: flex;
+    width: 30%;
+    margin: auto;
+    margin-top: 2%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    border-color: #722ED1;
 }
 
-#r-mid>p {
-    font-weight: 500;
-    font-size: 22px;
-    margin: 10px 32px;
+.p_image{
+    width: 20%;
+    margin: auto;
 }
 
-#r-mid>div>div p {
-    font-size: 18px;
+.editbtn {
+    width: 30%;
+    margin: auto;
+    background-color: green;
+    color: white;
+    padding: 2%;
 }
 
-#r-mid>div>div {
+.editdiv{
+    width: 30%;
     display: flex;
     flex-direction: column;
-}
-
-#r-mid>div>div:nth-child(1) {
-    padding: 10px;
+    border: 1px solid black;
+    padding: 2%;
+    margin: auto;
+    margin-top: 2%;
+    justify-content: center;
+    text-align: center;
     border-radius: 15px;
-    color: #160058;
-    width: 20%;
-    background-color: #F9F1FF;
+    border-color: #722ED1;
 }
 
-#r-mid>div>div:nth-child(2) {
-    width: 50%;
-    padding: 10px;
-    color: #0C5601;
-    border-radius: 15px;
-    background-color: #F6FFEE;
+.editdiv input{
+    padding: 2%;
+    margin-bottom: 1%;
 }
 
-#r-mid>div>div:nth-child(3) {
-    width: 20%;
-    padding: 10px;
-    color: #050E7C;
-    border-radius: 15px;
-    background-color: #F1F5FF;
-}
-
-td span {
-    color: #3DBA21;
-}
-
-table {
-    padding: 5px;
-}
-
-td {
-    width: 60px;
-    padding: 8px;
-}
-
-td:nth-child(2) {
-    width: 200px;
-    padding: 8px;
-}
-
-#r-mid>div>div .num {
-    font-size: 30px;
-    font-weight: 1000;
-}
-
-div input {
-    width: 500px;
-    margin: 20px;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-div select {
-    width: 200px;
-    margin: 20px 10px;
-    padding: 15px;
-    border-radius: 10px;
+.editdiv button{
+    padding: 2%;
+    background-color: yellow;
 }
