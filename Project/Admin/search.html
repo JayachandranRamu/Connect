@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/Search/search.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +11,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="/Project/Admin/search.css">
     <title>Masai Connect</title>
 </head>
 
@@ -21,37 +20,49 @@
         <div id="left">
             <div>
                 <div>
-                    <img src="/Images/Logo.png" id="logo" alt="Masai Connect">
+                    <img src="/Project/Images/Logo.png" id="logo" alt="Masai Connect">
                 </div>
-                <div>
+                <div id="dashboard">
                     <span class="material-symbols-outlined">
                         grid_view
                     </span>
                     <p>Dashboard</p>
                 </div>
-                <div id="search"> 
+                <div id="search">
                     <span class="material-symbols-outlined">
                         person_search
                     </span>
                     <p>Search</p>
                 </div>
-                <div>
+                <div id="students">
+                    <span class="material-symbols-outlined">
+                        diversity_2
+                    </span>
+                    <p>Students</p>
+                </div>
+                <div id="employee">
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+                    <p>Employee</p>
+                </div>
+                <div id="groups">
                     <span class="material-symbols-outlined">
                         groups
                     </span>
                     <p>Groups</p>
                 </div>
-                <div>
+                <div id="tasks">
                     <span class="material-symbols-outlined">
                         task_alt
                     </span>
                     <p>Tasks</p>
                 </div>
-                <div>
+                <div id="account">
                     <span class="material-symbols-outlined">
                         account_circle
                     </span>
-                    <p>Account</p>
+                    <p>Acccount</p>
                 </div>
             </div>
             <div>
@@ -73,19 +84,35 @@
         <div id="right">
             <div id="r1">
                 <div>
-                    <img src="/Images/fast-forward.png" alt="">
+                    <img src="/Project/Images/fast-forward.png" alt="" id="slide">
                 </div>
                 <div>
-                    <img src="/Images/alarm.png" alt="">
-                    <img src="/Images/man.png" alt="" id="profile">
+                    <img src="/Project/Images/alarm.png" alt="">
+                    <img src="/Project/Images/man.png" alt="" id="profile">
                 </div>
             </div>
             <div>
                 <p>Search</p>
             </div>
-            <div>
-                <input type="text" placeholder="Search Student" id="search">
-                <span class="material-symbols-outlined" id="searchbtn">search</span>
+            <div id="searchdiv">
+                <label>Category:</label>
+                <select name="search_cate" id="search_cate">
+                    <option value="Student">Student</option>
+                    <option value="Employee">Employee</option>
+                </select>
+
+                <select name="" id="search_by">
+                    <option value="name">Name</option>
+                    <option value="email">Email</option>
+                </select>
+
+                <label>Search Query:</label>
+                <input type="text" placeholder="Enter the ID of Student or Employee" id="searchInp">
+
+                <button id="searchbtn">Search</button>
+            </div>
+            <div id="cont">
+                <!-- append the data here -->
             </div>
         </div>
     </div>
@@ -93,18 +120,141 @@
 
 </html>
 <script>
-    const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
-    url.searchParams.append('name', `${searchInp}`);
-    document.getElementById("searchbtn").addEventListener("click",fetchData(url))
-    let searchInp = document.getElementById("search")
-    function fetchData(url) {
-        fetch(url)
-            .then((res) => {
-                return res.json();
-            })
-            .then(function (data) {
-                console.log(data);
-            })
-    }
 
+    let search_cate = document.getElementById("search_cate");
+    let search_query = document.getElementById("searchInp");
+    let search_by = document.getElementById("search_by");
+    let body = document.getElementById("cont");
+    let search_btn = document.getElementById("searchbtn");
+    search_btn.addEventListener("click", function () {
+        if (search_cate.value == "Student") {
+            console.log(search_query.value, search_by.value);
+            let url = new URL(`https://64b63253df0839c97e151a61.mockapi.io/Students/`);
+            url.searchParams.append(search_by.value, search_query.value);
+            fetch(url)
+                .then((res) => {
+                    return res.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+                    if (data.length == 1) {
+                        display(data);
+                    }
+                    else {
+                        message();
+                    }
+                })
+        }
+    })
+
+    let visible = true;
+    let left = document.getElementById("left");
+    let right = document.getElementById("right");
+    let status = document.getElementById("status");
+    document.getElementById("slide").addEventListener("click", function () {
+        console.log("jio")
+        if (visible == true) {
+            left.style.display = "none";
+            right.style.width = "100%";
+            visible = false;
+        }
+        else {
+            left.style.display = "block";
+            right.style.width = "80%";
+            visible = true;
+        }
+    })
+    document.getElementById("dashboard").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/admin.html";
+    })
+    document.getElementById("search").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/search.html";
+    })
+    document.getElementById("students").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/student.html";
+    })
+    document.getElementById("employee").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/employee.html";
+    })
+    document.getElementById("groups").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/groups.html";
+    })
+    document.getElementById("tasks").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/tasks.html";
+    })
+    document.getElementById("account").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/account.html";
+    })
+
+    let cont = document.getElementById("cont");
+    function message() {
+        let h3 = document.createElement("h3");
+        h3.innerText = "We are not having this kind of data in our system.";
+        h3.style.color = "red";
+        cont.append(h3)
+    }
+    function display(data) {
+        cont.innerHTML = "";
+        data.forEach(function (item) {
+            let card = document.createElement("div");
+            card.className = "card";
+
+            let img = document.createElement("img");
+            img.src = "/Project/Images/man.png";
+            img.className = "p_image"
+
+            let name = document.createElement("p");
+            name.className = "name";
+            name.innerText = "Name:- "+item.name;
+
+            let email = document.createElement("p");
+            email.className = "email";
+            email.innerText = "Email ID:- "+item.email;
+
+            let student_code = document.createElement("p");
+            student_code.className = "student_code";
+            student_code.innerText = "Student code:- "+item.student_code;
+
+            let batch = document.createElement("p");
+            batch.className = "batch";
+            batch.innerText = "Batch:- "+ item.batch;
+
+            let btn = document.createElement("button");
+            btn.className = "editbtn";
+            btn.innerText = "Edit";
+            btn.addEventListener("click",function(){
+                let edit = document.createElement("div");
+                edit.className ="editdiv";
+
+                let Ename = document.createElement("input")
+                Ename.value = item.name;
+
+                let eemail = document.createElement("input");
+                eemail.value = item.email;
+
+                let ecode = document.createElement("input");
+                ecode.value = item.student_code;
+
+                let ebatch = document.createElement("input");
+                ebatch.value = item.batch;
+
+                let save = document.createElement("button");
+                save.innerText = "Save Changes";
+                save.addEventListener("click",function(){
+                    let updated = {
+                        "name": Ename.value,
+                        "student_code": ecode.value,
+                        "email": eemail.value,
+                        "batch": batch.value
+                    }
+                    
+                })
+                edit.append(Ename,eemail,ecode,ebatch,save);
+                cont.append(edit);
+            })
+
+            card.append(img, name, email, student_code, batch, btn);
+            cont.append(card)
+        })
+    }
 </script>
