@@ -40,7 +40,7 @@
                     </span><p><a href="">Feedback</a></p></div>
                 <div><span class="material-symbols-outlined">
                     logout
-                    </span><p><a href="">Logout</a></p></div>
+                    </span><p><a href="" id="LogoutBtn">Logout</a></p></div>
             
             </div>
                     </div>
@@ -180,5 +180,24 @@ all.append(div);
     })}
 }
 
+let LogoutBtn = document.getElementById("LogoutBtn");
+    LogoutBtn.addEventListener("click", async function (event) {
+        console.log("hiiii");
+        event.preventDefault();
+        let status = false;
+        try {
+            let res = await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ active: status }),
+            });
 
+
+            window.location.href = "/Project/Log-In/login.html";
+        } catch (error) {
+            console.log(error);
+        }
+    });
 </script>
