@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
@@ -11,8 +12,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/Project/Admin/search.css">
-    <title>Masai Connect</title>
+    <link rel="stylesheet" href="/Project/Admin/employee.css">
 </head>
 
 <body>
@@ -92,67 +92,104 @@
                 </div>
             </div>
             <div>
-                <p>Search</p>
+                <h3>Employee List</h3>
             </div>
-            <div id="searchdiv">
-                <label>Category:</label>
-                <select name="search_cate" id="search_cate">
-                    <option value="Student">Student</option>
-                    <option value="Employee">Employee</option>
-                </select>
-
-                <select name="" id="search_by">
-                    <option value="name">Name</option>
-                    <option value="email">Email</option>
-                </select>
-
-                <label>Search Query:</label>
-                <input type="text" placeholder="Enter the ID of Student or Employee" id="searchInp">
-
-                <button id="searchbtn">Search</button>
+            <div id="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="same">ID</th>
+                            <th class="same">Name</th>
+                            <th class="same">Email</th>
+                            <th class="same">Password</th>
+                            <th class="delete">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="body">
+                        <!-- Append Each Row Here -->
+                    </tbody>
+                </table>
             </div>
-            <div id="cont">
-                <!-- append the data here -->
+            <div id="pagination_wrapper">
+
             </div>
         </div>
     </div>
 </body>
-
-</html>
 <script>
+    const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/users');
+    url.searchParams.append('page', 1);
+    url.searchParams.append('limit', 10);
+    function fetchData(url) {
+        fetch(url)
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                display(data);
+            })
+    }
+    fetchData(url)
 
-    let search_cate = document.getElementById("search_cate");
-    let search_query = document.getElementById("searchInp");
-    let search_by = document.getElementById("search_by");
-    let body = document.getElementById("cont");
-    let search_btn = document.getElementById("searchbtn");
-    search_btn.addEventListener("click", function () {
-        if (search_cate.value == "Student") {
-            console.log(search_query.value, search_by.value);
-            let url = new URL(`https://64b63253df0839c97e151a61.mockapi.io/Students/`);
-            url.searchParams.append(search_by.value, search_query.value);
-            fetch(url)
-                .then((res) => {
-                    return res.json();
-                })
-                .then(function (data) {
-                    console.log(data);
-                    if (data.length == 1) {
-                        display(data);
-                    }
-                    else {
-                        message();
-                    }
-                })
-        }
-    })
+    const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/users');
+    function fetchData1() {
+        fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/users")
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                localStorage.setItem("total", JSON.stringify(data.length));
+            })
+    }
+    fetchData1()
 
+    let cont = document.getElementById("body");
+    function display(data) {
+        cont.innerHTML = "";
+        data.forEach(function (item) {
+            let row = document.createElement("tr");
+            row.className = "row";
+
+            let id = document.createElement("td");
+            id.innerText = item.id;
+
+            let name = document.createElement("td");
+            name.innerText = item.name;
+
+            let email = document.createElement("td");
+            email.innerText = item.email;
+
+            let Password = document.createElement("td");
+            Password.innerText = item.password;
+
+            let Delete = document.createElement("td");
+            Delete.innerText = "Delete"
+            Delete.className = "delete";
+            Delete.setAttribute("data-id", item.id);
+            Delete.addEventListener("click", function (e) {
+                e.preventDefault()
+                let itemID = Delete.getAttribute("data-id");
+                fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/users/${itemID}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        fetchData(url)
+                    })
+                    .catch(err => { console.log(err) });
+            })
+            row.append(id, name, email, Password, Delete);
+            cont.append(row);
+        })
+    }
     let visible = true;
     let left = document.getElementById("left");
     let right = document.getElementById("right");
     let status = document.getElementById("status");
     document.getElementById("slide").addEventListener("click", function () {
-        console.log("jio")
         if (visible == true) {
             left.style.display = "none";
             right.style.width = "100%";
@@ -164,6 +201,27 @@
             visible = true;
         }
     })
+
+
+    let pagination = document.getElementById("pagination_wrapper")
+    let total_data = JSON.parse(localStorage.getItem("total"))
+    let total_page = Math.ceil(total_data / 10);
+    for (let i = 1; i <= total_page; i++) {
+        let button = document.createElement("button");
+        button.innerText = i;
+        button.setAttribute("page_no", i);
+        button.classList.add("pagination-button");
+        pagination.append(button);
+        button.addEventListener("click", function (e) {
+            if (e.target.classList.contains("pagination-button")) {
+                let pageno = e.target.getAttribute("page_no");
+                let url = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/users');
+                url.searchParams.append('page', pageno);
+                url.searchParams.append('limit', 10);
+                fetchData(url);
+            }
+        });
+    }
     document.getElementById("dashboard").addEventListener("click", function () {
         window.location.href = "/Project/Admin/admin.html";
     })
@@ -185,76 +243,4 @@
     document.getElementById("account").addEventListener("click", function () {
         window.location.href = "/Project/Admin/account.html";
     })
-
-    let cont = document.getElementById("cont");
-    function message() {
-        let h3 = document.createElement("h3");
-        h3.innerText = "We are not having this kind of data in our system.";
-        h3.style.color = "red";
-        cont.append(h3)
-    }
-    function display(data) {
-        cont.innerHTML = "";
-        data.forEach(function (item) {
-            let card = document.createElement("div");
-            card.className = "card";
-
-            let img = document.createElement("img");
-            img.src = "/Project/Images/man.png";
-            img.className = "p_image"
-
-            let name = document.createElement("p");
-            name.className = "name";
-            name.innerText = "Name:- "+item.name;
-
-            let email = document.createElement("p");
-            email.className = "email";
-            email.innerText = "Email ID:- "+item.email;
-
-            let student_code = document.createElement("p");
-            student_code.className = "student_code";
-            student_code.innerText = "Student code:- "+item.student_code;
-
-            let batch = document.createElement("p");
-            batch.className = "batch";
-            batch.innerText = "Batch:- "+ item.batch;
-
-            let btn = document.createElement("button");
-            btn.className = "editbtn";
-            btn.innerText = "Edit";
-            btn.addEventListener("click",function(){
-                let edit = document.createElement("div");
-                edit.className ="editdiv";
-
-                let Ename = document.createElement("input")
-                Ename.value = item.name;
-
-                let eemail = document.createElement("input");
-                eemail.value = item.email;
-
-                let ecode = document.createElement("input");
-                ecode.value = item.student_code;
-
-                let ebatch = document.createElement("input");
-                ebatch.value = item.batch;
-
-                let save = document.createElement("button");
-                save.innerText = "Save Changes";
-                save.addEventListener("click",function(){
-                    let updated = {
-                        "name": Ename.value,
-                        "student_code": ecode.value,
-                        "email": eemail.value,
-                        "batch": batch.value
-                    }
-                    
-                })
-                edit.append(Ename,eemail,ecode,ebatch,save);
-                cont.append(edit);
-            })
-
-            card.append(img, name, email, student_code, batch, btn);
-            cont.append(card)
-        })
-    }
 </script>

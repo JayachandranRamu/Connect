@@ -28,14 +28,6 @@
 
 }
 
-#main>#left #students {
-    font-size: 16px;
-    font-weight: 500;
-    color: #722ED1;
-
-    margin-right: -1px;
-    border-right: 4px solid #722ED1;
-}
 
 #left span {
     width: 6%;
@@ -62,6 +54,15 @@ div>p {
 
 #left div:last-child {
     margin-bottom: 30px;
+}
+
+#main>#left #employee {
+    font-size: 16px;
+    font-weight: 500;
+    color: #722ED1;
+
+    margin-right: -1px;
+    border-right: 4px solid #722ED1;
 }
 
 #left>div>div:hover p {

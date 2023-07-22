@@ -175,3 +175,86 @@ margin: 5px;
 #pending-tasks{
     font-size: 17px;
 }
+
+/* Add the following CSS styles for the "Tasks" section */
+
+#t {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  
+  #t1,
+  #t2 {
+    width: 48%;
+  }
+  
+  #t1,
+  #t2 {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+  }
+  
+  #t1 h2,
+  #t2 h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .container {
+    margin-top: 10px;
+  }
+  
+  #wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  #input-task {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  #add-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #add-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  table td {
+    padding: 5px;
+   border:1px solid gray;
+  }
+  
+  #tasks {
+    margin-top: 20px;
+  }
+  
+  #completed-tasks {
+    margin-top: 20px;
+  }
+  
+  
+  #todoSpan {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  
+  
+  #todoP {
+    margin: 0;
+    color: #777;
+  }
+  
