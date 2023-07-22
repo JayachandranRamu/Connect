@@ -79,35 +79,19 @@
     </div>
     <div>
         <p>Total Students</p>
-        <p  class="num">385</p>
+        <p  class="num" id="ts">-</p>
     </div>
 </div>
     </div>
     <div id="last">
     <div id="todo">
         <h2>Tasks</h2>
-        <table>
+        <!-- <table>
             <tr>
                 <td><input type="checkbox" name="" id=""></td>
                 <td> Do HTML Part sdsd sdsd sdsd . </td>
             </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td> Do CSS Part.</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td> Do CSS Part.</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td> Do CSS Part.</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" name="" id=""></td>
-                <td> Do CSS Part.</td>
-            </tr>
-        </table>
+        </table> -->
     </div>
     <div id="g">
         <h2>Groups</h2>
@@ -124,6 +108,7 @@
 </body>
 </html>
 <script>
+    const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
     let visible = true;
     let right=document.getElementById("D-RightSection")
     let slidebtn = document.getElementById("D-Slide");
@@ -141,4 +126,63 @@
             right.style.width = '86%';
         }
     })
+    let ts=document.getElementById("ts");
+    function fetchData(url) {
+        fetch(url)
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                studentArr = data;
+                console.log(data);
+                ts.innerText = (data.length)
+            })
+    }
+    fetchData(url);
+    let mainData;
+    function fetchData1(url) {
+        fetch(url)
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                mainData=data;
+                console.log(mainData);
+                Todos(mainData.todo)
+            })
+    }
+    let todoSection=document.getElementById("todo")
+    let current=localStorage.getItem("current");
+    let id=localStorage.getItem("userid");
+    let student=`https://64b63253df0839c97e151a61.mockapi.io/${current}/${id}`;
+   fetchData1(student);
+function Todos(arr){
+    if(arr.length==0){
+        let span=document.createElement("span");
+        span.className="material-symbols-outlined";
+        span.innerText="info";
+        span.setAttribute("id","todoSpan")
+let p=document.createElement("p");
+p.innerText="There is NO Task."
+p.setAttribute("id","todoP")
+todoSection.append(span,p);
+    }else{
+        let table=document.createElement("table");
+        arr.map(function (el,ind){
+        let tr=document.createElement("tr");
+        let td1=document.createElement("td");
+        let td2=document.createElement("td");
+    let input2Do=document.createElement("input");
+    input2Do.type="checkbox";
+    input2Do.checked=el.completed;
+    td1.append(input2Do);
+    td2.innerText=el.name;
+    tr.append(td1,td2);
+    table.append(tr);
+    todoSection.append(table);
+    })
+    }
+
+  
+}
 </script>
