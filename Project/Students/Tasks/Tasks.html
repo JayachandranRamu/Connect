@@ -38,10 +38,12 @@
                     <p><a href="">Groups</a></p>
                 </div>
                 <div id="task123"><span class="material-symbols-outlined">
-                        task_alt
-                    </span>
-                    <p><a href="#">Tasks</a></p>
-                </div>
+
+                    task_alt
+                    </span><p><a href="#" id="must">Tasks</a></p></div>
+
+                        
+
                 <div><span class="material-symbols-outlined">
                         account_circle
                     </span>
@@ -217,6 +219,14 @@
     //   displayCount(taskCount);
     //   newTaskInput.value = "";
     // };
+
+    let must=document.getElementById("must");
+       if(a=="Students"){
+        must.href="/Project/Students/Groups/SG.html";
+       }else{
+        must.href="/Project/Manager/MG.html";
+       }
+
     let LogoutBtn = document.getElementById("LogoutBtn");
     LogoutBtn.addEventListener("click", async function (event) {
         console.log("hiiii");
@@ -230,6 +240,7 @@
                 },
                 body: JSON.stringify({ active: status }),
             });
+
 
             window.location.href = "/Project/Log-In/login.html";
         } catch (error) {
