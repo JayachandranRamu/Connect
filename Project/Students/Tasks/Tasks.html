@@ -103,9 +103,10 @@
 
 </html>
 <script>
-   document.addEventListener("DOMContentLoaded", function() {
-        let current = localStorage.getItem("current");
+    let current = localStorage.getItem("current");
             let id = localStorage.getItem("userid");
+   document.addEventListener("DOMContentLoaded", function() {
+        
             let studentURL = `https://64b63253df0839c97e151a61.mockapi.io/${current}/${id}`;
 
             function fetchData1(url) {
