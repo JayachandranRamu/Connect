@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/Project/Admin/search.css">
-    <title>Masai Connect</title>
+    <title>Search</title>
 </head>
 
 <body>
@@ -45,24 +45,6 @@
                         person
                     </span>
                     <p>Employee</p>
-                </div>
-                <div id="groups">
-                    <span class="material-symbols-outlined">
-                        groups
-                    </span>
-                    <p>Groups</p>
-                </div>
-                <div id="tasks">
-                    <span class="material-symbols-outlined">
-                        task_alt
-                    </span>
-                    <p>Tasks</p>
-                </div>
-                <div id="account">
-                    <span class="material-symbols-outlined">
-                        account_circle
-                    </span>
-                    <p>Acccount</p>
                 </div>
             </div>
             <div>
@@ -128,7 +110,6 @@
     let search_btn = document.getElementById("searchbtn");
     search_btn.addEventListener("click", function () {
         if (search_cate.value == "Student") {
-            console.log(search_query.value, search_by.value);
             let url = new URL(`https://64b63253df0839c97e151a61.mockapi.io/Students/`);
             url.searchParams.append(search_by.value, search_query.value);
             fetch(url)
@@ -139,6 +120,23 @@
                     console.log(data);
                     if (data.length == 1) {
                         display(data);
+                    }
+                    else {
+                        message();
+                    }
+                })
+        }
+        else if (search_cate.value == "Employee") {
+            let url = new URL(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/users`);
+            url.searchParams.append(search_by.value, search_query.value);
+            fetch(url)
+                .then((res) => {
+                    return res.json();
+                })
+                .then(function (data) {
+                    console.log(data);
+                    if (data.length == 1) {
+                        display1(data);
                     }
                     else {
                         message();
@@ -159,7 +157,7 @@
             visible = false;
         }
         else {
-            left.style.display = "block";
+            left.style.display = "flex";
             right.style.width = "80%";
             visible = true;
         }
@@ -175,15 +173,6 @@
     })
     document.getElementById("employee").addEventListener("click", function () {
         window.location.href = "/Project/Admin/employee.html";
-    })
-    document.getElementById("groups").addEventListener("click", function () {
-        window.location.href = "/Project/Admin/groups.html";
-    })
-    document.getElementById("tasks").addEventListener("click", function () {
-        window.location.href = "/Project/Admin/tasks.html";
-    })
-    document.getElementById("account").addEventListener("click", function () {
-        window.location.href = "/Project/Admin/account.html";
     })
 
     let cont = document.getElementById("cont");
@@ -205,26 +194,30 @@
 
             let name = document.createElement("p");
             name.className = "name";
-            name.innerText = "Name:- "+item.name;
+            name.innerText = "Name:- " + item.name;
+
+            let id = document.createElement("p");
+            id.innerText = "ID:- " + item.id;
+            id.className = "ID";
 
             let email = document.createElement("p");
             email.className = "email";
-            email.innerText = "Email ID:- "+item.email;
+            email.innerText = "Email ID:- " + item.email;
 
             let student_code = document.createElement("p");
             student_code.className = "student_code";
-            student_code.innerText = "Student code:- "+item.student_code;
+            student_code.innerText = "Student code:- " + item.student_code;
 
             let batch = document.createElement("p");
             batch.className = "batch";
-            batch.innerText = "Batch:- "+ item.batch;
+            batch.innerText = "Batch:- " + item.batch;
 
             let btn = document.createElement("button");
             btn.className = "editbtn";
             btn.innerText = "Edit";
-            btn.addEventListener("click",function(){
+            btn.addEventListener("click", function () {
                 let edit = document.createElement("div");
-                edit.className ="editdiv";
+                edit.className = "editdiv";
 
                 let Ename = document.createElement("input")
                 Ename.value = item.name;
@@ -240,20 +233,107 @@
 
                 let save = document.createElement("button");
                 save.innerText = "Save Changes";
-                save.addEventListener("click",function(){
+
+                let id = item.id;
+                save.addEventListener("click", function () {
                     let updated = {
                         "name": Ename.value,
                         "student_code": ecode.value,
                         "email": eemail.value,
                         "batch": batch.value
                     }
-                    
+                    fetch(`https://64b63253df0839c97e151a61.mockapi.io/Students/${id}`, {
+                        method: 'PUT',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(updated)
+                    })
+                        .then(res => res.json())
+                        .then(data => console.log(data))
+                        .catch(err => console.log(err))
+
+                    name.innerText = "Name:- " + Ename.value;
+                    email.innerText = "Email ID:- " + eemail.value;
+                    student_code.innerText = "Student code:- " + ecode.value;
+                    batch.innerText = "Batch:- " + ebatch.value;
+                    edit.style.display = "none";
+                    setTimeout(function () {
+                        card.style.display = "none"
+                    }, 5000)
                 })
-                edit.append(Ename,eemail,ecode,ebatch,save);
+                edit.append(Ename, eemail, ecode, ebatch, save);
                 cont.append(edit);
             })
 
-            card.append(img, name, email, student_code, batch, btn);
+            card.append(img, name, id, email, student_code, batch, btn);
+            cont.append(card)
+        })
+    }
+
+    function display1(data) {
+        cont.innerHTML = "";
+        data.forEach(function (item) {
+            let card = document.createElement("div");
+            card.className = "card";
+
+            let img = document.createElement("img");
+            img.src = "/Project/Images/man.png";
+            img.className = "p_image"
+
+            let name = document.createElement("p");
+            name.className = "name";
+            name.innerText = "Name:- " + item.name;
+
+            let id = document.createElement("p");
+            id.innerText = "ID:- " + item.id;
+            id.className = "ID";
+
+            let email = document.createElement("p");
+            email.className = "email";
+            email.innerText = "Email ID:- " + item.email;
+
+            let btn = document.createElement("button");
+            btn.className = "editbtn";
+            btn.innerText = "Edit";
+            btn.addEventListener("click", function () {
+                let edit = document.createElement("div");
+                edit.className = "editdiv";
+
+                let Ename = document.createElement("input")
+                Ename.value = item.name;
+
+                let eemail = document.createElement("input");
+                eemail.value = item.email;
+
+                let save = document.createElement("button");
+                save.innerText = "Save Changes";
+
+                let id = item.id;
+                save.addEventListener("click", function () {
+                    let updated = {
+                        "name": Ename.value,
+                        "email": eemail.value
+                    }
+                    fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/users/${id}`, {
+                        method: 'PUT',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(updated)
+                    })
+                        .then(res => res.json())
+                        .then(data => console.log(data))
+                        .catch(err => console.log(err))
+
+                    name.innerText = "Name:- " + Ename.value;
+                    email.innerText = "Email ID:- " + eemail.value;
+                    edit.style.display = "none";
+                    setTimeout(function () {
+                        card.style.display = "none"
+                    }, 5000)
+                })
+                edit.append(Ename, eemail, save);
+                cont.append(edit);
+            })
+
+            card.append(img, name, id, email, btn);
             cont.append(card)
         })
     }

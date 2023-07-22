@@ -4,6 +4,18 @@
     font-family: 'Inter', sans-serif;
 
 }
+:root{
+    --primary-color: #FFFFFF;
+    --slidebar-color: #F5F5F5;
+    --secondary-color: black;
+    --primary-background-color: white;
+}
+.dark-mode{
+    --primary-color: #3c3a3a;
+    --slidebar-color: #242526;
+    --secondary-color: #FFFFFF;
+    --primary-background-color: white;
+}
 
 #main {
     display: flex;
@@ -22,7 +34,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    background-color: #F5F5F5;
+    background-color: var(--slidebar-color);
     width: 18%;
     border-right: 2px solid #DEDEDE;
 
@@ -45,7 +57,7 @@
 }
 
 div #logo {
-
+    background-color: var(--primary-background-color);
     margin-top: 30px;
     padding: 0;
     text-align: center;
@@ -77,11 +89,13 @@ div>p {
 #left>div>div {
     display: flex;
     align-items: center;
+    color: var(--secondary-color);
 }
 
 #left>div>div:hover {
     margin-right: -1px;
     border-right: 4px solid #722ED1;
+    cursor: pointer;
 }
 
 #left>div>div:first-child {
@@ -90,40 +104,59 @@ div>p {
 }
 
 #right {
-    background-color: #FFFFFF;
+    background-color: var(--primary-color);
     width: 82%;
 }
 
-#r1 div:first-child img {
-    width: 4.5%;
-    margin: 15px 20px;
-    margin-top: 15px;
+#r1 div:first-child{
+    width: 5%;
+    display: flex;
+    align-items: center;
 }
-
+#r1 div:first-child span{
+    margin-left: 10%;
+}
 #r1 {
     width: 100%;
     display: flex;
+    justify-content: space-between;
 }
 
 #r1 div:last-child {
+    display: flex;
+    width: 25%;
+    border: 1px solid black;
+    align-items: center;
+    /* justify-content: end; */
     text-align: end;
-    margin: 5px 20px;
+     /* margin: 5px 20px; */
+}
+#r1 div:last-child>div:nth-child(1){
+    width: 60%;
+    border: 1px solid black;
+    font-size: 20px;
+}
+#active_mode{
+    font-size: 20px;
+}
+.head{
+    color: var(--secondary-color);
 }
 
-
-#r1 div:last-child img:first-child {
+/* #r1 div:last-child img:first-child {
     width: 6%;
     margin: 5px;
     margin-top: 10px;
     margin-left: 30px;
 
-}
+} */
+
 
 #right #r1 #profile {
     position: relative;
     border-radius: 15px;
     border: 1px solid lightgray;
-    width: 7.3%;
+    width: 10%;
     margin-top: 5px;
     margin-left: 15px;
 }
@@ -144,10 +177,12 @@ div>p {
     padding: 1%;
     border-radius: 15px;
     font-weight: 500;
-    border-color: #050E7C;
-    background-color: white;
+    font-size: 15px;
     align-self: center;
-    color: #050E7C;
+    border-color: #050E7C;
+    background-color: var(--primary-background-color);
+    align-self: center;
+    color: #0317f7;
 }
 #r-mid {
     border-bottom: 2px solid #D9D9D9;

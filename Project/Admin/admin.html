@@ -47,26 +47,14 @@
                     </span>
                     <p>Employee</p>
                 </div>
-                <div id="groups">
-                    <span class="material-symbols-outlined">
-                        groups
-                    </span>
-                    <p>Groups</p>
-                </div>
-                <div id="tasks">
-                    <span class="material-symbols-outlined">
-                        task_alt
-                    </span>
-                    <p>Tasks</p>
-                </div>
-                <div id="account">
-                    <span class="material-symbols-outlined">
-                        account_circle
-                    </span>
-                    <p>Acccount</p>
-                </div>
             </div>
             <div>
+                <div id="dark_mode">
+                    <span class="material-symbols-outlined" id="active_mode">
+                        toggle_off
+                    </span>
+                    <p>Dark Mode</p>
+                </div>
                 <div>
                     <span class="material-symbols-outlined">
                         rate_review
@@ -85,51 +73,53 @@
         <div id="right">
             <div id="r1">
                 <div>
-                    <img src="/Project/Images/fast-forward.png" alt="" id="slide">
+                    <span class="material-symbols-outlined" id="slide">
+                        keyboard_double_arrow_right
+                    </span>
                 </div>
                 <div>
-                    <img src="/Project/Images/alarm.png" alt="">
+                    <img src="" alt="">
+                    <!-- <img src="/Project/Images/alarm.png" alt=""> -->
                     <img src="/Project/Images/man.png" alt="" id="profile">
                 </div>
             </div>
             <div>
-                <p>Dashboard</p>
+                <p class="head">Dashboard</p>
                 <a href="/Project/Admin/add.html">
                     <button>Add an Employee/Student</button>
                 </a>
             </div>
             <div id="r-mid">
-                <h2>Key indicators</h2>
+                <h2 class="head">Key indicators</h2>
                 <div>
                     <div>
                         <p>Active Students</p>
-                        <p class="num">280</p>
+                        <p id="active_count" class="num">-</p>
                     </div>
                     <div>
                         <p>Latest Active Student</p>
                         <table class="num">
                             <tr>
-                                <td><span class="material-symbols-outlined">
+                                <td>
+                                    <span class="material-symbols-outlined">
                                         target
-                                    </span></td>
-                                <td>JayaChandran Ramu</td>
+                                    </span>
+                                </td>
+                                <td id="latest_active">-</td>
                             </tr>
                         </table>
                     </div>
                     <div>
                         <p>Total Students</p>
-                        <p id="totalStudent"></p>
+                        <p id="totalStudent" class="num">-</p>
                     </div>
                 </div>
             </div>
         </div>
-        <a href="/Project/Admin/admin.html"></a>
     </div>
 </body>
 <script>
     const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
-    // url.searchParams.append('page', 1);
-    // url.searchParams.append('limit', 10);
     let visible = true;
     let left = document.getElementById("left");
     let right = document.getElementById("right");
@@ -140,7 +130,7 @@
             visible = false;
         }
         else {
-            left.style.display = "block";
+            left.style.display = "flex";
             right.style.width = "80";
             visible = true;
         }
@@ -158,27 +148,53 @@
             })
     }
     fetchData(url);
-    
-    document.getElementById("dashboard").addEventListener("click",function(){
+
+
+    const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
+    url1.searchParams.append('active', true);
+    let active_count = document.getElementById("active_count");
+    function fetchData1(url1) {
+        fetch(url1)
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                active_count.innerText = data.length;
+            })
+    }
+    fetchData1(url1);
+
+    document.getElementById("dashboard").addEventListener("click", function () {
         window.location.href = "/Project/Admin/admin.html";
     })
-    document.getElementById("search").addEventListener("click",function(){
+    document.getElementById("search").addEventListener("click", function () {
         window.location.href = "/Project/Admin/search.html";
     })
-    document.getElementById("students").addEventListener("click",function(){
+    document.getElementById("students").addEventListener("click", function () {
         window.location.href = "/Project/Admin/student.html";
     })
-    document.getElementById("employee").addEventListener("click",function(){
+    document.getElementById("employee").addEventListener("click", function () {
         window.location.href = "/Project/Admin/employee.html";
     })
-    document.getElementById("groups").addEventListener("click",function(){
-        window.location.href = "/Project/Admin/groups.html";
-    })
-    document.getElementById("tasks").addEventListener("click",function(){
-        window.location.href = "/Project/Admin/tasks.html";
-    })
-    document.getElementById("account").addEventListener("click",function(){
-        window.location.href = "/Project/Admin/account.html";
+
+    const url2 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students/1');
+    let latest = document.getElementById("latest_active");
+    fetch(url2)
+        .then(res => res.json())
+        .then(data => latest.innerText = data.lastname)
+
+    let darkbtn = document.getElementById("dark_mode")
+    let toggle = document.getElementById("active_mode")
+    darkbtn.addEventListener("click", function () {
+        if (toggle.innerText == "toggle_off" || localStorage.getItem("darkmode") == "true") {
+            toggle.innerText = "toggle_on";
+            localStorage.setItem("darkmode", JSON.stringify("true"))
+        }
+        else if (toggle.innerText == "toggle_on" || localStorage.getItem("darkmode") == "false") {
+            toggle.innerText = "toggle_off";
+            localStorage.setItem("darkmode", JSON.stringify("false"))
+        }
+        document.body.classList.toggle("dark-mode")
     })
 </script>
 

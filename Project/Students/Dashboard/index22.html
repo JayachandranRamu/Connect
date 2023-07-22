@@ -1,136 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/Project/Students/Dashboard/style1.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>Masai Connect</title>
 </head>
-
 <body>
-
     <div id="D-MainSection">
-        <div id="D-LeftSection">
+<div id="D-LeftSection">
             <div>
                 <div>
                     <img src="/Project/Images/Logo.png" id="D-Logo" alt="Masai Connect">
                 </div>
                 <div id="D-DashboardOption"><span class="material-symbols-outlined">
-                        grid_view
-                    </span>
-                    <p><a href="#">Dashboard</a></p>
-                </div>
-                <div> <span class="material-symbols-outlined">
+                    grid_view
+                    </span><p><a href="#">Dashboard</a></p></div>
+                    <div> <span class="material-symbols-outlined">
                         person_search
-                    </span>
-                    <p><a href="/Project/Students/Search/search.html">Search</a></p>
-                </div>
+                        </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
+                     <div><span class="material-symbols-outlined">
+                    groups
+                    </span><p><a href="" id="must">Groups</a></p></div>
                 <div><span class="material-symbols-outlined">
-                        groups
-                    </span>
-                    <p><a href="">Groups</a></p>
-                </div>
+                    task_alt
+                    </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
                 <div><span class="material-symbols-outlined">
-                        task_alt
-                    </span>
-                    <p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p>
-                </div>
-                <div><span class="material-symbols-outlined">
-                        account_circle
-                    </span>
-                    <p><a href="/Project/Students/Account/Acc.html">Account</a></p>
-                </div>
+                    account_circle
+                    </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
             </div>
             <div>
                 <div><span class="material-symbols-outlined">
-                        rate_review
-                    </span>
-                    <p><a href="">Feedback</a></p>
-                </div>
+                    rate_review
+                    </span><p><a href="">Feedback</a></p></div>
                 <div><span class="material-symbols-outlined">
-                        logout
-                    </span>
-                    <p><a href="" id="LogoutBtn">Logout</a></p>
-                </div>
-
+                    logout
+                    </span><p><a href="">Logout</a></p></div>
+            
             </div>
-        </div>
+                    </div>
         <div id="D-RightSection">
-            <div id="r1">
-                <div>
-                    <img src="/Project/Images/fast-forward.png" alt="" id="D-Slide">
-                </div>
-                <div>
-
-                    <img src="/Project/Images/alarm.png" alt="">
-                    <img src="/Project/Images/man.png" alt="" id="profile">
-                </div>
-            </div>
-            <div>
-                <p>Dashboard</p>
-            </div>
-            <div id="r-mid">
-                <h2>Key indicators</h2>
-                <div>
-                    <div>
-                        <p>Active Students</p>
-                        <p class="num" id="active_count">-</p>
-                    </div>
-                    <div>
-                        <p>Latest Active Student</p>
-                        <table class="num">
-
-                            <tr>
-                                <td><span class="material-symbols-outlined">
-                                        target
-                                    </span></td>
-                                <td>JayaChandran Ramu</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div>
-                        <p>Total Students</p>
-                        <p class="num" id="ts">-</p>
-                    </div>
-                </div>
-            </div>
-            <div id="last">
-                <div id="todo">
-                    <h2>Tasks</h2>
-                    <!-- <table>
+    <div id="r1">
+        <div>
+<img src="/Project/Images/fast-forward.png" alt="" id="D-Slide">
+        </div>
+        <div>
+    
+            <img src="/Project/Images/alarm.png" alt="">
+<img src="/Project/Images/man.png" alt="" id="profile">
+        </div>
+    </div>
+    <div>
+        <p>Dashboard</p>
+    </div>
+    <div id="r-mid">
+<h2>Key indicators</h2>
+<div>
+    <div>
+        <p>Active Students</p>
+        <p class="num" id="active_count">-</p>
+    </div>
+    <div>
+        <p>Latest Active Student</p>
+        <table  class="num">
+            
+            <tr>
+                <td><span class="material-symbols-outlined">
+                    target
+                    </span></td>
+                <td id="active_count00">JayaChandran Ramu</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <p>Total Students</p>
+        <p  class="num" id="ts">-</p>
+    </div>
+</div>
+    </div>
+    <div id="last">
+    <div id="todo">
+        <h2>Tasks</h2>
+        <!-- <table>
             <tr>
                 <td><input type="checkbox" name="" id=""></td>
                 <td> Do HTML Part sdsd sdsd sdsd . </td>
             </tr>
         </table> -->
-                </div>
-                <div id="g">
-                    <h2>Groups</h2>
-                    <div>
-                        Masai Speaking Club
-                    </div>
-                    <div>
-                        Masai Speaking Club
-                    </div>
-                </div>
-            </div>
+    </div>
+    <div id="g">
+        <h2>Groups</h2>
+        <div>
+            Masai Speaking Club
+        </div>
+        <div>
+            Masai Speaking Club
+        </div>
+    </div>
+    </div>
         </div>
     </div>
 </body>
-
 </html>
 <script>
     const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
     let visible = true;
-    let right = document.getElementById("D-RightSection")
+    let right=document.getElementById("D-RightSection")
     let slidebtn = document.getElementById("D-Slide");
     let slide = document.getElementById("D-LeftSection");
     slidebtn.addEventListener("click", function () {
@@ -146,7 +126,7 @@
             right.style.width = '86%';
         }
     })
-    let ts = document.getElementById("ts");
+    let ts=document.getElementById("ts");
     function fetchData(url) {
         fetch(url)
             .then((res) => {
@@ -166,74 +146,76 @@
                 return res.json();
             })
             .then(function (data) {
-                mainData = data;
+                mainData=data;
                 console.log(mainData);
                 Todos(mainData.todo)
             })
     }
-    let todoSection = document.getElementById("todo")
-    let current = localStorage.getItem("current");
-    let id = localStorage.getItem("userid");
-    let student = `https://64b63253df0839c97e151a61.mockapi.io/${current}/${id}`;
-    fetchData1(student);
-    function Todos(arr) {
-        if (arr.length == 0) {
-            let span = document.createElement("span");
-            span.className = "material-symbols-outlined";
-            span.innerText = "info";
-            span.setAttribute("id", "todoSpan")
-            let p = document.createElement("p");
-            p.innerText = "There is NO Task."
-            p.setAttribute("id", "todoP")
-            todoSection.append(span, p);
-        } else {
-            let table = document.createElement("table");
-            arr.map(function (el, ind) {
-                let tr = document.createElement("tr");
-                let td1 = document.createElement("td");
-                let td2 = document.createElement("td");
-                let input2Do = document.createElement("input");
-                input2Do.type = "checkbox";
-                input2Do.checked = el.completed;
-                td1.append(input2Do);
-                td2.innerText = el.name;
-                tr.append(td1, td2);
-                table.append(tr);
-                todoSection.append(table);
-            })
-        }
-
-        const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
-        url1.searchParams.append('active', true);
-        let active_count = document.getElementById("active_count");
-        function fetchData1(url1) {
-            fetch(url1)
-                .then((res) => {
-                    return res.json();
-                })
-                .then(function (data) {
-                    active_count.innerText = data.length;
-                })
-        }
-        fetchData1(url1);
+    let todoSection=document.getElementById("todo")
+    let current=localStorage.getItem("current");
+    let id=localStorage.getItem("userid");
+    let student=`https://64b63253df0839c97e151a61.mockapi.io/${current}/${id}`;
+   fetchData1(student);
+function Todos(arr){
+    if(arr.length==0){
+        let span=document.createElement("span");
+        span.className="material-symbols-outlined";
+        span.innerText="info";
+        span.setAttribute("id","todoSpan")
+let p=document.createElement("p");
+p.innerText="There is NO Task."
+p.setAttribute("id","todoP")
+todoSection.append(span,p);
+    }else{
+        let table=document.createElement("table");
+        arr.map(function (el,ind){
+        let tr=document.createElement("tr");
+        let td1=document.createElement("td");
+        let td2=document.createElement("td");
+    let input2Do=document.createElement("input");
+    input2Do.type="checkbox";
+    input2Do.checked=el.completed;
+    td1.append(input2Do);
+    td2.innerText=el.task_name;
+    tr.append(td1,td2);
+    table.append(tr);
+    todoSection.append(table);
+    })
     }
 
-    let LogoutBtn = document.getElementById("LogoutBtn");
-    LogoutBtn.addEventListener("click", async function (event) {
-        event.preventDefault();
-        let status = false;
-        try {
-            let res = await fetch(`https://64b63253df0839c97e151a61.mockapi.io/${current}/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ active: status }),
-            });
+    const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
+    url1.searchParams.append('active', true);
+    let active_count = document.getElementById("active_count");
+    function fetchData1(url1) {
+        fetch(url1)
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                active_count.innerText = data.length;
+            })
+    }
+    fetchData1(url1);
+    const url3 = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students/1');
+    let active_count1 = document.getElementById("active_count00");
+    function fetchData11(url1) {
+        fetch(url1)
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                console.log(data,"LLL");
+                active_count1.innerText = data.lastname;
+            })
+    }
+    fetchData11(url3);
+}
+let must=document.getElementById("must");
+       if(current=="Students"){
+        must.href="/Project/Students/Groups/SG.html";
+       }else{
+        must.href="/Project/Manager/MG.html";
+       }
 
-            window.location.href = "/Project/Log-In/login.html";
-        } catch (error) {
-            console.log(error);
-        }
-    });
 </script>

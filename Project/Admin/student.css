@@ -137,7 +137,7 @@ div>p {
 }
 
 #table table {
-    width: 90%;
+    width: 98%;
     margin: auto;
 }
 
@@ -150,7 +150,7 @@ tbody {
 }
 
 tr th {
-    width: 3%;
+    width: 1%;
 }
 
 .delete {
@@ -165,6 +165,9 @@ tr th {
     border: 1px solid black;
 }
 
+tr>td:nth-child(1){
+    width: fit-content;
+}
 td {
     padding: 1%;
     border: 1px solid black;
@@ -182,6 +185,7 @@ tr th {
     width: 50%;
     margin: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 1%;
     margin-bottom: 1%;
