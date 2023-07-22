@@ -26,7 +26,7 @@
                         </span><p><a href="#">Search</a></p></div>
                      <div><span class="material-symbols-outlined">
                     groups
-                    </span><p><a href="">Groups</a></p></div>
+                    </span><p><a href="" id="must">Groups</a></p></div>
                 <div><span class="material-symbols-outlined">
                     task_alt
                     </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
@@ -77,6 +77,7 @@
                 <!-- Append Each Row Here -->
             </tbody>
         </table>
+        <div id="f"></div>
     </div>
         </div>
     </div>
@@ -114,7 +115,7 @@
     //         })
     // }
     // fetchData(url)
-
+    let f=document.getElementById("f");
 let a=localStorage.getItem("current");
     let search=document.getElementById("searched");
     let select=document.getElementById("se");
@@ -137,6 +138,7 @@ let a=localStorage.getItem("current");
     })
     let cont = document.getElementById("body");
     function display(data) {
+       f.innerHTML="";
         cont.innerHTML = "";
         // <!-- <thead>
         //         <tr>
@@ -159,6 +161,17 @@ let a=localStorage.getItem("current");
         // trow.append(tr1,tr2,tr3,tr4);
         // thead.append(trow);
         // cont.append(thead)
+        if(data.length==0){
+            
+                        
+                        let h2=document.createElement("h1");
+                        h2.style.color="red";
+                        h2.innerText="No Data Found!"
+                        h2.style.textAlign="center";
+                        h2.style.padding="20px";
+f.append(h2);
+                    
+        }else{
         data.forEach(function (item,ind) {
             if(ind<8){
 
@@ -189,6 +202,13 @@ let a=localStorage.getItem("current");
 
             row.append(id, name, email, studentcode,status);
             cont.append(row);}
-        })
+        })}
     }
+    let must=document.getElementById("must");
+       if(a=="Students"){
+        must.href="/Project/Students/Groups/SG.html";
+       }else{
+        must.href="/Project/Manager/MG.html";
+       }
+
 </script>

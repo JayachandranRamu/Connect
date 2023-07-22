@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/Project/Manager/MG.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Masai Connect</title>
+</head>
+<body>
+    <div id="main">
+        <div id="left">
+            <div>
+                <div>
+                    <img src="/Project/Images/Logo.png" id="logo" alt="Masai Connect">
+                </div>
+                <div><span class="material-symbols-outlined">
+                    grid_view
+                    </span><p><a href="/Project/Students/Dashboard/index22.html">Dashboard</a></p></div>
+                    <div > <span class="material-symbols-outlined">
+                        person_search
+                        </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
+                     <div><span class="material-symbols-outlined">
+                    groups
+                    </span><p><a href="" id="must">Groups</a></p></div>
+                <div id="task123"><span class="material-symbols-outlined">
+                    task_alt
+                    </span><p><a href="#">Tasks</a></p></div>
+                <div><span class="material-symbols-outlined">
+                    account_circle
+                    </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
+            </div>
+            <div>
+                <div><span class="material-symbols-outlined">
+                    rate_review
+                    </span><p><a href="">Feedback</a></p></div>
+                <div><span class="material-symbols-outlined">
+                    logout
+                    </span><p><a href="">Logout</a></p></div>
+            
+            </div>
+                    </div>
+        <div id="right">
+    <div id="r1">
+        <div>
+<img src="/Project/Images/fast-forward.png" alt="" id="slide">
+        </div>
+        <div>
+    
+            <img src="/Project/Images/alarm.png" alt="">
+<img src="/Project/Images/man.png" alt="" id="profile">
+        </div>
+    </div>
+    <div>
+        <p>Groups</p>
+    </div>
+    <div>
+        <input type="text" placeholder="Create New Group" id="CI">
+        <button id="CB">CREATE</button>
+    </div>
+    <div id="group00">
+ 
+    </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+       
+   
+        let visible = true;
+    let slidebtn = document.getElementById("slide");
+    let slide = document.getElementById("left");
+    slidebtn.addEventListener("click", function () {
+        if (visible == true) {
+            slide.style.display = 'none'
+            visible = false;
+            right.style.width = '100%';
+
+        }
+        else if (visible == false) {
+            slide.style.display = 'flex'
+            visible = true;
+            right.style.width = '86%';
+        }
+    })
+
+    let a=localStorage.getItem("current")
+let id=localStorage.getItem("userid")
+let API =` https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`;
+console.log(API);
+let CB=document.getElementById("CB");
+let CI=document.getElementById("CI")
+let GroupAPI=`https://connect-api-0z76.onrender.com/groups`;
+CB.addEventListener("click",function(){
+    let obj={name:CI.value,
+    news:[]
+    }
+    fetch(GroupAPI, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(obj)
+                }).then(res => {
+                    return res.json();
+                }).then(data => {
+                    console.log(data);
+                    // NEWS(data);
+                }).catch(error => {
+                    console.log(error);
+                });
+              
+                
+                // window.location.reload();
+                TEACH();
+})
+
+ let newsButton=document.getElementById("newsbutton");
+ let newsinput=document.getElementById("newsinput");
+
+
+// <div>
+//             <div>
+//                 <div><h3>Group Name</h3></div>
+//                 <div>
+//                     <button id="delete">DELETE</button>
+//                 </div>
+//             </div>
+//     <div>
+//         <input type="text" name="" id="newsinput" placeholder="Write Your Announcement">
+//         <button id="newsbutton">SEND ANNOUNCEMENT</button>
+//     </div> 
+//     <div>
+//         <h2>Latest Announcement</h2>
+//         <p></p>
+//     </div>
+//         </div>
+        
+async function TEACH(){
+    try {
+        let res= await fetch(`https://connect-api-0z76.onrender.com/groups`);
+        let data=await res.json();
+        console.log(data);
+        NEWS(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+TEACH();
+let all=document.getElementById("group00");
+
+function NEWS(arr){
+    all.innerHTML="";
+    if(arr.length==0){
+let no=document.createElement("h1");
+no.innerText="There is NO Groups Present Right Now."
+no.style.textAlign="center";
+all.append(no);
+    }else{
+    console.log("CHECK");
+    arr.reverse();
+    arr.forEach(function(el,ind){
+let div=document.createElement("div");
+div.style.marginBottom="20px"
+let div1=document.createElement("div");
+let div2=document.createElement("div");
+let div3=document.createElement("div");
+let h3=document.createElement("h3");
+h3.innerText=el.name;
+div2.append(h3);
+let deleteN=document.createElement("button");
+deleteN.setAttribute("id","delete");
+deleteN.innerText="DELETE";
+deleteN.style.color="white";
+div3.append(deleteN);
+div1.append(div2,div3);
+let newsinput=document.createElement("input");
+newsinput.setAttribute("id","newsinput");
+let newsbutton=document.createElement("button");
+newsbutton.innerText="SEND ANNOUNCEMENT";
+newsinput.placeholder="Write Your Announcement";
+newsbutton.setAttribute("id","newsbutton");
+newsbutton.addEventListener("click",function(){
+    async function TEACH22(){
+    try {
+        let res= await fetch(`https://connect-api-0z76.onrender.com/groups/${el.id}`);
+        let data=await res.json();
+        console.log(data);
+   
+        let k=data;
+
+        k.news.push(newsinput.value);
+        console.log(k);
+        fetch(`https://connect-api-0z76.onrender.com/groups/${el.id}`, {
+                    method: 'PUT',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(data)
+                }).then(res => {
+                    return res.json();
+                }).then(data => {
+                    console.log(data);
+                    NEWS(data);
+                }).catch(error => {
+                    console.log(error);
+                });
+    } catch (error) {
+        console.log(error);
+    }
+}
+TEACH22();
+
+})
+
+
+
+let div4=document.createElement("div");
+div4.append(newsinput,newsbutton);
+let div5=document.createElement("div");
+let h2=document.createElement("h2");
+h2.innerText="Latest Announcement"
+let p=document.createElement("p");
+
+if(el.news.length==0){
+    p.innerText="No Announcement Yet!";
+}else{
+    p.innerText=el.news[el.news.length-1];
+}
+p.style.margin="20px";
+p.style.fontSize="17px"
+div5.style.paddingBottom="30px";
+div5.append(h2,p);
+div.append(div1,div4,div5);
+all.append(div);
+    })}
+}
+let must=document.getElementById("must");
+       if(a=="Students"){
+        must.href="/Project/Students/Groups/SG.html";
+       }else{
+        must.href="/Project/Manager/MG.html";
+       }
+
+</script>

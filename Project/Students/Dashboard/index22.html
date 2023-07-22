@@ -26,7 +26,7 @@
                         </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
                      <div><span class="material-symbols-outlined">
                     groups
-                    </span><p><a href="">Groups</a></p></div>
+                    </span><p><a href="" id="must">Groups</a></p></div>
                 <div><span class="material-symbols-outlined">
                     task_alt
                     </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
@@ -73,7 +73,7 @@
                 <td><span class="material-symbols-outlined">
                     target
                     </span></td>
-                <td>JayaChandran Ramu</td>
+                <td id="active_count00">JayaChandran Ramu</td>
             </tr>
         </table>
     </div>
@@ -176,7 +176,7 @@ todoSection.append(span,p);
     input2Do.type="checkbox";
     input2Do.checked=el.completed;
     td1.append(input2Do);
-    td2.innerText=el.name;
+    td2.innerText=el.task_name;
     tr.append(td1,td2);
     table.append(tr);
     todoSection.append(table);
@@ -192,9 +192,30 @@ todoSection.append(span,p);
                 return res.json();
             })
             .then(function (data) {
+                console.log(data);
                 active_count.innerText = data.length;
             })
     }
     fetchData1(url1);
+    const url3 = new URL('https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students/1');
+    let active_count1 = document.getElementById("active_count00");
+    function fetchData11(url1) {
+        fetch(url1)
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                console.log(data,"LLL");
+                active_count1.innerText = data.lastname;
+            })
+    }
+    fetchData11(url3);
 }
+let must=document.getElementById("must");
+       if(current=="Students"){
+        must.href="/Project/Students/Groups/SG.html";
+       }else{
+        must.href="/Project/Manager/MG.html";
+       }
+
 </script>

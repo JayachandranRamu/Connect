@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <link rel="stylesheet" href="/Project/Students/Account/Acc.css">
-    <link rel="stylesheet" href="/Students/Account/Acc.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,7 @@
                         </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
                      <div><span class="material-symbols-outlined">
                     groups
-                    </span><p><a href="">Groups</a></p></div>
+                    </span><p><a href="" id="must">Groups</a></p></div>
                 <div ><span class="material-symbols-outlined">
                     task_alt
                     </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
@@ -242,6 +242,12 @@
 
     // update-option -------------------------------
 
-    
+    let must=document.getElementById("must");
+       if(a=="Students"){
+        must.href="/Project/Students/Groups/SG.html";
+       }else{
+        must.href="/Project/Manager/MG.html";
+       }
+
    
 </script>
