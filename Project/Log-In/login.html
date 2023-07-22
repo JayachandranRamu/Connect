@@ -476,9 +476,20 @@
                         active: true
                     })
                 });
+               
+                await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students/1`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        lastname:data[0].name
+                    })
+                });
 
                 alert(`Login successfully ${data[0].name}`)
-                window.location.href = "/Project/Students/Dashboard/index.html"
+              
+                window.location.href = "/Project/Students/Dashboard/index22.html"
             } else {
                 alert("please check your password");
             }

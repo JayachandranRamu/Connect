@@ -63,7 +63,7 @@
 <div>
     <div>
         <p>Active Students</p>
-        <p class="num">280</p>
+        <p class="num" id="active_count">-</p>
     </div>
     <div>
         <p>Latest Active Student</p>
@@ -183,6 +183,18 @@ todoSection.append(span,p);
     })
     }
 
-  
+    const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
+    url1.searchParams.append('active', true);
+    let active_count = document.getElementById("active_count");
+    function fetchData1(url1) {
+        fetch(url1)
+            .then((res) => {
+                return res.json();
+            })
+            .then(function (data) {
+                active_count.innerText = data.length;
+            })
+    }
+    fetchData1(url1);
 }
 </script>

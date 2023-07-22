@@ -20,7 +20,7 @@
                 </div>
                 <div><span class="material-symbols-outlined">
                     grid_view
-                    </span><p><a href="/Project/Students/Dashboard/index.html">Dashboard</a></p></div>
+                    </span><p><a href="/Project/Students/Dashboard/index22.html">Dashboard</a></p></div>
                     <div id="search"> <span class="material-symbols-outlined">
                         person_search
                         </span><p><a href="#">Search</a></p></div>
@@ -59,13 +59,24 @@
         <p>Search</p>
     </div>
     <div>
-        <input type="text" placeholder="Search Student">
-        <select name="" id="">
-            <option value="">BATCH</option>
-            <option value="">WEB - 25</option>
-            <option value="">WEB - 26</option>
-            <option value="">WEB - 27</option>
-        </select>
+        <input type="text" placeholder="Search Student" id="searched">
+       <button id="se">SEARCH</button>
+    </div>
+    <div id="table">
+        <table>
+            <thead>
+                <tr>
+                    <th class="same">ID</th>
+                    <th class="same">NAME</th>
+                    <th class="same">EMAIL</th>
+                    <th class="same">STUDENT CODE</th>
+                    <th class="same">STATUS</th>
+                </tr>
+            </thead>
+            <tbody id="body">
+                <!-- Append Each Row Here -->
+            </tbody>
+        </table>
     </div>
         </div>
     </div>
@@ -89,4 +100,95 @@
         }
     })
 
+
+    // const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
+    // url.searchParams.append('page', 1);
+    // url.searchParams.append('limit', 10);
+    // function fetchData(url) {
+    //     fetch(url)
+    //         .then((res) => {
+    //             return res.json();
+    //         })
+    //         .then(function (data) {
+    //             display(data);
+    //         })
+    // }
+    // fetchData(url)
+
+let a=localStorage.getItem("current");
+    let search=document.getElementById("searched");
+    let select=document.getElementById("se");
+    select.addEventListener("click", function () {
+            console.log(select.value, search.value);
+            let url = new URL(`https://64b63253df0839c97e151a61.mockapi.io/Students/`);
+            url.searchParams.append('name', search.value);
+            fetch(url)
+                .then((res) => {
+                    return res.json();
+                })
+                .then(function (data) {
+                    if(search.value!=""){
+                    console.log(data);
+                 
+                        display(data);
+                    }
+                })
+        
+    })
+    let cont = document.getElementById("body");
+    function display(data) {
+        cont.innerHTML = "";
+        // <!-- <thead>
+        //         <tr>
+        //             <th class="same">ID</th>
+        //             <th class="same">Name</th>
+        //             <th class="same">Email</th>
+        //             <th class="same">Student Code</th>
+        //         </tr>
+        //     </thead>
+        // let thead=document.createElement("thead");
+        // let trow=document.createElement("tr");
+        // let tr1=document.createElement("th");
+        // let tr2=document.createElement("th");
+        // let tr3=document.createElement("th");
+        // let tr4=document.createElement("th");
+        // tr1.innerText="ID";
+        // tr2.innerText="NAME";
+        // tr3.innerText="E-MAIL"
+        // tr4.innerText="STUDENT CODE"
+        // trow.append(tr1,tr2,tr3,tr4);
+        // thead.append(trow);
+        // cont.append(thead)
+        data.forEach(function (item,ind) {
+            if(ind<8){
+
+            let row = document.createElement("tr");
+            row.className = "row";
+
+            let id = document.createElement("td");
+            id.innerText = item.id;
+
+            let name = document.createElement("td");
+            name.innerText = item.name;
+
+            let email = document.createElement("td");
+            email.innerText = item.email;
+
+            let studentcode = document.createElement("td");
+            studentcode.innerText = item.student_code;
+
+            let status = document.createElement("td");
+            if (item.active==true){
+                status.style.color = "green";
+                status.innerText = "ACTIVE";
+            }
+            else {
+                status.style.color = "red";
+                status.innerText ="INACTIVE";
+            }
+
+            row.append(id, name, email, studentcode,status);
+            cont.append(row);}
+        })
+    }
 </script>
