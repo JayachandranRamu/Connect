@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/Home Page/style1.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <title>Masai Connect</title>
-    <link rel="stylesheet" href="add.css">
+    <link rel="stylesheet" href="/Project/Admin/add.css">
 </head>
 
 <body>
@@ -21,49 +20,31 @@
         <div id="left">
             <div>
                 <div>
-                    <img src="/Images/Logo.png" id="logo" alt="Masai Connect">
+                    <img src="/Project/Images/Logo.png" id="logo" alt="Masai Connect">
                 </div>
-                <div>
+                <div id="dashboard">
                     <span class="material-symbols-outlined">
                         grid_view
                     </span>
                     <p>Dashboard</p>
                 </div>
-                <div>
+                <div id="search">
                     <span class="material-symbols-outlined">
                         person_search
                     </span>
                     <p>Search</p>
                 </div>
-                <div>
+                <div id="students">
                     <span class="material-symbols-outlined">
                         diversity_2
                     </span>
                     <p>Students</p>
                 </div>
-                <div>
+                <div id="employee">
                     <span class="material-symbols-outlined">
                         person
                     </span>
                     <p>Employee</p>
-                </div>
-                <div>
-                    <span class="material-symbols-outlined">
-                        groups
-                    </span>
-                    <p>Groups</p>
-                </div>
-                <div>
-                    <span class="material-symbols-outlined">
-                        task_alt
-                    </span>
-                    <p>Tasks</p>
-                </div>
-                <div>
-                    <span class="material-symbols-outlined">
-                        account_circle
-                    </span>
-                    <p>Acccount</p>
                 </div>
             </div>
             <div>
@@ -83,11 +64,11 @@
         <div id="right">
             <div id="r1">
                 <div>
-                    <img src="/Images/fast-forward.png" alt="" id="slide">
+                    <img src="/Project/Images/fast-forward.png" alt="" id="slide">
                 </div>
                 <div>
-                    <img src="/Images/alarm.png" alt="">
-                    <img src="/Images/man.png" alt="" id="profile">
+                    <img src="/Project/Images/alarm.png" alt="">
+                    <img src="/Project/Images/man.png" alt="" id="profile">
                 </div>
             </div>
             <hr>
@@ -129,7 +110,7 @@
             visible = false;
         }
         else {
-            left.style.display = "block";
+            left.style.display = "flex";
             right.style.width = "80%";
             visible = true;
         }
@@ -249,6 +230,19 @@
             console.log(error);
         });
     });
+
+    document.getElementById("dashboard").addEventListener("click",function(){
+        window.location.href = "/Project/Admin/admin.html";
+    })
+    document.getElementById("search").addEventListener("click",function(){
+        window.location.href = "/Project/Admin/search.html";
+    })
+    document.getElementById("students").addEventListener("click",function(){
+        window.location.href = "/Project/Admin/student.html";
+    })
+    document.getElementById("employee").addEventListener("click",function(){
+        window.location.href = "/Project/Admin/employee.html";
+    })
 </script>
 
 </html>

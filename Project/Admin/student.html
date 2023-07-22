@@ -46,24 +46,6 @@
                     </span>
                     <p>Employee</p>
                 </div>
-                <div id="groups">
-                    <span class="material-symbols-outlined">
-                        groups
-                    </span>
-                    <p>Groups</p>
-                </div>
-                <div id="tasks">
-                    <span class="material-symbols-outlined">
-                        task_alt
-                    </span>
-                    <p>Tasks</p>
-                </div>
-                <div id="account">
-                    <span class="material-symbols-outlined">
-                        account_circle
-                    </span>
-                    <p>Acccount</p>
-                </div>
             </div>
             <div>
                 <div>
@@ -102,6 +84,7 @@
                             <th class="same">Name</th>
                             <th class="same">Email</th>
                             <th class="same">Student Code</th>
+                            <th class="same">Batch</th>
                             <th class="same">Status</th>
                             <th class="same">Password</th>
                             <th class="delete">Delete</th>
@@ -121,7 +104,7 @@
 <script>
     const url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
     url.searchParams.append('page', 1);
-    url.searchParams.append('limit', 10);
+    url.searchParams.append('limit', 8);
     function fetchData(url) {
         fetch(url)
             .then((res) => {
@@ -140,7 +123,8 @@
                 return res.json();
             })
             .then(function (data) {
-                localStorage.setItem("total", JSON.stringify(data.length));
+                let total_page = Math.ceil(data.length / 8);
+                create_button(total_page);
             })
     }
     fetchData1()
@@ -164,8 +148,10 @@
             let studentcode = document.createElement("td");
             studentcode.innerText = item.student_code;
 
+            let batch = document.createElement("td");
+            batch.innerText = item.batch;
             let status = document.createElement("td");
-            if (item.status){
+            if (item.active == true){
                 status.style.color = "green";
                 status.innerText = "Active";
             }
@@ -196,7 +182,7 @@
                     })
                     .catch(err => { console.log(err) });
             })
-            row.append(id, name, email, studentcode,status, Password, Delete);
+            row.append(id, name, email, studentcode,batch,status, Password, Delete);
             cont.append(row);
         })
     }
@@ -211,7 +197,7 @@
             visible = false;
         }
         else {
-            left.style.display = "block";
+            left.style.display = "flex";
             right.style.width = "80%";
             visible = true;
         }
@@ -219,23 +205,24 @@
 
 
     let pagination = document.getElementById("pagination_wrapper")
-    let total_data = JSON.parse(localStorage.getItem("total"))
-    let total_page = Math.ceil(total_data / 10);
-    for (let i = 1; i <= total_page; i++) {
-        let button = document.createElement("button");
-        button.innerText = i;
-        button.setAttribute("page_no", i);
-        button.classList.add("pagination-button");
-        pagination.append(button);
-        button.addEventListener("click", function (e) {
-            if (e.target.classList.contains("pagination-button")) {
-                let pageno = e.target.getAttribute("page_no");
-                let url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
-                url.searchParams.append('page', pageno);
-                url.searchParams.append('limit', 10);
-                fetchData(url);
-            }
-        });
+    function create_button(total_page){
+        pagination.innerHTML = "";
+        for (let i = 1; i <= total_page; i++) {
+            let button = document.createElement("button");
+            button.innerText = i;
+            button.setAttribute("page_no", i);
+            button.classList.add("pagination-button");
+            pagination.append(button);
+            button.addEventListener("click", function (e) {
+                if (e.target.classList.contains("pagination-button")) {
+                    let pageno = e.target.getAttribute("page_no");
+                    let url = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
+                    url.searchParams.append('page', pageno);
+                    url.searchParams.append('limit', 8);
+                    fetchData(url);
+                }
+            });
+        }
     }
     document.getElementById("dashboard").addEventListener("click", function () {
         window.location.href = "/Project/Admin/admin.html";
@@ -248,15 +235,6 @@
     })
     document.getElementById("employee").addEventListener("click", function () {
         window.location.href = "/Project/Admin/employee.html";
-    })
-    document.getElementById("groups").addEventListener("click", function () {
-        window.location.href = "/Project/Admin/groups.html";
-    })
-    document.getElementById("tasks").addEventListener("click", function () {
-        window.location.href = "/Project/Admin/tasks.html";
-    })
-    document.getElementById("account").addEventListener("click", function () {
-        window.location.href = "/Project/Admin/account.html";
     })
 </script>
 
