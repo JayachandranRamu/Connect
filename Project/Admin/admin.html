@@ -49,6 +49,12 @@
                 </div>
             </div>
             <div>
+                <div id="dark_mode">
+                    <span class="material-symbols-outlined" id="active_mode">
+                        toggle_off
+                    </span>
+                    <p>Dark Mode</p>
+                </div>
                 <div>
                     <span class="material-symbols-outlined">
                         rate_review
@@ -67,21 +73,24 @@
         <div id="right">
             <div id="r1">
                 <div>
-                    <img src="/Project/Images/fast-forward.png" alt="" id="slide">
+                    <span class="material-symbols-outlined" id="slide">
+                        keyboard_double_arrow_right
+                    </span>
                 </div>
                 <div>
-                    <img src="/Project/Images/alarm.png" alt="">
+                    <img src="" alt="">
+                    <!-- <img src="/Project/Images/alarm.png" alt=""> -->
                     <img src="/Project/Images/man.png" alt="" id="profile">
                 </div>
             </div>
             <div>
-                <p>Dashboard</p>
+                <p class="head">Dashboard</p>
                 <a href="/Project/Admin/add.html">
                     <button>Add an Employee/Student</button>
                 </a>
             </div>
             <div id="r-mid">
-                <h2>Key indicators</h2>
+                <h2 class="head">Key indicators</h2>
                 <div>
                     <div>
                         <p>Active Students</p>
@@ -174,6 +183,19 @@
         .then(res => res.json())
         .then(data => latest.innerText = data.lastname)
 
+    let darkbtn = document.getElementById("dark_mode")
+    let toggle = document.getElementById("active_mode")
+    darkbtn.addEventListener("click", function () {
+        if (toggle.innerText == "toggle_off" || localStorage.getItem("darkmode") == "true") {
+            toggle.innerText = "toggle_on";
+            localStorage.setItem("darkmode", JSON.stringify("true"))
+        }
+        else if (toggle.innerText == "toggle_on" || localStorage.getItem("darkmode") == "false") {
+            toggle.innerText = "toggle_off";
+            localStorage.setItem("darkmode", JSON.stringify("false"))
+        }
+        document.body.classList.toggle("dark-mode")
+    })
 </script>
 
 </html>
