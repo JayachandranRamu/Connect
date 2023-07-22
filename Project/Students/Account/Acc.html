@@ -89,11 +89,11 @@
           </div>
       </div>
       <div class="update">
-          <input type="text" placeholder="ID" id="id">
+          <!-- <input type="text" placeholder="ID" id="id"> -->
           <input type="text" placeholder="Name" id="name">
           <input type="text" placeholder="Email" id="email">
-          <!-- <input type="text" placeholder="Mobile" id="mobile">
-          <input type="text" placeholder="Student code" id="student-code"> -->
+          <input type="text" placeholder="Password" id="password">
+          <!-- <input type="text" placeholder="Student code" id="student-code"> -->
           <input type="file" placeholder="Image" id="img" accept="jgp">
 
           <div class="update-buttons">
@@ -131,10 +131,10 @@
     let p_img=document.querySelector('#p-image')
 
     // update-data----------------------
-    let u_id=document.querySelector('#id')
+    // let u_id=document.querySelector('#id')
     let u_name=document.querySelector('#name')
     let u_email=document.querySelector('#email')
-    let u_mobile=document.querySelector('#mobile')
+    let u_password=document.querySelector('#password')
     let u_st_code=document.querySelector('#student-code')
 
     let update=document.querySelector('.update')
@@ -173,7 +173,7 @@
         let edit=document.querySelector('#edit')
 
         edit.addEventListener('click',function(){
-            pos=-1290
+            let pos=-1290
             let fun=setInterval(function(){
             update.style.display='flex'
                 if(pos==0){
@@ -184,9 +184,10 @@
                     update.style.marginLeft=pos+'px'
                 }
             },0.1)
-            u_id.value=data.id
+            // u_id.value=data.id
             u_name.value=data.name
             u_email.value=data.email
+            u_password.value=data.password
         })
 
 
@@ -198,10 +199,11 @@
             // alert(`${u_id.value}${u_name.value}`)
             let update_data={
                 name:u_name.value,
-                email:u_email.vlaue
+                email:u_email.vlaue,
+                password:u_password.value
             }
-            fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/users/${u_id.value}`,{
-                method:'PATCH',
+            fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`,{
+                method:'PUT',
                 headers:{
                     'Content-type':'application/json'
                 },
@@ -221,20 +223,20 @@
         let cancel=document.querySelector('#cancel')
     
         cancel.addEventListener('click',function(){
-            pos=0
+            let ps=0
             let fun=setInterval(function(){
             update.style.display='flex'
-                if(pos==-1290){
+                if(ps==-1290){
                     clearInterval(fun)
                     update.style.display='none'
-                    u_id.value=''
                     u_name.value=''
                     u_email.value=''
+                    u_password.value=''
                     update.style.marginRight='0px'
                 }
                 else{
-                    pos=pos-10
-                    update.style.marginRight=pos+'px'
+                    ps=ps-10
+                    update.style.marginRight=ps+'px'
                 }
             },0.1)
         })
