@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Project/Admin/style1.css">
     <title>Students</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +22,13 @@
                 <div>
                     <img src="/Project/Images/Logo.png" id="logo" alt="Masai Connect">
                 </div>
-                <div>
+                <div id="dashboard">
                     <span class="material-symbols-outlined">
                         grid_view
                     </span>
                     <p>Dashboard</p>
                 </div>
-                <div>
+                <div id="search">
                     <span class="material-symbols-outlined">
                         person_search
                     </span>
@@ -41,25 +40,25 @@
                     </span>
                     <p>Students</p>
                 </div>
-                <div>
+                <div id="employee">
                     <span class="material-symbols-outlined">
                         person
                     </span>
                     <p>Employee</p>
                 </div>
-                <div>
+                <div id="groups">
                     <span class="material-symbols-outlined">
                         groups
                     </span>
                     <p>Groups</p>
                 </div>
-                <div>
+                <div id="tasks">
                     <span class="material-symbols-outlined">
                         task_alt
                     </span>
                     <p>Tasks</p>
                 </div>
-                <div>
+                <div id="account">
                     <span class="material-symbols-outlined">
                         account_circle
                     </span>
@@ -67,12 +66,14 @@
                 </div>
             </div>
             <div>
-                <div><span class="material-symbols-outlined">
+                <div>
+                    <span class="material-symbols-outlined">
                         rate_review
                     </span>
                     <p>Feedback</p>
                 </div>
-                <div><span class="material-symbols-outlined">
+                <div>
+                    <span class="material-symbols-outlined">
                         logout
                     </span>
                     <p>Logout</p>
@@ -101,6 +102,7 @@
                             <th class="same">Name</th>
                             <th class="same">Email</th>
                             <th class="same">Student Code</th>
+                            <th class="same">Status</th>
                             <th class="same">Password</th>
                             <th class="delete">Delete</th>
                         </tr>
@@ -159,16 +161,42 @@
             let email = document.createElement("td");
             email.innerText = item.email;
 
-            let Password = document.createElement("td");
-            Password.innerText = item.password;
-
             let studentcode = document.createElement("td");
             studentcode.innerText = item.student_code;
+
+            let status = document.createElement("td");
+            if (item.status){
+                status.style.color = "green";
+                status.innerText = "Active";
+            }
+            else {
+                status.style.color = "red";
+                status.innerText ="Inactive";
+            }
+
+            let Password = document.createElement("td");
+            Password.innerText = item.password;
 
             let Delete = document.createElement("td");
             Delete.innerText = "Delete"
             Delete.className = "delete";
-            row.append(id, name, email, studentcode, Password, Delete);
+            Delete.setAttribute("data-id", item.id);
+            Delete.addEventListener("click", function (e) {
+                e.preventDefault()
+                let itemID = Delete.getAttribute("data-id");
+                fetch(`https://64b63253df0839c97e151a61.mockapi.io/Students/${itemID}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-type": "application/json"
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        fetchData(url)
+                    })
+                    .catch(err => { console.log(err) });
+            })
+            row.append(id, name, email, studentcode,status, Password, Delete);
             cont.append(row);
         })
     }
@@ -206,11 +234,30 @@
                 url.searchParams.append('page', pageno);
                 url.searchParams.append('limit', 10);
                 fetchData(url);
-                console.log(pageno);
             }
         });
     }
-
+    document.getElementById("dashboard").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/admin.html";
+    })
+    document.getElementById("search").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/search.html";
+    })
+    document.getElementById("students").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/student.html";
+    })
+    document.getElementById("employee").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/employee.html";
+    })
+    document.getElementById("groups").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/groups.html";
+    })
+    document.getElementById("tasks").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/tasks.html";
+    })
+    document.getElementById("account").addEventListener("click", function () {
+        window.location.href = "/Project/Admin/account.html";
+    })
 </script>
 
 </html>

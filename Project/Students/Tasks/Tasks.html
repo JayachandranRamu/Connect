@@ -82,22 +82,34 @@
 </body>
 </html>
 <script>
-        let visible = true;
-    let slidebtn = document.getElementById("slide");
-    let slide = document.getElementById("left");
-    slidebtn.addEventListener("click", function () {
-        if (visible == true) {
-            slide.style.display = 'none'
-            visible = false;
-            right.style.width = '100%';
+       
+       let a =localStorage.getitem("current");
+    console.log(a);
+let id = localstorage.getitem("userid");
+console.log(id);
+let API = `https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`
+console. log(API) ;
+    //     let visible = true;
+    // let slidebtn = document.getElementById("slide");
+    // let slide = document.getElementById("left");
+    // slidebtn.addEventListener("click", function () {
+    //     if (visible == true) {
+    //         slide.style.display = 'none'
+    //         visible = false;
+    //         right.style.width = '100%';
 
-        }
-        else if (visible == false) {
-            slide.style.display = 'flex'
-            visible = true;
-            right.style.width = '86%';
-        }
-    })
+    //     }
+    //     else if (visible == false) {
+    //         slide.style.display = 'flex'
+    //         visible = true;
+    //         right.style.width = '86%';
+    //     }
+    // })
+
+    let a=localStorage.getItem("current")
+let id=localStorage.getItem("userid")
+let API =` https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`;
+console.log(API);
 
     const addBtn = document.querySelector("#add-btn");
     const newTaskInput = document.querySelector("#wrapper input");
@@ -105,86 +117,90 @@
     const error = document.getElementById("error");
     const countValue = document.querySelector(".count-value");
   
-    let taskCount = 0;
+    // let taskCount = 0;
   
-    const displayCount = (taskCount) => {
-      countValue.innerText = taskCount;
-    };
+    // const displayCount = (taskCount) => {
+    //   countValue.innerText = taskCount;
+    // };
   
-    const addTask = () => {
-      const taskName = newTaskInput.value.trim();
-      error.style.display = "none";
-      if (!taskName) {
-        setTimeout(() => {
-          error.style.display = "block";
-        }, 200);
-        return;
-      }
+    // const addTask = () => {
+    //   const taskName = newTaskInput.value.trim();
+    //   error.style.display = "none";
+    //   if (!taskName) {
+    //     setTimeout(() => {
+    //       error.style.display = "block";
+    //     }, 200);
+    //     return;
+    //   }
   
-      const task = `
-      <div class="task">
-        <input type="checkbox" class="task-check">
-        <span class="taskname">${taskName}</span>
-        <button class="edit">
-          <i class="fa-solid fa-pen-to-square"></i>
-        </button>
-        <button class="delete">
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      </div>
-    `;
+    //   const task = `
+    //   <div class="task">
+    //     <input type="checkbox" class="task-check">
+    //     <span class="taskname">${taskName}</span>
+    //     <button class="edit">
+    //       <i class="fa-solid fa-pen-to-square"></i>
+    //     </button>
+    //     <button class="delete">
+    //       <i class="fa-solid fa-trash"></i>
+    //     </button>
+    //   </div>
+    // `;
   
-      tasksContainer.insertAdjacentHTML("beforeend", task);
-      const deleteButtons = document.querySelectorAll(".delete");
+    //   tasksContainer.insertAdjacentHTML("beforeend", task);
+    //   const deleteButtons = document.querySelectorAll(".delete");
   
-      deleteButtons.forEach((button) => {
-        button.onclick = () => {
-          button.parentNode.remove();
-          taskCount -= 1;
-          displayCount(taskCount);
-        };
-      });
+    //   deleteButtons.forEach((button) => {
+    //     button.onclick = () => {
+    //       button.parentNode.remove();
+    //       taskCount -= 1;
+    //       displayCount(taskCount);
+    //     };
+    //   });
   
-      const editButtons = document.querySelectorAll(".edit");
-      editButtons.forEach((editBtn) => {
-        editBtn.onclick = (e) => {
-          let targetElement = e.target;
-          if (!(e.target.className == "edit")) {
-            targetElement = e.target.parentElement;
-          }
-          newTaskInput.value =
-            targetElement.previousElementSibling?.innerText;
-          targetElement.parentNode.remove();
-          taskCount -= 1;
-          displayCount(taskCount);
-        };
-      });
-      
+    //   const editButtons = document.querySelectorAll(".edit");
+    //   editButtons.forEach((editBtn) => {
+    //     editBtn.onclick = (e) => {
+    //       let targetElement = e.target;
+    //       if (!(e.target.className == "edit")) {
+    //         targetElement = e.target.parentElement;
+    //       }
+    //       newTaskInput.value =
+    //         targetElement.previousElementSibling?.innerText;
+    //       targetElement.parentNode.remove();
+    //       taskCount -= 1;
+    //       displayCount(taskCount);
+    //     };
+    //   });
+
+
+ 
+
+
+
+    //   const taskCheck = document.querySelectorAll(".task-check");
+    //   taskCheck.forEach((checkBox) => {
+    //     checkBox.onchange = () => {
+    //       checkBox.nextElementSibling.classList.toggle("completed");
+    //       if (checkBox.checked) {
+    //         taskCount -=1;
+    //       } else {
+    //         taskCount +=1;
+    //       }
+    //       displayCount(taskCount);
+    //     };
+    //   });
   
-      const taskCheck = document.querySelectorAll(".task-check");
-      taskCheck.forEach((checkBox) => {
-        checkBox.onchange = () => {
-          checkBox.nextElementSibling.classList.toggle("completed");
-          if (checkBox.checked) {
-            taskCount -=1;
-          } else {
-            taskCount +=1;
-          }
-          displayCount(taskCount);
-        };
-      });
+    //   taskCount += 1;
+    //   displayCount(taskCount);
+    //   newTaskInput.value = "";
+    // };
   
-      taskCount += 1;
-      displayCount(taskCount);
-      newTaskInput.value = "";
-    };
+    // addBtn.addEventListener("click", addTask);
   
-    addBtn.addEventListener("click", addTask);
-  
-    window.onload = () => {
-      taskCount = 0;
-      displayCount(taskCount);
-      newTaskInput.value = "";
-    };
+    // window.onload = () => {
+    //   taskCount = 0;
+    //   displayCount(taskCount);
+    //   newTaskInput.value = "";
+    // };
 
 </script>
