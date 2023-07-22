@@ -103,122 +103,127 @@
 
 </html>
 <script>
+   document.addEventListener("DOMContentLoaded", function() {
+        let current = localStorage.getItem("current");
+            let id = localStorage.getItem("userid");
+            let studentURL = `https://64b63253df0839c97e151a61.mockapi.io/${current}/${id}`;
 
-    let current = localStorage.getItem("current");
-    let id = localStorage.getItem("userid");
-    //     let visible = true;
-    // let slidebtn = document.getElementById("slide");
-    // let slide = document.getElementById("left");
-    // slidebtn.addEventListener("click", function () {
-    //     if (visible == true) {
-    //         slide.style.display = 'none'
-    //         visible = false;
-    //         right.style.width = '100%';
+            function fetchData1(url) {
+                fetch(url)
+                .then((res) => res.json())
+                .then(function(data) {
+                    mainData = data;
+                    console.log(mainData);
+                    Todos(mainData.todo);
+                });
+            }
 
-    //     }
-    //     else if (visible == false) {
-    //         slide.style.display = 'flex'
-    //         visible = true;
-    //         right.style.width = '86%';
-    //     }
-    // })
+            function Todos(arr) {
+                let todoSection = document.getElementById("tasks");
+                let completedSection = document.getElementById("completed-tasks");
+                 todoSection.innerHTML = ""; // Clear previous tasks
+            ;
+                let compTask=document.getElementById("t2")
+                compTask,innerHTML=""
+                // event.preventDefault()
 
-    //     let a=localStorage.getItem("current")
-    // let id=localStorage.getItem("userid")
-    // let API =` https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`;
-    // console.log(API);
+                if (arr.length === 0) {
+                    let span = document.createElement("span");
+                    span.className = "material-symbols-outlined";
+                    span.innerText = "info";
+                    span.setAttribute("id", "todoSpan");
+                    let p = document.createElement("p");
+                    p.innerText = "There is NO Task.";
+                    p.setAttribute("id", "todoP");
+                    todoSection.append(span, p);
+                } else {
+                    let table = document.createElement("table");
+                    let completedTable = document.createElement("table");
+                    
 
-    const addBtn = document.querySelector("#add-btn");
-    const newTaskInput = document.querySelector("#wrapper input");
-    const tasksContainer = document.querySelector("#tasks");
-    const error = document.getElementById("error");
-    const countValue = document.querySelector(".count-value");
+                    arr.forEach(function(el) {
+                        
+                        let tr = document.createElement("tr");
+                        let td1 = document.createElement("td");
+                        let td2 = document.createElement("td");
+                        let input2Do = document.createElement("input");
+                        input2Do.type = "checkbox";
+                        input2Do.checked = el.completed;
+                        input2Do.addEventListener("change", function() {
+                            el.completed = input2Do.checked;
+                            fetch(studentURL, {
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(mainData)
+                            })
+                            .then((res) => res.json())
+                            .then(function(data) {
+                                console.log("Task status updated successfully!");
+                                Todos(mainData.todo);
+                            })
+                            .catch(function(error) {
+                                console.error("Error updating task status:", error);
+                            });
+                        });
+                        td1.append(input2Do);
+                        td2.innerText = el.task_name;
+                        tr.append(td1, td2);
+                        if (el.completed==true) {
+                            completedTable.append(tr);
+                 
+                        } else {
+                            table.append(tr);
+                        }
+                    });
+                    todoSection.append(table);
+                    
+                    compTask.append(completedTable)
+                   
+                }
+            }
+            
 
-    // let taskCount = 0;
+            fetchData1(studentURL);
 
-    // const displayCount = (taskCount) => {
-    //   countValue.innerText = taskCount;
-    // };
+            let getInput = document.getElementById("input-task");
+            let addBtn = document.getElementById("add-btn");
+            addBtn.addEventListener("click", function() {
+                console.log("Adding task...");
+                let newTaskName = getInput.value.trim();
+                if (newTaskName !== "") {
+                    let newTask = {
+                        task_name: newTaskName,
+                        completed: false
+                    };
 
-    // const addTask = () => {
-    //   const taskName = newTaskInput.value.trim();
-    //   error.style.display = "none";
-    //   if (!taskName) {
-    //     setTimeout(() => {
-    //       error.style.display = "block";
-    //     }, 200);
-    //     return;
-    //   }
+                    mainData.todo.push(newTask);
 
-    //   const task = `
-    //   <div class="task">
-    //     <input type="checkbox" class="task-check">
-    //     <span class="taskname">${taskName}</span>
-    //     <button class="edit">
-    //       <i class="fa-solid fa-pen-to-square"></i>
-    //     </button>
-    //     <button class="delete">
-    //       <i class="fa-solid fa-trash"></i>
-    //     </button>
-    //   </div>
-    // `;
-
-    //   tasksContainer.insertAdjacentHTML("beforeend", task);
-    //   const deleteButtons = document.querySelectorAll(".delete");
-
-    //   deleteButtons.forEach((button) => {
-    //     button.onclick = () => {
-    //       button.parentNode.remove();
-    //       taskCount -= 1;
-    //       displayCount(taskCount);
-    //     };
-    //   });
-
-    //   const editButtons = document.querySelectorAll(".edit");
-    //   editButtons.forEach((editBtn) => {
-    //     editBtn.onclick = (e) => {
-    //       let targetElement = e.target;
-    //       if (!(e.target.className == "edit")) {
-    //         targetElement = e.target.parentElement;
-    //       }
-    //       newTaskInput.value =
-    //         targetElement.previousElementSibling?.innerText;
-    //       targetElement.parentNode.remove();
-    //       taskCount -= 1;
-    //       displayCount(taskCount);
-    //     };
-    //   });
+                    fetch(studentURL, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(mainData)
+                    })
+                    .then((res) => res.json())
+                    .then(function(data) {
+                        console.log("Task added successfully!");
+                        Todos(mainData.todo);
+                    })
+                    .catch(function(error) {
+                        console.error("Error adding task:", error);
+                    });
+                } else {
+                    console.log("Please enter a valid task name.");
+                }
+            });
+         });
 
 
 
-
-
-
-    //   const taskCheck = document.querySelectorAll(".task-check");
-    //   taskCheck.forEach((checkBox) => {
-    //     checkBox.onchange = () => {
-    //       checkBox.nextElementSibling.classList.toggle("completed");
-    //       if (checkBox.checked) {
-    //         taskCount -=1;
-    //       } else {
-    //         taskCount +=1;
-    //       }
-    //       displayCount(taskCount);
-    //     };
-    //   });
-
-    //   taskCount += 1;
-    //   displayCount(taskCount);
-    //   newTaskInput.value = "";
-    // };
-
-    // addBtn.addEventListener("click", addTask);
-
-    // window.onload = () => {
-    //   taskCount = 0;
-    //   displayCount(taskCount);
-    //   newTaskInput.value = "";
-    // };
+  
 
     let must=document.getElementById("must");
        if(a=="Students"){
@@ -247,4 +252,5 @@
             console.log(error);
         }
     });
+
 </script>

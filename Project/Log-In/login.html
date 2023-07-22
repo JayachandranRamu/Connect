@@ -321,6 +321,8 @@
                 alert("Email address verified...");
 
                 addUserData();
+                window.location.href="/Project/Students/Dashboard/index22.html"
+            
             }
             else {
                 alert("Invalid OTP");
@@ -331,6 +333,7 @@
 
     const btnsignupdiv = document.getElementById("btnsignupdiv");
     const btnsignup = document.getElementById("btnsignup");
+   
     btnsignup.addEventListener("click", function (event) {
         event.preventDefault();
         const emailInput = document.querySelector("form.signup input[type='text'][placeholder='Email Address']");
@@ -397,6 +400,7 @@
                 email: emailInput.value.trim(),
                 password: passwordInput.value.trim(),
                 active: true,
+                todo:[],
             };
 
             const res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students", {
