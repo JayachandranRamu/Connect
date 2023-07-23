@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/Project/Students/Groups/SG.css">
+    <link rel="stylesheet" href="/Project/Students/Discussion/Discussion.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,25 +20,25 @@
                 </div>
                 <div><span class="material-symbols-outlined">
                     grid_view
-                    </span><p><a href="/Project/Students/Dashboard/index22.html">Dashboard</a></p></div>
+                    </span><p><a href="/Dashboard.html">Dashboard</a></p></div>
                     <div > <span class="material-symbols-outlined">
                         person_search
-                        </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
-                     <div id="task123"><span class="material-symbols-outlined">
+                        </span><p><a href="/Search.html">Search</a></p></div>
+                     <div><span class="material-symbols-outlined">
                     groups
                     </span><p><a href="#" id="must">Groups</a></p></div>
                 <div ><span class="material-symbols-outlined">
                     task_alt
-                    </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
-                    <div ><span class="material-symbols-outlined">
-                        chat
-                        </span><p><a href="/Project/Students/Discussion/Discussion.html">Discussion</a></p></div>
-                <div><span class="material-symbols-outlined">
-                    account_circle
-                    </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
+                    </span><p><a href="/Tasks.html">Tasks</a></p></div>
+                <div id="task123"><span class="material-symbols-outlined">
+                    chat
+                    </span><p><a href="#">Discussion</a></p></div>
+                    <div><span class="material-symbols-outlined">
+                        account_circle
+                        </span><p><a href="/Account.html">Account</a></p></div>
             </div>
             <div>
-        
+ 
                 <div><span class="material-symbols-outlined">
                     logout
                     </span><p><a href="" id="LogoutBtn">Logout</a></p></div>
@@ -57,10 +57,17 @@
         </div>
     </div>
     <div>
-        <p>Groups</p>
+        <p>Discussion</p>
     </div>
     <div id="group00">
+<div id="chatarea">
 
+ 
+</div>
+<div>
+    <input type="text" id="newsinput" placeholder="Enter Your Message">
+    <button id="newsbutton">SEND</button>
+</div>
     </div>
         </div>
     </div>
@@ -82,6 +89,7 @@
         }
         else if (visible == false) {
             slide.style.display = 'flex'
+ 
             visible = true;
             right.style.width = '86%';
         }
@@ -94,89 +102,115 @@ let API =` https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`;
 console.log(API);
 let must=document.getElementById("must");
        if(a=="Students"){
-        must.href="/Project/Students/Groups/SG.html";
+        must.href="/StudentGroup.html";
        }else{
-        must.href="/Project/Manager/MG.html";
+        must.href="/Manager-Group.html";
        }
 
 
- let newsButton=document.getElementById("newsbutton");
- let newsinput=document.getElementById("newsinput");
 
-
-// <div>
-//             <div>
-//                 <div><h3>Group Name</h3></div>
-//                 <div>
-//                     <button id="delete">DELETE</button>
-//                 </div>
-//             </div>
-//     <div>
-//         <input type="text" name="" id="newsinput" placeholder="Write Your Announcement">
-//         <button id="newsbutton">SEND ANNOUNCEMENT</button>
-//     </div> 
-//     <div>
-//         <h2>Latest Announcement</h2>
-//         <p></p>
-//     </div>
+//  <div id="chatbox">
+//         <div>
+//             <h3>Paras Kamaliya</h3>
+//             <h5>Jul 10,2023</h5>
+//             <h5>11:00 AM</h5>
 //         </div>
-  setInterval(TEACH,2000)      
-async function TEACH(){
+//         <div>
+//             <p>Message</p>
+//         </div>
+//     </div>
+        
+async function TEACH111(){
     try {
-        let res= await fetch(`https://connect-api-0z76.onrender.com/groups`);
+  
+        let res= await fetch(API);
         let data=await res.json();
         console.log(data);
+        let yyy=data;
+        // NEWS(data);
+        let newsButton=document.getElementById("newsbutton");
+ let newsinput=document.getElementById("newsinput");
+
+ let GroupAPI=`https://connect-api-0z76.onrender.com/announcement`;
+newsButton.addEventListener("click",function(){
+    let obj={name:yyy.name,
+        date:new Date().toLocaleDateString(),
+    time:new Date().toLocaleTimeString(),
+    message:newsinput.value
+    }
+    fetch(GroupAPI, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(obj)
+                }).then(res => {
+                    return res.json();
+                }).then(data => {
+                    console.log(data);
+                    // NEWS(data);
+                }).catch(error => {
+                    console.log(error);
+                });
+              
+                
+                // window.location.reload();
+                TEACH();
+})
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+TEACH111();
+setInterval(TEACH,1000)
+async function TEACH(){
+ 
+    try {
+ 
+        let res= await fetch(`https://connect-api-0z76.onrender.com/announcement`);
+        let data=await res.json();
+        console.log(data);
+      
         NEWS(data);
     } catch (error) {
         console.log(error);
     }
 }
 TEACH();
-let all=document.getElementById("group00");
+
+
+let all=document.getElementById("chatarea");
 
 function NEWS(arr){
     all.innerHTML="";
     if(arr.length==0){
 let no=document.createElement("h1");
-no.innerText="There is NO Groups Present Right Now."
+no.innerText="Start The Discussion..."
 no.style.textAlign="center";
-all.append(no);
+all.append(all);
     }else{
     console.log("CHECK");
-    arr.reverse();
+arr.reverse();
     arr.forEach(function(el,ind){
 let div=document.createElement("div");
+div.setAttribute("id","chatbox");
 div.style.marginBottom="20px"
-let div1=document.createElement("div");
-let div2=document.createElement("div");
 
+let div1=document.createElement("div");
 let h3=document.createElement("h3");
 h3.innerText=el.name;
+let date=document.createElement("h5");
+date.innerText=el.date;
+let time=document.createElement("h5");
+time.innerText=el.time;
 
-div2.append(h3);
+div1.append(h3,date,time);
 
+let div2=document.createElement("div");
+let p=document.createElement("p");
+p.innerText=el.message;
+div2.append(p);
+div.append(div1,div2);
 
-div1.append(div2);
-
-
-
-
-
-let div5=document.createElement("div");
-let h2=document.createElement("h2");
-h2.innerText="Announcements :-";
-
-let ul=document.createElement("ul");
-for(let i=el.news.length-1;i>=0;i--){
-    let p=document.createElement("li");
-p.innerText=el.news[i];
-p.style.margin="20px";
-p.style.fontSize="20px"
-ul.append(p);
-}
-div5.append(h2,ul);
-div5.style.paddingBottom="30px";
-div.append(div1,div5);
 all.append(div);
     })}
 }
@@ -196,7 +230,7 @@ let LogoutBtn = document.getElementById("LogoutBtn");
             });
 
 
-            window.location.href = "/Project/Log-In/login.html";
+            window.location.href = "/index.html";
         } catch (error) {
             console.log(error);
         }

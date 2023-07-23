@@ -425,7 +425,7 @@
             password: "admin",
         }
         if (emailInputLogin.value.trim() === admin.email && passwordInputLogin.value.trim() === admin.password) {
-            return window.location.href = "/Project/Admin/admin.html"
+            return window.location.href = "/Admin-admin.html";
         }
 
         try {
@@ -447,7 +447,7 @@
                 });
 
                 alert(`Login successfully ${data[0].name}`);
-                window.location.href = "/Project/Students/Dashboard/index22.html";
+                window.location.href = "/Dashboard.html";
             } else {
                 alert("please check your password");
             }
@@ -489,7 +489,7 @@
 
                 alert(`Login successfully ${data[0].name}`)
               
-                window.location.href = "/Project/Students/Dashboard/index22.html"
+                window.location.href = "/Dashboard.html"
             } else {
                 alert("please check your password");
             }
@@ -509,4 +509,15 @@
         }
     }
     element();
+    async function element1() {
+        try {
+            let res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/users");
+            let data = await res.json();
+            console.log(data);
+        }
+        catch (error) {
+            console.log("error");
+        }
+    }
+    element1();
 </script>

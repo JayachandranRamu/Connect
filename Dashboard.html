@@ -23,19 +23,19 @@
                     </span><p><a href="#">Dashboard</a></p></div>
                     <div> <span class="material-symbols-outlined">
                         person_search
-                        </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
+                        </span><p><a href="/Search.html">Search</a></p></div>
                      <div><span class="material-symbols-outlined">
                     groups
                     </span><p><a href="" id="must">Groups</a></p></div>
                 <div><span class="material-symbols-outlined">
                     task_alt
-                    </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
+                    </span><p><a href="/Tasks.html">Tasks</a></p></div>
                     <div id="task123"><span class="material-symbols-outlined">
                         chat
-                        </span><p><a href="/Project/Students/Discussion/Discussion.html">Discussion</a></p></div>
+                        </span><p><a href="/Discussion.html">Discussion</a></p></div>
                 <div><span class="material-symbols-outlined">
                     account_circle
-                    </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
+                    </span><p><a href="/Account.html">Account</a></p></div>
             </div>
             <div>
 
@@ -207,9 +207,9 @@ todoSection.append(span,p);
 }
 let must=document.getElementById("must");
        if(current=="Students"){
-        must.href="/Project/Students/Groups/SG.html";
+        must.href="/StudentGroup.html";
        }else{
-        must.href="/Project/Manager/MG.html";
+        must.href="/Manager-Group.html";
        }
 
        let LogoutBtn = document.getElementById("LogoutBtn");
@@ -227,7 +227,7 @@ let must=document.getElementById("must");
             });
 
 
-            window.location.href = "/Project/Log-In/login.html";
+            window.location.href = "/index.html";
         } catch (error) {
             console.log(error);
         }
