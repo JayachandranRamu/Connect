@@ -30,17 +30,17 @@
                 <div><span class="material-symbols-outlined">
                     task_alt
                     </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
+                    <div id="task123"><span class="material-symbols-outlined">
+                        chat
+                        </span><p><a href="/Project/Students/Discussion/Discussion.html">Discussion</a></p></div>
                 <div><span class="material-symbols-outlined">
                     account_circle
                     </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
             </div>
             <div>
                 <div><span class="material-symbols-outlined">
-                    rate_review
-                    </span><p><a href="">Feedback</a></p></div>
-                <div><span class="material-symbols-outlined">
                     logout
-                    </span><p><a href="">Logout</a></p></div>
+                    </span><p><a href="" id="LogoutBtn">Logout</a></p></div>
             
             </div>
                     </div>
@@ -116,7 +116,9 @@
     // }
     // fetchData(url)
     let f=document.getElementById("f");
+    let id=localStorage.getItem("userid");
 let a=localStorage.getItem("current");
+console.log(a);
     let search=document.getElementById("searched");
     let select=document.getElementById("se");
     select.addEventListener("click", function () {
@@ -211,4 +213,24 @@ f.append(h2);
         must.href="/Project/Manager/MG.html";
        }
 
+       let LogoutBtn = document.getElementById("LogoutBtn");
+    LogoutBtn.addEventListener("click", async function (event) {
+        console.log("hiiii");
+        event.preventDefault();
+        let status = false;
+        try {
+            let res = await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ active: status }),
+            });
+
+
+            window.location.href = "/Project/Log-In/login.html";
+        } catch (error) {
+            console.log(error);
+        }
+    });
 </script>

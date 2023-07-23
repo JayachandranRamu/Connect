@@ -24,23 +24,23 @@
                     <div > <span class="material-symbols-outlined">
                         person_search
                         </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
-                     <div><span class="material-symbols-outlined">
+                     <div id="task123"><span class="material-symbols-outlined">
                     groups
                     </span><p><a href="" id="must">Groups</a></p></div>
-                <div id="task123"><span class="material-symbols-outlined">
+                <div ><span class="material-symbols-outlined">
                     task_alt
-                    </span><p><a href="#">Tasks</a></p></div>
+                    </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
+                    <div ><span class="material-symbols-outlined">
+                        chat
+                        </span><p><a href="/Project/Students/Discussion/Discussion.html">Discussion</a></p></div>
                 <div><span class="material-symbols-outlined">
                     account_circle
                     </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
             </div>
-            <div>
-                <div><span class="material-symbols-outlined">
-                    rate_review
-                    </span><p><a href="">Feedback</a></p></div>
+<div>
                 <div><span class="material-symbols-outlined">
                     logout
-                    </span><p><a href="">Logout</a></p></div>
+                    </span><p><a href="" id="LogoutBtn">Logout</a></p></div>
             
             </div>
                     </div>
@@ -109,13 +109,14 @@ CB.addEventListener("click",function(){
                 }).then(data => {
                     console.log(data);
                     // NEWS(data);
+                    TEACH();
                 }).catch(error => {
                     console.log(error);
                 });
               
                 
                 // window.location.reload();
-                TEACH();
+           
 })
 
  let newsButton=document.getElementById("newsbutton");
@@ -140,6 +141,7 @@ CB.addEventListener("click",function(){
 //         </div>
         
 async function TEACH(){
+    console.log("HHH")
     try {
         let res= await fetch(`https://connect-api-0z76.onrender.com/groups`);
         let data=await res.json();
@@ -176,6 +178,29 @@ deleteN.setAttribute("id","delete");
 deleteN.innerText="DELETE";
 deleteN.style.color="white";
 div3.append(deleteN);
+deleteN.addEventListener("click",function(){
+    async function D(){
+        try {
+        let res= await fetch(`https://connect-api-0z76.onrender.com/groups/${el.id}`);
+        let data=await res.json();
+        console.log(data);
+  
+        fetch(`https://connect-api-0z76.onrender.com/groups/${el.id}`, {
+                    method: 'DELETE',
+                }).then(res => {
+                    return res.json();
+                }).then(data => {
+                    console.log(data);
+                    TEACH();
+                }).catch(error => {
+                    console.log(error);
+                });
+    } catch (error) {
+        console.log(error);
+    }
+    }
+    D()
+})
 div1.append(div2,div3);
 let newsinput=document.createElement("input");
 newsinput.setAttribute("id","newsinput");
@@ -202,7 +227,7 @@ newsbutton.addEventListener("click",function(){
                     return res.json();
                 }).then(data => {
                     console.log(data);
-                    NEWS(data);
+                    TEACH();
                 }).catch(error => {
                     console.log(error);
                 });
@@ -211,6 +236,7 @@ newsbutton.addEventListener("click",function(){
     }
 }
 TEACH22();
+
 
 })
 
@@ -242,5 +268,24 @@ let must=document.getElementById("must");
        }else{
         must.href="/Project/Manager/MG.html";
        }
+       let LogoutBtn = document.getElementById("LogoutBtn");
+    LogoutBtn.addEventListener("click", async function (event) {
+        console.log("hiiii");
+        event.preventDefault();
+        let status = false;
+        try {
+            let res = await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ active: status }),
+            });
 
+
+            window.location.href = "/Project/Log-In/login.html";
+        } catch (error) {
+            console.log(error);
+        }
+    });
 </script>

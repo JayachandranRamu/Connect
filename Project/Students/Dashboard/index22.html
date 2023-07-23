@@ -30,17 +30,18 @@
                 <div><span class="material-symbols-outlined">
                     task_alt
                     </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
+                    <div id="task123"><span class="material-symbols-outlined">
+                        chat
+                        </span><p><a href="/Project/Students/Discussion/Discussion.html">Discussion</a></p></div>
                 <div><span class="material-symbols-outlined">
                     account_circle
                     </span><p><a href="/Project/Students/Account/Acc.html">Account</a></p></div>
             </div>
             <div>
-                <div><span class="material-symbols-outlined">
-                    rate_review
-                    </span><p><a href="">Feedback</a></p></div>
+
                 <div><span class="material-symbols-outlined">
                     logout
-                    </span><p><a href="">Logout</a></p></div>
+                    </span><p><a href="" id="LogoutBtn">Logout</a></p></div>
             
             </div>
                     </div>
@@ -73,7 +74,7 @@
                 <td><span class="material-symbols-outlined">
                     target
                     </span></td>
-                <td id="active_count00">JayaChandran Ramu</td>
+                <td id="active_count00">-</td>
             </tr>
         </table>
     </div>
@@ -93,15 +94,7 @@
             </tr>
         </table> -->
     </div>
-    <div id="g">
-        <h2>Groups</h2>
-        <div>
-            Masai Speaking Club
-        </div>
-        <div>
-            Masai Speaking Club
-        </div>
-    </div>
+
     </div>
         </div>
     </div>
@@ -169,6 +162,7 @@ todoSection.append(span,p);
     }else{
         let table=document.createElement("table");
         arr.map(function (el,ind){
+            if(ind<5){
         let tr=document.createElement("tr");
         let td1=document.createElement("td");
         let td2=document.createElement("td");
@@ -180,7 +174,7 @@ todoSection.append(span,p);
     tr.append(td1,td2);
     table.append(tr);
     todoSection.append(table);
-    })
+     } })
     }
 
     const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
@@ -218,4 +212,24 @@ let must=document.getElementById("must");
         must.href="/Project/Manager/MG.html";
        }
 
+       let LogoutBtn = document.getElementById("LogoutBtn");
+    LogoutBtn.addEventListener("click", async function (event) {
+        console.log("hiiii");
+        event.preventDefault();
+        let status = false;
+        try {
+            let res = await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/${current}/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ active: status }),
+            });
+
+
+            window.location.href = "/Project/Log-In/login.html";
+        } catch (error) {
+            console.log(error);
+        }
+    });
 </script>

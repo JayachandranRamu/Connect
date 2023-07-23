@@ -129,132 +129,62 @@ margin: 5px;
     font-weight: 600;
 }
 
-#t h2{
-    text-align: left;
-    font-weight: 500;
-    font-size: 22px;
-    margin: 20px 32px;
-    margin-bottom: 10px;
-}
 
+
+
+#chatarea::-webkit-scrollbar{
+    display: none;
+  }
+
+#newsinput{
+    width: 70%;
+    padding: 15px;
+    margin-left: 32px;
+    border-radius: 10px;
+}
+#newsbutton{
+    width: 21%;
+    margin: auto;
+    margin: 20px 10px;
+    padding: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+appearance: none;
+}
+#group00  >#chatarea{
+ 
+    height: 62vh;
+    border: 2px solid #D9D9D9;
+    overflow:auto;
+border-radius: 20px;
+    width: 95%;
+display: flex;
+flex-direction: column-reverse;
+
+    margin: auto;
+    margin-top: 20px;
+}
+#chatbox div:first-child{
+    display: flex;
+    height: 80px;
+justify-content: space-between;
+flex-direction: column;
+}
+#chatbox{
+    border-radius: 20px;
+    margin: auto;
+    width: 1100px;
+    margin: 10px auto;
+    padding: 20px;
+    border: 2px solid #D9D9D9;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 #task123 {
     background-color: white;
     border:  2px solid #D9D9D9; 
     border-right: none;
-}
-#t{
-    width: 100%;
-    display: flex;
-}
-#t1,#t2{
-    text-align: center;
-    width: 50%;
-}
-#t1{
-    border-right: 2px solid #D9D9D9;;
-}
-
-/* alka */
-#wrapper > input{
-    width: 400px;
-    margin: 20px;
-    padding: 15px;
-    margin-left: 30px;
-    border-radius: 10px;
-  
-}
-#wrapper > button{
-      color: white;
-      background-color: #120439;
-        width: 100px;
-    margin: 20px;
-    padding: 15px;
-    margin-left: 0px;
-    border-radius: 10px;
-}
-#pending-tasks{
-    font-size: 17px;
-}
-
-/* Add the following CSS styles for the "Tasks" section */
-
-#t {
-    display: flex;
-    justify-content: space-between;
     
-  }
-  
-  #t1,
-  #t2 {
-    width: 48%;
-  }
-  
-  #t1,
-  #t2 {
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid gray;
-  }
-  
-  #t1 h2,
-  #t2 h2 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .container {
-    margin-top: 10px;
-  }
-  
-  #wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  #input-task {
-    flex: 1;
-    padding: 5px;
-  }
-  
-  #add-btn {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  #add-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  table td {
-    padding: 5px;
-   border:1px solid gray;
-  }
-  
-  #tasks {
-    margin-top: 20px;
-  }
-  
-  #completed-tasks {
-    margin-top: 20px;
-  }
-  
-  
-  #todoSpan {
-    font-size: 24px;
-    margin-right: 5px;
-  }
-  
-  
-  #todoP {
-    margin: 0;
-    color: #777;
-  }
-  
+}
