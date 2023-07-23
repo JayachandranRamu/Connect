@@ -48,11 +48,13 @@
         <div id="right">
     <div id="r1">
         <div>
-<img src="/Project/Images/fast-forward.png" alt="" id="slide">
+            <span class="material-symbols-outlined" id="slide" class="icon">
+                keyboard_double_arrow_right
+            </span>
         </div>
         <div>
     
-            <img src="/Project/Images/alarm.png" alt="">
+            <img src="/Project/Images/dark theme icon/moon.png" alt="" id="darkmode_btn" class="icon">
 <img src="/Project/Images/man.png" alt="" id="profile">
         </div>
     </div>
@@ -133,7 +135,7 @@ function NEWS(arr){
     all.innerHTML="";
     if(arr.length==0){
 let no=document.createElement("h1");
-no.innerText="There is NO Groups Present Right Now."
+no.innerText="There is No groups present right now."
 no.style.textAlign="center";
 all.append(no);
     }else{

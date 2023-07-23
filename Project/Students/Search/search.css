@@ -270,6 +270,7 @@ tbody {
 }
 
 tr th {
+    font-weight: 400;
     width: 3%;
 }
 
