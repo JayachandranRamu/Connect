@@ -219,3 +219,59 @@ flex-direction: column;
 div p{
     color: var(--regular-font-color);
 }
+@media screen and (min-width: 500px) and (max-width: 1110px) {
+
+    /* #D-MainSection {
+        flex-direction: column;
+       
+    } */
+    #main {
+        flex-direction: column;
+        /* align-items: center; */
+    }
+    #left{
+        display: block;
+        text-align: center;
+        height: 600px;
+        width: 100%;
+    }
+
+#right{
+    width: 100%;
+    height: 100vh;
+}
+#newsbutton{
+    width: 200px;
+     }
+     #newsinput{
+        width: 500px;
+     }
+     #chatbox{
+        width: 90%;
+     }
+}
+@media screen and (max-width: 768px) {
+    #main {
+        flex-direction: column;
+        /* align-items: center; */
+    }
+    #left{
+        display: block;
+        text-align: center;
+        height: 600px;
+        width: 100%;
+    }
+    #right{
+        width: 100%;
+        height: 100vh;
+    }
+ #newsbutton{
+width: 100px;
+ }
+ #newsinput{
+    width: 180px;
+ }
+ #chatbox{
+    width: 80%;
+ }
+}
