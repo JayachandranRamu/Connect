@@ -137,6 +137,7 @@ div>p {
 /* Venkatesh */
 .account-setting {
     margin: 30px;
+   
     display: flex;
     justify-content: space-around;
     gap: 50px;
@@ -249,7 +250,12 @@ color: black;
 .account-setting .update-buttons button:nth-child(2) {
     background-color: red;
 }
-
+#task123 {
+    background-color: white;
+    border:  2px solid #D9D9D9; 
+    border-right: none;
+    
+}
 
 
 

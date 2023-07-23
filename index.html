@@ -27,17 +27,21 @@
 
         ::selection {
             background: #1A75FF;
+            background-color: #6e72fc;
+background-image: linear-gradient(315deg, #6e72fc 0%, #ad1deb 74%);
             color: #fff;
         }
 
         .wrapper {
-            margin-top: 100px;
+            margin-top: 20px;
             overflow: hidden;
+            height: 660px;
             max-width: 390px;
             background: #ffffff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.1);
+        
         }
 
         .wrapper .title-text {
@@ -89,7 +93,9 @@
             left: 0;
             z-index: 0;
             border-radius: 15px;
-            background: -webkit-linear-gradient(left, #003366, #004080, #0059B3, #0073E6);
+
+background-color: #6e72fc;
+background-image: linear-gradient(315deg, #6e72fc 0%, #ad1deb 74%);
             transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
@@ -155,7 +161,9 @@
         }
 
         .form-inner form .field input:focus {
-            border-color: #1A75FF;
+        
+            border-color: #6e72fc;
+
             /* box-shadow: inset 0 0 3px #FB6AAE; */
         }
 
@@ -165,7 +173,9 @@
         }
 
         form .field input:focus::placeholder {
-            color: #1A75FF;
+         
+            color: #6e72fc;
+
         }
 
         .form-inner form .pass-link {
@@ -179,7 +189,9 @@
 
         .form-inner form .pass-link a,
         .form-inner form .signup-link a {
-            color: #1A75FF;
+        
+           color: #6e72fc;
+
             text-decoration: none;
         }
 
@@ -201,7 +213,9 @@
             width: 300%;
             position: absolute;
             left: -100%;
-            background: -webkit-linear-gradient(right, #003366, #004080, #0059B3, #0073E6);
+        
+            background-color: #6e72fc;
+background-image: linear-gradient(315deg, #6e72fc 0%, #ad1deb 74%);
             border-radius: 15px;
             transition: all 0.4s ease;
             ;
@@ -225,6 +239,9 @@
             font-weight: 500;
             cursor: pointer;
         }
+        #I0{
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -232,6 +249,7 @@
 
 
     <div class="wrapper">
+        <img src="/Project/Images/Logo.png" alt="" id="I0">
         <div class="title-text">
             <div class="title login">Login Form</div>
             <div class="title signup">Signup Form</div>
@@ -257,7 +275,7 @@
                         <div class="btn-layer"></div>
                         <input type="submit" value="Login" id="loginbtn">
                     </div>
-                    <div class="signup-link">Not a member? <a href="">Signup now</a></div>
+                    <div class="signup-link">Not a member?  <a href="">Signup now</a></div>
                 </form>
                 <form action="#" class="signup">
                     <div class="field">
@@ -277,7 +295,7 @@
 
                     </div>
                     <div class="field" id="otpbtnDiv" style="display: none;">
-                        <button class="btn field otpbtnfinal" id="otp-btn">Verify</button>
+                        <button class="btn field otpbtnfinal" id="otp-btn">VERIFY</button>
                     </div>
 
                     <div class="field btn" id="btnsignupdiv">
@@ -317,6 +335,11 @@
     function verifyOTP(otp_val) {
         const otp_inp = document.getElementById('otp_inp');
         const otp_btn = document.getElementById('otp-btn');
+        otp_btn.style.backgroundColor="#6e72fc";
+                                    otp_btn.style.backgroundImage="linear-gradient(315deg, #6e72fc 0%, #ad1deb 74%)"
+                                    otp_btn.style.border="none";
+                                    otp_btn.style.color="white";
+                                    otp_btn.style.fontSize="20px";
         otp_btn.addEventListener('click', () => {
             if (otp_inp.value == otp_val) {
                 alert("Email address verified...");
@@ -363,6 +386,7 @@
                                     otpinpDiv.style.display = "block";
                                     verifyOTP(otp_val);
                                     btnsignupdiv.style.display = "none";
+                                  
                                 }
                             }
                         );
@@ -448,7 +472,7 @@
                 alert(`Login successfully ${data[0].name}`);
                 window.location.href = "/Dashboard.html";
             } else {
-                alert("please check your password");
+                alert("Kindly Check Your Password");
             }
         } catch (error) {
             userLogin();
@@ -490,11 +514,11 @@
 
                 window.location.href = "/Dashboard.html"
             } else {
-                alert("please check your password");
+                alert("Kindly Check Your Password.");
             }
         } catch (error) {
             console.log(error);
-            alert("Please check your credential...");
+            alert("Kindly Check Your Credential...");
         }
     }
 </script>

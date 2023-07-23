@@ -155,7 +155,7 @@ appearance: none;
 #group00  >#chatarea{
  
     height: 62vh;
-    border: 2px solid #D9D9D9;
+    /* border: 2px solid #D9D9D9; */
     overflow:auto;
 border-radius: 20px;
     width: 95%;

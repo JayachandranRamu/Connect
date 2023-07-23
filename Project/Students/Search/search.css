@@ -240,6 +240,7 @@ div input{
     padding: 15px;
     margin-left: 30px;
     border-radius: 10px;
+    text-transform: capitalize;
 }
 div #se{
     width: 200px;

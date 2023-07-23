@@ -144,13 +144,17 @@ margin: 5px;
 }
 #t{
     width: 100%;
+    margin-top: -20px;
     display: flex;
+    margin-bottom: -10px;
 }
 #t1,#t2{
     text-align: center;
     width: 50%;
 }
 #t1{
+  height: 78vh;
+
     border-right: 2px solid #D9D9D9;;
 }
 
@@ -165,7 +169,7 @@ margin: 5px;
 }
 #wrapper > button{
       color: white;
-      background-color: #120439;
+      background-color: #000000;
         width: 100px;
     margin: 20px;
     padding: 15px;
@@ -193,7 +197,7 @@ margin: 5px;
   #t2 {
     margin: 20px;
     padding: 10px;
-    border: 1px solid gray;
+ 
   }
   
   #t1 h2,
@@ -219,14 +223,16 @@ margin: 5px;
   
   #add-btn {
     padding: 5px 10px;
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
     border: none;
     cursor: pointer;
   }
   
   #add-btn:hover {
-    background-color: #0056b3;
+    background-color: #7f53ac;
+    background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+  
   }
   
   table {
@@ -235,7 +241,7 @@ margin: 5px;
   
   table td {
     padding: 5px;
-   border:1px solid gray;
+ 
   }
   
   #tasks {
