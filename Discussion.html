@@ -186,7 +186,13 @@ function NEWS(arr){
     all.innerHTML="";
     if(arr.length==0){
 let no=document.createElement("h1");
-no.innerText="Start The Discussion..."
+no.innerText=`START
+THE
+DISCUSSION`;
+no.style.display="flex";
+no.style.justifyContent="center"
+no.style.alignItems="center"
+no.style.height="500px"
 no.style.textAlign="center";
 all.append(no);
     }else{
