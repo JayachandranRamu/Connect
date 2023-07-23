@@ -29,18 +29,19 @@
                         </span><p><a href="/Project/Students/Search/search.html">Search</a></p></div>
                      <div><span class="material-symbols-outlined">
                     groups
-                    </span><p><a href="" id="must">Groups</a></p></div>
+                    </span><p><a href="#" id="must">Groups</a></p></div>
                 <div ><span class="material-symbols-outlined">
                     task_alt
                     </span><p><a href="/Project/Students/Tasks/Tasks.html">Tasks</a></p></div>
+                    <div ><span class="material-symbols-outlined">
+                        chat
+                        </span><p><a href="/Project/Students/Discussion/Discussion.html">Discussion</a></p></div>
                 <div id="task123"><span class="material-symbols-outlined">
                     account_circle
                     </span><p><a href="#">Account</a></p></div>
             </div>
             <div>
-                <div><span class="material-symbols-outlined">
-                    rate_review
-                    </span><p><a href="">Feedback</a></p></div>
+ 
                 <div><span class="material-symbols-outlined">
                     logout
                     </span><p><a href="" id="LogoutBtn">Logout</a></p></div>
@@ -148,7 +149,13 @@
 
     let a=localStorage.getItem('current')
     let id=localStorage.getItem('userid')
-
+    
+    let must=document.getElementById("must");
+       if(a=="Students"){
+        must.href="/Project/Students/Groups/SG.html";
+       }else{
+        must.href="/Project/Manager/MG.html";
+       }
     async function fetchData(){
         try{
             let api = await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/${a}/${id}`)
@@ -245,12 +252,7 @@
     // update-option -------------------------------
 
 
-    let must=document.getElementById("must");
-       if(a=="Students"){
-        must.href="/Project/Students/Groups/SG.html";
-       }else{
-        must.href="/Project/Manager/MG.html";
-       }
+  
 
 
     
