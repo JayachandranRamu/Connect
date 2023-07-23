@@ -49,7 +49,7 @@
             </div>
             <div>
                 <div></div>
-                <div>
+                <div id="logout">
                     <span class="material-symbols-outlined">
                         logout
                     </span>
@@ -275,10 +275,13 @@
         window.location.href = "/Admin-search.html";
     })
     document.getElementById("students").addEventListener("click", function () {
-        window.location.href = "/Admin-student.html";
+        window.location.href = "/Admin-students.html";
     })
     document.getElementById("employee").addEventListener("click", function () {
         window.location.href = "/Admin-employee.html";
+    })
+    document.getElementById("logout").addEventListener("click",function(){
+        window.location.href = "/index.html"
     })
 </script>
 

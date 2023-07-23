@@ -111,6 +111,7 @@ div>p {
 #right {
     background-color: var(--main-background-color);
     width: 82%;
+    height: 100vh;
 }
 
 #r1 div:first-child {
@@ -390,18 +391,12 @@ td:nth-child(2) {
         display: flex;
     }
 
-    /* #left {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100vh;
-        background-color: var(--slidebar-color);
-        width: 18%;
-        border-right: 2px solid #DEDEDE;
-    } */
+    #left {
+        width: 20%;
+    }
 
     #right {
-        width: 82%;
+        width: 80%;
     }
 
     #r1 {

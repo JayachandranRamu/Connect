@@ -50,7 +50,7 @@
             </div>
             <div>
                 <div></div>
-                <div>
+                <div id="logout">
                     <span class="material-symbols-outlined">
                         logout
                     </span>
@@ -73,7 +73,7 @@
             </div>
             <div>
                 <p class="head">Dashboard</p>
-                <a href="Admin-add.html">
+                <a href="/Admin-add.html">
                     <button>Add an Employee/Student</button>
                 </a>
             </div>
@@ -103,21 +103,8 @@
                     </div>
                 </div>
             </div>
-            <div class="bottom_sec">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>ID</th>
-                            <th>Message</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody id="body">
-                        <!-- Append data here -->
-                    </tbody>
-                </table>
+            <div class="bottom_div">
+                
             </div>
         </div>
     </div>
@@ -175,10 +162,13 @@
         window.location.href = "/Admin-search.html";
     })
     document.getElementById("students").addEventListener("click", function () {
-        window.location.href = "/Admin-student.html";
+        window.location.href = "/Admin-students.html";
     })
     document.getElementById("employee").addEventListener("click", function () {
         window.location.href = "/Admin-employee.html";
+    })
+    document.getElementById("logout").addEventListener("click",function(){
+        window.location.href = "/index.html"
     })
 
     const url2 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students/1');
@@ -186,6 +176,10 @@
     fetch(url2)
         .then(res => res.json())
         .then(data => latest.innerText = data.lastname)
+
+    if (localStorage.getItem("darkmode")===null){
+        localStorage.setItem("darkmode","false");
+    }
 
     function enableDarkMode() {
         document.body.classList.add("dark-mode");
@@ -225,23 +219,7 @@
     });
 
     toggleDarkMode();
-
-
-    let tablebody = document.getElementById("body")
-    let announcementArr = [];
-    function announcement() {
-        fetch(`https://connect-api-0z76.onrender.com/announcement`)
-            .then(res => res.json())
-            .then(data => displaytable(data))
-    }
-
-    console.log(announcementArr)
-    function displaytable(data){
-        tablebody.innerHTML = "";
-        data.forEach(function(item){
-             
-        })
-    }
+    
 </script>
 
 </html>
