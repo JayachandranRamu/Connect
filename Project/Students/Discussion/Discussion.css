@@ -7,7 +7,20 @@
 #main{
 display: flex;
 }
-
+:root{
+    --slidebar-background-color:#F5F5F5;
+    --regular-font-color:black;
+    --main-background-color: #FFFFFF;
+    --logo-background-color:#F5F5F5;
+    --button-color:white;
+}
+.dark-mode{
+    --slidebar-background-color:#242526;
+    --regular-font-color:#ffffff;
+    --main-background-color: #18191A;
+    --logo-background-color:#F5F5F5;
+    --button-color:black;
+}
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -21,20 +34,26 @@ display: flex;
 flex-direction: column;
 justify-content:space-between;
 height: 100vh;
-    background-color: #F5F5F5;
+background-color: var(--slidebar-background-color);
     width: 18%;
     border-right: 2px solid #DEDEDE;
 
 }
-
+#task123>span:nth-child(1){
+    color: black;
+  }
+  #task123>p>a{
+    color: black;
+  }
 
 #left span{
     width: 6%;
     margin: 10px;
     margin-right: 05px;
     padding-left: 40px;
+    color: var(--regular-font-color);
 }
-div  #logo{
+div #logo{
 
     margin-top: 30px;
     padding: 0; 
@@ -53,7 +72,7 @@ div > p{
 }
 #left a{
     text-decoration: none;
-    color: black;
+    color: var(--regular-font-color);
 }
 #left >div>div:hover a{
     font-size: 16px;
@@ -76,7 +95,7 @@ div > p{
     border: none;
 }
 #right{
-    background-color: #FFFFFF;
+    background-color: var(--main-background-color);
     width: 86%;
 }
 
@@ -119,7 +138,7 @@ margin-left: 15px;
 margin: 5px;
     }
 #right>div:nth-child(2){
-   
+    color: var(--regular-font-color);
     padding: 20px;
     border-top:  2px solid #D9D9D9;
     border-bottom:  2px solid #D9D9D9;
@@ -147,10 +166,13 @@ margin: 5px;
     margin: auto;
     margin: 20px 10px;
     padding: 15px;
-    background-color: black;
-    color: white;
+    background-color: var(--regular-font-color);
+    color: var(--button-color);
     border-radius: 10px;
 appearance: none;
+}
+#chatarea>h1{
+    color: var(--regular-font-color);
 }
 #group00  >#chatarea{
  
@@ -187,4 +209,13 @@ flex-direction: column;
     border:  2px solid #D9D9D9; 
     border-right: none;
     
+}
+#chatbox h3{
+    color: var(--regular-font-color);
+}
+#chatbox h5{
+    color: var(--regular-font-color);
+}
+div p{
+    color: var(--regular-font-color);
 }

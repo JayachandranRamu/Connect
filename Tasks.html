@@ -92,7 +92,7 @@
                         </div>
                         <div id="tasks">
                             <p id="pending-tasks">
-                                You have <span class="count-value"> 0 </span> task (s) to Complete.
+                                You have <span class="count-value"> 0 </span> task(s) to Complete.
                             </p>
                         </div>
                     </div>
@@ -113,22 +113,6 @@
 
 <script>
     
-    let visible = true;
-    let slidebtn = document.getElementById("slide");
-    let slide = document.getElementById("left");
-    slidebtn.addEventListener("click", function () {
-        if (visible == true) {
-            slide.style.display = 'none'
-            visible = false;
-            right.style.width = '100%';
-
-        }
-        else if (visible == false) {
-            slide.style.display = 'flex'
-            visible = true;
-            right.style.width = '86%';
-        }
-    })
     let current = localStorage.getItem("current");
     let id = localStorage.getItem("userid");
     document.addEventListener("DOMContentLoaded", function () {
@@ -275,5 +259,63 @@
             console.log(error);
         }
     });
+    let visible = true;
+    let slidebtn = document.getElementById("slide");
+    let slide = document.getElementById("left");
+    slidebtn.addEventListener("click", function () {
+        if (visible == true) {
+            slide.style.display = 'none'
+            visible = false;
+            right.style.width = '100%';
 
+        }
+        else if (visible == false) {
+            slide.style.display = 'flex'
+            visible = true;
+            right.style.width = '86%';
+        }
+    })
+    // Dark Mode
+    if (localStorage.getItem("darkmode") === null) {
+        localStorage.setItem("darkmode", "false");
+    }
+
+    function enableDarkMode() {
+        document.body.classList.add("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/sun.png";
+        slideBtn.style.color = "white";
+    }
+
+
+    function disableDarkMode() {
+        document.body.classList.remove("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/moon.png";
+        slideBtn.style.color = "black";
+    }
+
+
+    function toggleDarkMode() {
+        if (localStorage.getItem("darkmode") === "true") {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+    }
+
+    document.getElementById("darkmode_btn").addEventListener("click", function () {
+        if (localStorage.getItem("darkmode") === "false") {
+            localStorage.setItem("darkmode", "true")
+            enableDarkMode();
+        } else if (localStorage.getItem("darkmode") === "true") {
+            localStorage.setItem("darkmode", "false")
+            disableDarkMode();
+        }
+        toggleDarkMode();
+    });
+
+    toggleDarkMode();
 </script>

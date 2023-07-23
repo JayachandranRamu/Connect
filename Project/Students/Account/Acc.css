@@ -6,19 +6,19 @@
 #main {
     display: flex;
 }
-:root {
-    --slidebar-background-color: #F5F5F5;
-    --slidebar-font-color: black;
+:root{
+    --slidebar-background-color:#F5F5F5;
+    --regular-font-color:black;
     --main-background-color: #FFFFFF;
-    --regular-font-color: black;
-    --button-inner-text: white;
+    --logo-background-color:#F5F5F5;
+    --button-color:white;
 }
-.dark-mode {
-    --slidebar-background-color: #18191A;
-    --slidebar-font-color: #FFFFFF;
-    --main-background-color: #242526;
-    --regular-font-color: #FFFFFF;
-    --button-inner-text: black;
+.dark-mode{
+    --slidebar-background-color:#242526;
+    --regular-font-color:#ffffff;
+    --main-background-color: #18191A;
+    --logo-background-color:#F5F5F5;
+    --button-color:black;
 }
 .material-symbols-outlined {
     font-variation-settings:
@@ -32,7 +32,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    background-color: #F5F5F5;
+    background-color: var(--slidebar-background-color);
     width: 18%;
     border-right: 2px solid #DEDEDE;
 }
@@ -41,7 +41,7 @@
     margin: 10px;
     margin-right: 05px;
     padding-left: 40px;
-    color: var(--slidebar-font-color);
+    color: var(--regular-font-color);
 }
 div #logo {
     margin-top: 30px;
@@ -61,7 +61,7 @@ div>p {
 }
 #left a {
     text-decoration: none;
-    color: var(--slidebar-font-color);
+    color: var(--regular-font-color);
 }
 #left>div>div:hover a {
     font-size: 16px;
@@ -133,7 +133,17 @@ div>p {
     font-size: 30px;
     font-weight: 600;
 }
-
+#task123>span{
+    color: black;
+  }
+  #task123>p>a{
+    color: black;
+  }
+  #task123 {
+    background-color: white;
+    border:  2px solid #D9D9D9; 
+    border-right: none;
+}
 /* Venkatesh */
 .account-setting {
     margin: 30px;
@@ -174,11 +184,13 @@ div>p {
 }
 .account-setting .details .details-info {
     display: flex;
+    color: var(--regular-font-color);
     align-items: center;
 }
 .account-setting .details-info label {
     font-size: 20px;
     font-weight: bolder;
+    color: var(--regular-font-color);
 }
 .account-setting .details-info p {
     font-size: 18px;
@@ -196,6 +208,7 @@ button {
     border: none;
     border-radius: 15px;
     color: white;
+    border: 1px solid var(--regular-font-color);
     font-size: 15px;
     margin-left: 300px;
 }
@@ -223,7 +236,7 @@ button {
 .account-setting .update p{
     
 margin-left: 60px;
-color: black;
+color: var(--regular-font-color);
     border-radius: 10px;
     font-size: 15px;
     padding: 0;
@@ -246,9 +259,12 @@ color: black;
 }
 .account-setting .update-buttons button:nth-child(1) {
     background-color: green;
+    border: 1px solid var(--regular-font-color);
 }
 .account-setting .update-buttons button:nth-child(2) {
     background-color: red;
+    border: 1px solid var(--regular-font-color);
+
 }
 #task123 {
     background-color: white;

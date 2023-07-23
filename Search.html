@@ -236,4 +236,47 @@ f.append(h2);
             console.log(error);
         }
     });
+    // Dark Mode
+    if (localStorage.getItem("darkmode") === null) {
+        localStorage.setItem("darkmode", "false");
+    }
+
+    function enableDarkMode() {
+        document.body.classList.add("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/sun.png";
+        slideBtn.style.color = "white";
+    }
+
+
+    function disableDarkMode() {
+        document.body.classList.remove("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/moon.png";
+        slideBtn.style.color = "black";
+    }
+
+
+    function toggleDarkMode() {
+        if (localStorage.getItem("darkmode") === "true") {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+    }
+
+    document.getElementById("darkmode_btn").addEventListener("click", function () {
+        if (localStorage.getItem("darkmode") === "false") {
+            localStorage.setItem("darkmode", "true")
+            enableDarkMode();
+        } else if (localStorage.getItem("darkmode") === "true") {
+            localStorage.setItem("darkmode", "false")
+            disableDarkMode();
+        }
+        toggleDarkMode();
+    });
+
+    toggleDarkMode();
 </script>

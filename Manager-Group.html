@@ -65,11 +65,13 @@
         <div id="right">
             <div id="r1">
                 <div>
-                    <img src="/Project/Images/fast-forward.png" alt="" id="slide">
+                    <span class="material-symbols-outlined" id="slide" class="icon">
+                        keyboard_double_arrow_right
+                    </span>
                 </div>
                 <div>
 
-                    <img src="/Project/Images/alarm.png" alt="">
+                    <img src="/Project/Images/dark theme icon/moon.png" alt="" id="darkmode_btn" class="icon">
                     <img src="/Project/Images/man.png" alt="" id="profile">
                 </div>
             </div>
@@ -305,4 +307,46 @@
             console.log(error);
         }
     });
+    if (localStorage.getItem("darkmode")===null){
+        localStorage.setItem("darkmode","false");
+    }
+
+    function enableDarkMode() {
+        document.body.classList.add("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/sun.png";
+        slideBtn.style.color = "white";
+    }
+
+
+    function disableDarkMode() {
+        document.body.classList.remove("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/moon.png";
+        slideBtn.style.color = "black";
+    }
+
+
+    function toggleDarkMode() {
+        if (localStorage.getItem("darkmode") === "true") {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+    }
+
+    document.getElementById("darkmode_btn").addEventListener("click", function () {
+        if (localStorage.getItem("darkmode") === "false") {
+            localStorage.setItem("darkmode", "true")
+            enableDarkMode();
+        } else if (localStorage.getItem("darkmode") === "true") {
+            localStorage.setItem("darkmode", "false")
+            disableDarkMode();
+        }
+        toggleDarkMode();
+    });
+
+    toggleDarkMode();
 </script>

@@ -53,14 +53,14 @@
 }
 
 div #logo {
-    background-color: var(--logo-background-color);
+    
     margin-top: 30px;
     padding: 0;
     text-align: center;
     width: 60%;
     margin-left: 40px;
     margin-bottom: 20px;
-    border-radius: 15px;
+    
 }
 
 div>p {
@@ -79,9 +79,13 @@ div>p {
         border:  2px solid #D9D9D9; 
         border-right: none;
     
-    
 }
-
+#search>span:first-child{
+    color: black;
+}
+#search>p{
+    color: black;
+}
 #left>div>div:hover p {
     font-size: 16px;
     font-weight: 500;
@@ -163,7 +167,7 @@ div>p {
 }
 
 #right div:nth-child(2)>p{
-    font-size: 23px;
+    font-size: 27px;
     font-weight: 600;
     color: var(--secondary-color);
 }
@@ -203,8 +207,8 @@ margin-left: 20px;
 
 #searchbtn{
     padding: 1%;
-    background-color: #000000;
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--main-background-color);
     border-radius: 10px;
     width:120px;
     margin: 0 20px;
@@ -245,7 +249,7 @@ margin-left: 20px;
     justify-content: center;
     text-align: center;
     border-radius: 15px;
-    border-color: #722ED1;
+    border-color: black;
     background-color: var(--card-color);
 }
 
@@ -275,18 +279,21 @@ margin-left: 20px;
     justify-content: center;
     text-align: center;
     border-radius: 15px;
-    border-color: #722ED1;
+    border-color: black;
     /* padding: ; */
 }
 
 .editdiv input{
     padding: 2%;
+    margin-top: 3%;
+    margin-bottom: 3%;
     margin-bottom: 1%;
 }
 
 .editdiv button{
     padding: 2%;
-    background-color: yellow;
+    color: white;
+    background-color: black;
 }
 
 @media screen and (max-width: 768px) {

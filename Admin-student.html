@@ -78,13 +78,12 @@
                     <thead>
                         <tr>
                             <th class="same">ID</th>
-                            <th class="same">Name</th>
-                            <th class="same">Email</th>
-                            <th class="same">Student Code</th>
-                            <th class="same">Batch</th>
-                            <th class="same">Status</th>
-                            <th class="same">Password</th>
-                            <th class="delete" class="same">Delete</th>
+                            <th class="same">NAME</th>
+                            <th class="same">EMAIL</th>
+                            <th class="same">STUDENT CODE</th>
+                            <th class="same">STATUS</th>
+                            <th class="same">PASSWORD</th>
+                            <th class="delete" class="same">DELETE</th>
                         </tr>
                     </thead>
                     <tbody id="body">
@@ -189,11 +188,11 @@
             let status = document.createElement("td");
             if (item.active == true) {
                 status.style.color = "green";
-                status.innerText = "Active";
+                status.innerText = "ACTIVE";
             }
             else {
                 status.style.color = "red";
-                status.innerText = "Inactive";
+                status.innerText = "INACTIVE";
             }
 
             let Password = document.createElement("td");
@@ -218,7 +217,7 @@
                     })
                     .catch(err => { console.log(err) });
             })
-            row.append(id, name, email, studentcode, batch, status, Password, Delete);
+            row.append(id, name, email, studentcode, status, Password, Delete);
             cont.append(row);
         })
     }
@@ -275,7 +274,7 @@
         window.location.href = "/Admin-search.html";
     })
     document.getElementById("students").addEventListener("click", function () {
-        window.location.href = "#";
+        window.location.href = "/Admin-student.html";
     })
     document.getElementById("employee").addEventListener("click", function () {
         window.location.href = "/Admin-employee.html";
