@@ -252,7 +252,7 @@
                     <div class="field">
                         <input type="password" placeholder="Password" required>
                     </div>
-                
+
                     <div class="field btn">
                         <div class="btn-layer"></div>
                         <input type="submit" value="Login" id="loginbtn">
@@ -313,6 +313,7 @@
 
     //Note: Do not change anything in below code
 
+
     function verifyOTP(otp_val) {
         const otp_inp = document.getElementById('otp_inp');
         const otp_btn = document.getElementById('otp-btn');
@@ -320,19 +321,17 @@
             if (otp_inp.value == otp_val) {
                 alert("Email address verified...");
                 addUserData();
+                window.location.reload();
             }
             else {
                 alert("Invalid OTP");
             }
         })
     }
-
-
     const btnsignupdiv = document.getElementById("btnsignupdiv");
     const btnsignup = document.getElementById("btnsignup");
-   
+
     btnsignup.addEventListener("click", function (event) {
-        event.preventDefault();
         const emailInput = document.querySelector("form.signup input[type='text'][placeholder='Email Address']");
         const nameInput = document.querySelector("form.signup input[type='text'][placeholder='Name']");
         const passwordInput = document.querySelector("form.signup input[type='password'][placeholder='Create Password']");
@@ -380,7 +379,6 @@
             const nameInput = document.querySelector("form.signup input[type='text'][placeholder='Name']");
             const passwordInput = document.querySelector("form.signup input[type='password'][placeholder='Create Password']");
             const student_code_prefix = "fw27_";
-
             const response = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students");
             const data = await response.json();
 
@@ -397,7 +395,7 @@
                 email: emailInput.value.trim(),
                 password: passwordInput.value.trim(),
                 active: true,
-                todo:[],
+                todo: [],
             };
 
             const res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students", {
@@ -415,6 +413,7 @@
     }
 
     let loginbtn = document.getElementById("loginbtn");
+
     loginbtn.addEventListener("click", async function (event) {
         event.preventDefault();
         const emailInputLogin = document.querySelector("form.login input[type='text'][placeholder='Email Address']");
@@ -476,48 +475,49 @@
                         active: true
                     })
                 });
-               
+
                 await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students/1`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        lastname:data[0].name
+                        lastname: data[0].name
                     })
                 });
 
                 alert(`Login successfully ${data[0].name}`)
-              
+
                 window.location.href = "/Dashboard.html"
             } else {
                 alert("please check your password");
             }
         } catch (error) {
             console.log(error);
+            alert("Please check your credential...");
         }
     }
 
-    async function element() {
-        try {
-            let res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students");
-            let data = await res.json();
-            console.log(data);
-        }
-        catch (error) {
-            console.log("error");
-        }
-    }
-    element();
-    async function element1() {
-        try {
-            let res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/users");
-            let data = await res.json();
-            console.log(data);
-        }
-        catch (error) {
-            console.log("error");
-        }
-    }
-    element1();
+    // async function element() {
+    //     try {
+    //         let res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students");
+    //         let data = await res.json();
+    //         console.log(data);
+    //     }
+    //     catch (error) {
+    //         console.log("error");
+    //     }
+    // }
+    // element();
+    // async function element1() {
+    //     try {
+    //         let res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/users");
+    //         let data = await res.json();
+    //         console.log(data);
+    //     }
+    //     catch (error) {
+    //         console.log("error");
+    //     }
+    // }
+    // element1();
 </script>
