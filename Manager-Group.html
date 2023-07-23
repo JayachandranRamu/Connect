@@ -77,7 +77,7 @@
                 <p>Groups</p>
             </div>
             <div>
-                <input type="text" placeholder="Create New Group" id="CI">
+                <input type="text" placeholder="Create New Group" id="CI" required>
                 <button id="CB">CREATE</button>
             </div>
             <div id="group00">
@@ -116,6 +116,7 @@
     let CI = document.getElementById("CI")
     let GroupAPI = `https://connect-api-0z76.onrender.com/groups`;
     CB.addEventListener("click", function () {
+        if(CI.value!=""){
         let obj = {
             name: CI.value,
             news: []
@@ -137,7 +138,7 @@
 
         // window.location.reload();
 
-    })
+   } })
 
     let newsButton = document.getElementById("newsbutton");
     let newsinput = document.getElementById("newsinput");

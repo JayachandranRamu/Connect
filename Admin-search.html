@@ -36,8 +36,8 @@
                 </div>
                 <div id="students">
                     <span class="material-symbols-outlined">
-                        diversity_2
-                    </span>
+                        groups
+                        </span>
                     <p>Students</p>
                 </div>
                 <div id="employee">
@@ -74,22 +74,22 @@
                 <p>Search</p>
             </div>
             <div id="searchdiv">
-                <label class="font">Category:</label>
+                <label class="font">Category : </label>
                 <select name="search_cate" id="search_cate">
-                    <option value="Student">Student</option>
-                    <option value="Employee">Employee</option>
+                    <option value="Student">STUDENT</option>
+                    <option value="Employee">MANAGER</option>
                 </select>
 
-                <label class="font">Search By:</label>
+                <label class="font">Search By : </label>
                 <select name="" id="search_by">
-                    <option value="name">Name</option>
-                    <option value="email">Email</option>
+                    <option value="name">NAME</option>
+                    <option value="email">EMAIL</option>
                 </select>
 
                 <label class="font">Search Query:</label>
-                <input type="text" placeholder="Enter the ID of Student or Employee" id="searchInp">
+                <input type="text" placeholder="Search Here" id="searchInp">
 
-                <button id="searchbtn">Search</button>
+                <button id="searchbtn">SEARCH</button>
             </div>
             <div id="cont">
                 <!-- append the data here -->
@@ -167,7 +167,7 @@
         window.location.href = "/Admin-search.html";
     })
     document.getElementById("students").addEventListener("click", function () {
-        window.location.href = "/Admin-students.html";
+        window.location.href = "/Admin-student.html";
     })
     document.getElementById("employee").addEventListener("click", function () {
         window.location.href = "/Admin-employee.html";
@@ -195,23 +195,23 @@
 
             let name = document.createElement("p");
             name.className = "name";
-            name.innerText = "Name:- " + item.name;
+            name.innerText = "NAME : " + item.name;
 
             let id = document.createElement("p");
-            id.innerText = "ID:- " + item.id;
+            id.innerText = "ID : " + item.id;
             id.className = "ID";
 
             let email = document.createElement("p");
             email.className = "email";
-            email.innerText = "Email ID:- " + item.email;
+            email.innerText = "EMAIL ID : " + item.email;
 
             let student_code = document.createElement("p");
             student_code.className = "student_code";
-            student_code.innerText = "Student code:- " + item.student_code;
+            student_code.innerText = "STUDENT CODE : " + item.student_code;
 
             let batch = document.createElement("p");
             batch.className = "batch";
-            batch.innerText = "Batch:- " + item.batch;
+            batch.innerText = "BATCH : " + item.batch;
 
             let btn = document.createElement("button");
             btn.className = "editbtn";
