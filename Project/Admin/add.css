@@ -5,6 +5,24 @@
 
 }
 
+:root {
+    --main-background-color: #FFFFFF;
+    --slidebar-background-color: #F5F5F5;
+    --slidebar-font-color:black;
+    --logo-background-color:#F5F5F5;
+    --secondary-color: black;
+    --main-title:#722ED1;
+}
+
+.dark-mode {
+    --main-background-color: #242526;
+    --slidebar-background-color: #18191A;
+    --slidebar-font-color:#ffffff;
+    --logo-background-color:#F5F5F5;
+    --secondary-color: #FFFFFF;
+    --main-title:white;
+}
+
 #main {
     display: flex;
 }
@@ -22,7 +40,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
-    background-color: #F5F5F5;
+    background-color: var(--slidebar-background-color);
     width: 18%;
     border-right: 2px solid #DEDEDE;
 
@@ -37,7 +55,8 @@
 }
 
 div #logo {
-
+    background-color: var(--logo-background-color);
+    border-radius: 15px;
     margin-top: 30px;
     padding: 0;
     text-align: center;
@@ -68,6 +87,7 @@ div>p {
 
 #left>div>div {
     display: flex;
+    color: var(--slidebar-font-color);
     align-items: center;
 }
 
@@ -82,24 +102,30 @@ div>p {
 }
 
 #right {
-    background-color: #FFFFFF;
+    background-color: var(--main-background-color);
     width: 82%;
 }
 
-#r1 div:first-child img {
-    width: 4.5%;
-    margin: 15px 20px;
-    margin-top: 15px;
+#r1 div:first-child {
+    width: 5%;
+    display: flex;
+    align-items: center;
 }
-
+#r1 div:first-child span {
+    margin-left: 10%;
+}
 #r1 {
     width: 100%;
     display: flex;
+    justify-content: space-between;
 }
 
 #r1 div:last-child {
-    text-align: end;
-    margin: 5px 20px;
+    width: 40%;
+    justify-content: end;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -115,9 +141,9 @@ div>p {
     position: relative;
     border-radius: 15px;
     border: 1px solid lightgray;
-    width: 7.3%;
-    margin-top: 5px;
-    margin-left: 15px;
+    width: 10%;
+    margin-left: 3%;
+    margin-right: 3%;
 }
 
 #forms{
@@ -144,7 +170,7 @@ form{
 }
 
 #forms div h3{
-    color: #722ED1;
+    color: var(--main-title);
     font-size: 30px;
 }
 
@@ -152,7 +178,7 @@ form input{
     padding: 3%;
     margin-bottom: 3%;
     border-radius: 15px;
-    border-color: #722ED1;
+    border-color: var(--main-title);
     font-family: inter;
     background-color: #ece9ef;
 }
@@ -166,4 +192,80 @@ form input{
 
 #forms div{
     text-align: center;
+}
+@media screen and (max-width: 768px) {
+
+    #main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #left {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 2px solid #DEDEDE;
+    }
+
+    #left>div {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+
+    #left>div>div {
+        width: auto;
+        margin: 5px;
+        padding-left: 20px;
+    }
+
+    #left>div>div:first-child {
+        margin-right: 0;
+        border: none;
+        padding-left: 0;
+    }
+
+    #right {
+        width: 100%;
+    }
+
+    #right #r1 #profile {
+        position: relative;
+        border-radius: 15px;
+        border: 1px solid lightgray;
+        width: 20%;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    #r1 div:last-child img:first-child {
+        width: 20%;
+        margin: 5px;
+        margin-top: 10px;
+        margin-left: 30px;
+    }
+
+
+    #forms{
+        display: block;
+        width: 70%;
+        margin: auto;
+        /* justify-content: space-evenly; */
+        margin-top: 5%;
+    }
+
+    #forms div{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    #left {
+        width: 25%;
+    }
+
+    #right {
+        width: 75%;
+    }
 }

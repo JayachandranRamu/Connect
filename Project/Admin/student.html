@@ -48,12 +48,7 @@
                 </div>
             </div>
             <div>
-                <div>
-                    <span class="material-symbols-outlined">
-                        rate_review
-                    </span>
-                    <p>Feedback</p>
-                </div>
+                <div></div>
                 <div>
                     <span class="material-symbols-outlined">
                         logout
@@ -66,10 +61,12 @@
         <div id="right">
             <div id="r1">
                 <div>
-                    <img src="/Project/Images/fast-forward.png" alt="" id="slide">
+                    <span class="material-symbols-outlined" id="slide" class="icon">
+                        keyboard_double_arrow_right
+                    </span>
                 </div>
                 <div>
-                    <img src="/Project/Images/alarm.png" alt="">
+                    <img src="/Project/Images/dark theme icon/moon.png" alt="" id="darkmode_btn" class="icon">
                     <img src="/Project/Images/man.png" alt="" id="profile">
                 </div>
             </div>
@@ -87,7 +84,7 @@
                             <th class="same">Batch</th>
                             <th class="same">Status</th>
                             <th class="same">Password</th>
-                            <th class="delete">Delete</th>
+                            <th class="delete" class="same">Delete</th>
                         </tr>
                     </thead>
                     <tbody id="body">
@@ -129,6 +126,45 @@
     }
     fetchData1()
 
+    function enableDarkMode() {
+        document.body.classList.add("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/sun.png";
+        slideBtn.style.color = "white";
+    }
+
+
+    function disableDarkMode() {
+        document.body.classList.remove("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/moon.png";
+        slideBtn.style.color = "black";
+    }
+
+
+    function toggleDarkMode() {
+        if (localStorage.getItem("darkmode") === "true") {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+    }
+
+    document.getElementById("darkmode_btn").addEventListener("click", function () {
+        if (localStorage.getItem("darkmode") === "false") {
+            localStorage.setItem("darkmode", "true")
+            enableDarkMode();
+        } else if (localStorage.getItem("darkmode") === "true") {
+            localStorage.setItem("darkmode", "false")
+            disableDarkMode();
+        }
+        toggleDarkMode();
+    });
+
+    toggleDarkMode();
+
     let cont = document.getElementById("body");
     function display(data) {
         cont.innerHTML = "";
@@ -151,13 +187,13 @@
             let batch = document.createElement("td");
             batch.innerText = item.batch;
             let status = document.createElement("td");
-            if (item.active == true){
+            if (item.active == true) {
                 status.style.color = "green";
                 status.innerText = "Active";
             }
             else {
                 status.style.color = "red";
-                status.innerText ="Inactive";
+                status.innerText = "Inactive";
             }
 
             let Password = document.createElement("td");
@@ -182,7 +218,7 @@
                     })
                     .catch(err => { console.log(err) });
             })
-            row.append(id, name, email, studentcode,batch,status, Password, Delete);
+            row.append(id, name, email, studentcode, batch, status, Password, Delete);
             cont.append(row);
         })
     }
@@ -205,7 +241,7 @@
 
 
     let pagination = document.getElementById("pagination_wrapper")
-    function create_button(total_page){
+    function create_button(total_page) {
         pagination.innerHTML = "";
         for (let i = 1; i <= total_page; i++) {
             let button = document.createElement("button");
@@ -220,6 +256,14 @@
                     url.searchParams.append('page', pageno);
                     url.searchParams.append('limit', 8);
                     fetchData(url);
+                    const buttons = document.querySelectorAll(".pagination-button");
+                    buttons.forEach((btn) => {
+                        if (btn === e.target) {
+                            btn.style.backgroundColor = "green";
+                        } else {
+                            btn.style.backgroundColor = "";
+                        }
+                    });
                 }
             });
         }

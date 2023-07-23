@@ -49,18 +49,7 @@
                 </div>
             </div>
             <div>
-                <div id="dark_mode">
-                    <span class="material-symbols-outlined" id="active_mode">
-                        toggle_off
-                    </span>
-                    <p>Dark Mode</p>
-                </div>
-                <div>
-                    <span class="material-symbols-outlined">
-                        rate_review
-                    </span>
-                    <p>Feedback</p>
-                </div>
+                <div></div>
                 <div>
                     <span class="material-symbols-outlined">
                         logout
@@ -73,13 +62,12 @@
         <div id="right">
             <div id="r1">
                 <div>
-                    <span class="material-symbols-outlined" id="slide">
+                    <span class="material-symbols-outlined" id="slide" class="icon">
                         keyboard_double_arrow_right
                     </span>
                 </div>
                 <div>
-                    <img src="" alt="">
-                    <!-- <img src="/Project/Images/alarm.png" alt=""> -->
+                    <img src="/Project/Images/dark theme icon/moon.png" alt="" id="darkmode_btn" class="icon">
                     <img src="/Project/Images/man.png" alt="" id="profile">
                 </div>
             </div>
@@ -115,6 +103,22 @@
                     </div>
                 </div>
             </div>
+            <div class="bottom_sec">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>ID</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="body">
+                        <!-- Append data here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
@@ -131,7 +135,7 @@
         }
         else {
             left.style.display = "flex";
-            right.style.width = "80";
+            right.style.width = "80%";
             visible = true;
         }
     })
@@ -183,19 +187,61 @@
         .then(res => res.json())
         .then(data => latest.innerText = data.lastname)
 
-    let darkbtn = document.getElementById("dark_mode")
-    let toggle = document.getElementById("active_mode")
-    darkbtn.addEventListener("click", function () {
-        if (toggle.innerText == "toggle_off" || localStorage.getItem("darkmode") == "true") {
-            toggle.innerText = "toggle_on";
-            localStorage.setItem("darkmode", JSON.stringify("true"))
+    function enableDarkMode() {
+        document.body.classList.add("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/sun.png";
+        slideBtn.style.color = "white";
+    }
+
+
+    function disableDarkMode() {
+        document.body.classList.remove("dark-mode");
+        const darkButton = document.getElementById("darkmode_btn");
+        const slideBtn = document.getElementById("slide");
+        darkButton.src = "/Project/Images/dark theme icon/moon.png";
+        slideBtn.style.color = "black";
+    }
+
+
+    function toggleDarkMode() {
+        if (localStorage.getItem("darkmode") === "true") {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
         }
-        else if (toggle.innerText == "toggle_on" || localStorage.getItem("darkmode") == "false") {
-            toggle.innerText = "toggle_off";
-            localStorage.setItem("darkmode", JSON.stringify("false"))
+    }
+
+    document.getElementById("darkmode_btn").addEventListener("click", function () {
+        if (localStorage.getItem("darkmode") === "false") {
+            localStorage.setItem("darkmode", "true")
+            enableDarkMode();
+        } else if (localStorage.getItem("darkmode") === "true") {
+            localStorage.setItem("darkmode", "false")
+            disableDarkMode();
         }
-        document.body.classList.toggle("dark-mode")
-    })
+        toggleDarkMode();
+    });
+
+    toggleDarkMode();
+
+
+    let tablebody = document.getElementById("body")
+    let announcementArr = [];
+    function announcement() {
+        fetch(`https://connect-api-0z76.onrender.com/announcement`)
+            .then(res => res.json())
+            .then(data => displaytable(data))
+    }
+
+    console.log(announcementArr)
+    function displaytable(data){
+        tablebody.innerHTML = "";
+        data.forEach(function(item){
+             
+        })
+    }
 </script>
 
 </html>
