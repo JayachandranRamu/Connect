@@ -93,15 +93,7 @@
             </tr>
         </table> -->
     </div>
-    <div id="g">
-        <h2>Groups</h2>
-        <div>
-            Masai Speaking Club
-        </div>
-        <div>
-            Masai Speaking Club
-        </div>
-    </div>
+
     </div>
         </div>
     </div>
@@ -169,6 +161,7 @@ todoSection.append(span,p);
     }else{
         let table=document.createElement("table");
         arr.map(function (el,ind){
+            if(ind<5){
         let tr=document.createElement("tr");
         let td1=document.createElement("td");
         let td2=document.createElement("td");
@@ -180,7 +173,7 @@ todoSection.append(span,p);
     tr.append(td1,td2);
     table.append(tr);
     todoSection.append(table);
-    })
+     } })
     }
 
     const url1 = new URL('https://64b63253df0839c97e151a61.mockapi.io/Students');
