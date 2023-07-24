@@ -13,11 +13,11 @@
   </p>
 </p>
 
-<h3>PROJECT CODE : adorable-crown-8253</h3>
-<h3>NETLIFY LINK : https://connect0.netlify.app/</h3>
-<h3>TEAM MEMBERS : 5</h3>
-<h3>TEAM LEAD : JAYACHANDRAN RAMU</h3>
-<h3>TEAM MEMBERS :  PARAS KAMALIYA</h3>
+<h3 align="center">PROJECT CODE : adorable-crown-8253</h3>
+<h3 align="center">NETLIFY LINK : https://connect0.netlify.app/</h3>
+<h3 align="center">TEAM MEMBERS : 5</h3>
+<h3 align="center">TEAM LEAD : JAYACHANDRAN RAMU</h3>
+<h3 align="center">TEAM MEMBERS :  PARAS KAMALIYA</h3>
 
 
 
