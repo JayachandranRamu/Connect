@@ -391,7 +391,6 @@
                                     otpinpDiv.style.display = "block";
                                     verifyOTP(otp_val);
                                     btnsignupdiv.style.display = "none";
-
                                 }
                             }
                         );
@@ -425,7 +424,7 @@
                 active: true,
                 todo: [],
             };
-
+console.log(newStudent)
             const res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students", {
                 method: "POST",
                 headers: {
@@ -434,8 +433,9 @@
                 body: JSON.stringify(newStudent),
             });
             const data1 = await res.json();
-            console.log(data1);
-            window.location.reload();
+
+            window.location.href="/index.html";
+
         } catch (error) {
             console.error(error);
         }
@@ -465,12 +465,12 @@
                 localStorage.setItem("current", "users")
 
                 await fetch(`https://64b63253df0839c97e151a61.mockapi.io/api/admin/users/${data[0].id}`, {
-                    method: 'PUT',
+                    method: "PUT",
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        active: true
+                        active: true,
                     })
                 });
 
@@ -526,16 +526,16 @@
         }
     }
 
-    // async function element() {
-    //     try {
-    //         let res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students");
+    async function element() {
+        try {
+            let res = await fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students");
 
-    //         let data = await res.json();
-    //         console.log(data);
-    //     }
-    //     catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-    // element();
+            let data = await res.json();
+            console.log(data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    element();
 </script>
