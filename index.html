@@ -441,44 +441,90 @@
     //         }
     //     }
 
+    // function addUserData() {
+    //     const emailInput = document.querySelector("form.signup input[type='text'][placeholder='Email Address']");
+    //     const nameInput = document.querySelector("form.signup input[type='text'][placeholder='Name']");
+    //     const passwordInput = document.querySelector("form.signup input[type='password'][placeholder='Create Password']");
+    //     const student_code_prefix = "fw27_";
+
+    //     fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students")
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             const lastStudentCode = data.reduce((max, student) => {
+    //                 const code = student.student_code.substring(student_code_prefix.length);
+    //                 return Math.max(max, parseInt(code));
+    //             }, 0);
+
+    //             const student_code = `${student_code_prefix}${lastStudentCode + 1}`;
+    //             const newStudent = {
+    //                 id: data.length + 1,
+    //                 name: nameInput.value.trim(),
+    //                 student_code: student_code,
+    //                 email: emailInput.value.trim(),
+    //                 password: passwordInput.value.trim(),
+    //                 active: true,
+    //                 todo: [],
+    //             };
+
+    //              fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students", {
+    //                 method: "POST",
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                 },
+    //                 body: JSON.stringify(newStudent),
+    //             });
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         });
+    // }
+
     function addUserData() {
-        const emailInput = document.querySelector("form.signup input[type='text'][placeholder='Email Address']");
-        const nameInput = document.querySelector("form.signup input[type='text'][placeholder='Name']");
-        const passwordInput = document.querySelector("form.signup input[type='password'][placeholder='Create Password']");
-        const student_code_prefix = "fw27_";
+    const emailInput = document.querySelector("form.signup input[type='text'][placeholder='Email Address']");
+    const nameInput = document.querySelector("form.signup input[type='text'][placeholder='Name']");
+    const passwordInput = document.querySelector("form.signup input[type='password'][placeholder='Create Password']");
+    const student_code_prefix = "fw27_";
 
-        fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students")
-            .then(response => response.json())
-            .then(data => {
-                const lastStudentCode = data.reduce((max, student) => {
-                    const code = student.student_code.substring(student_code_prefix.length);
-                    return Math.max(max, parseInt(code));
-                }, 0);
+    fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students")
+        .then(response => response.json())
+        .then(data => {
+            const lastStudentCode = data.reduce((max, student) => {
+                const code = student.student_code.substring(student_code_prefix.length);
+                return Math.max(max, parseInt(code));
+            }, 0);
 
-                const student_code = `${student_code_prefix}${lastStudentCode + 1}`;
-                const newStudent = {
-                    id: data.length + 1,
-                    name: nameInput.value.trim(),
-                    student_code: student_code,
-                    email: emailInput.value.trim(),
-                    password: passwordInput.value.trim(),
-                    active: true,
-                    todo: [],
-                };
+            const student_code = `${student_code_prefix}${lastStudentCode + 1}`;
+            const newStudent = {
+                id: data.length + 1,
+                name: nameInput.value.trim(),
+                student_code: student_code,
+                email: emailInput.value.trim(),
+                password: passwordInput.value.trim(),
+                active: true,
+                todo: [],
+            };
 
-                 fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(newStudent),
-                });
-            })
-            .catch(error => {
-                console.error(error);
+            return fetch("https://64b63253df0839c97e151a61.mockapi.io/api/admin/Students", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newStudent),
             });
-    }
-
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("New student data added successfully!");
+                window.location.reload();
+            } else {
+                // Error: Failed to add data to the server
+               alert("Failed to add new student data to the server.");
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
 
 
 
