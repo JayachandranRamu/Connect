@@ -13,7 +13,10 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/ShaanCoding/ReadME-Generator?color=dark-green) 4
+PROJECT CODE : adorable-crown-8253
+NETLIFY LINK : https://connect0.netlify.app/
+TEAM MEMBERS : 5
+
 
 
 
