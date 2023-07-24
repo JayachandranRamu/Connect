@@ -13,9 +13,9 @@
   </p>
 </p>
 
-<h1>PROJECT CODE : adorable-crown-8253</h1>
-<h1>NETLIFY LINK : https://connect0.netlify.app/</h1>
-<h1>TEAM MEMBERS : 5</h1>
+<h3>PROJECT CODE : adorable-crown-8253</h3>
+<h3>NETLIFY LINK : https://connect0.netlify.app/</h3>
+<h3>TEAM MEMBERS : 5</h3>
 
 
 
