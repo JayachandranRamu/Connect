@@ -23,7 +23,7 @@ It is basically a Student Relationship Management Website. It use to connect peo
 
 **Student & Manager Page**
 - Login & SignUp
-- OTP Verification for SignUp [Via Email]
+- OTP Verification for SignUp [Via Email Using Smtpjs.com]
 - To-Do List
 - Group & Group Announcement
 - Discussion [ Chat with everyone in the website ]
