@@ -41,6 +41,21 @@ It is basically a Student Relationship Management Website. It use to connect peo
 
 ## Website - Screenshots
 
+### Login and Signup Page:-
+
+#### Login Part :-
+
+You can just give your proper credential and login.
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/fig80ob0908cl5ezwt24.png)
+
+#### Signup Part :-
+
+You have to give your proper working email and proper details, Then OTP will be send to the email. If you verify the OTP means the account will be created.
+
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nflmmtz945jwpscudss8.png)
+
 ### Student And Manager Page:-
 
 #### Dashboard :-
