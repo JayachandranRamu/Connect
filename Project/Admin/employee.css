@@ -114,7 +114,7 @@ div>p {
 #right {
     background-color: var(--main-background-color);
     width: 80%;
-    height: 100vh;
+    height: auto;
 }
 
 #r1 div:first-child {
@@ -307,6 +307,36 @@ tr:last-child>td:first-child {
     #table table {
         width: 50%;
         margin: auto;
+    }
+    #table table thead {
+        display: none;
+    }
+
+    #table table tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #table table td {
+        display: block;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5px;
+    }
+
+    /* Add some spacing between table rows for readability */
+    #table table tr th,
+    #table table tr td {
+        padding: 10px;
+    }
+
+    /* Styling for table cell data */
+    #table table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: inline-block;
+        width: 100px; /* Adjust the width as needed */
     }
 }
 

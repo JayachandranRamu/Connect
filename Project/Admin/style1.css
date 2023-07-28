@@ -380,6 +380,29 @@ td:nth-child(2) {
         border-radius: 15px;
         background-color: #F1F5FF;
     }
+
+    #right>div:nth-child(2) {
+        padding: 15px;
+        border-top: 2px solid #D9D9D9;
+        border-bottom: 2px solid #D9D9D9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    #right>div:nth-child(2) p {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    
+    #right>div:nth-child(2)>a>button {
+        background-color:var(--secondary-color);
+        color: var(--main-background-color);
+        border: 1px solid black;
+        border-radius: 15px;
+        height: 40px;
+        width: 100%;
+    }
 }
 
 /* Use a media query to adjust styles for screens between 768px and 1024px */

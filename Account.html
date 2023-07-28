@@ -180,7 +180,7 @@
     // diplay data----------------------------------
     function diplay(data){
         p_name.innerText=data.name
-        p_email.innerText=data.email
+        p_email.innerText=data.email.split("@").join(" @")
 
         // edit-button-----------------------------
         let edit=document.querySelector('#edit')

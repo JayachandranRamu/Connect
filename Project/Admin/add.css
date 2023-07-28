@@ -207,6 +207,7 @@ form input{
     #main {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     #left {
@@ -236,6 +237,7 @@ form input{
 
     #right {
         width: 100%;
+        height: 100vh;
     }
 
     #right #r1 #profile {
@@ -257,7 +259,8 @@ form input{
 
     #forms{
         display: block;
-        width: 70%;
+        width: 80%;
+        justify-content: center;
         margin: auto;
         /* justify-content: space-evenly; */
         margin-top: 5%;
@@ -266,6 +269,38 @@ form input{
     #forms div{
         margin-top: 10%;
     }
+    form input{
+        width: 90%;
+        padding: 1%;
+        margin: auto;
+        border-radius: 15px;
+        margin: 1%;
+        border-color: var(--main-title);
+        font-family: inter;
+        background-color: #ffffff;
+    }
+    #employeeform{
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
+    
+    #studentform {
+        width: 90%;
+        margin: auto;
+        display: block;
+    }
+    .submit{
+        background-color: rgb(36, 185, 36);
+        width: 50%;
+        margin: auto;
+        margin-bottom: 5%;
+        /* width: 200px; */
+        height: 50px;
+        color: white;
+        margin: 20px auto;
+    }
+    
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
