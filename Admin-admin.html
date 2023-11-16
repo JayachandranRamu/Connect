@@ -38,7 +38,7 @@
                 <div id="students">
                     <span class="material-symbols-outlined">
                         groups
-                        </span>
+                    </span>
                     <p>Students</p>
                 </div>
                 <div id="employee">
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="bottom_div">
-                
+
             </div>
         </div>
     </div>
@@ -167,7 +167,7 @@
     document.getElementById("employee").addEventListener("click", function () {
         window.location.href = "/Admin-employee.html";
     })
-    document.getElementById("logout").addEventListener("click",function(){
+    document.getElementById("logout").addEventListener("click", function () {
         window.location.href = "/index.html"
     })
 
@@ -177,8 +177,8 @@
         .then(res => res.json())
         .then(data => latest.innerText = data.lastname)
 
-    if (localStorage.getItem("darkmode")===null){
-        localStorage.setItem("darkmode","false");
+    if (localStorage.getItem("darkmode") === null) {
+        localStorage.setItem("darkmode", "false");
     }
 
     function enableDarkMode() {
@@ -219,7 +219,7 @@
     });
 
     toggleDarkMode();
-    
+
 </script>
 
 </html>
