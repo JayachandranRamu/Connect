@@ -6,7 +6,7 @@
 
 
 # Connect
-It is basically a Student Relationship Management Website. It use to connect people over a Masai Community.We have built some features by taking inspiration for Masai LMS. It was a collabarative project built by a team of five members in a span of 5 days. We basically built this website in three Sections. 
+It is basically a Student Relationship Management Website. It use to connect people over a Masai Community.We have built some features by taking inspiration for Masai LMS. It was a collabarative project built by a team of four members in a span of 5 days. We basically built this website in three Sections. 
 * Student Page
 * Manager Page
 * Admin Section
@@ -233,6 +233,6 @@ If you have any Feedback, Please reach out to us at jayachandran9629040900@gmail
 - [Paras Kamaliya](https://github.com/paraskamaliya)
 - [Shubham Jayswal](https://github.com/shubham-masai)
 - [Venkatesh Gangoji](https://github.com/Venky8073)
-- [Alka Sinha](https://github.com/AlkaSinha5)
+
 
 
